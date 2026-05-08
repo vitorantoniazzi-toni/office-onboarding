@@ -1,416 +1,1087 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Indicium AI Europe · London Onboarding</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --paper:#f4f3ee; --paper-deep:#e8e6df;
-  --ink:#0a1542; --ink-soft:#1f2a5c; --muted:#5a5f78;
-  --hair:rgba(10,21,66,.12); --hair-strong:rgba(10,21,66,.28);
-  --acq:#3a58ee; --acq-light:#7d92ff; --acq-deep:#1d2c9c;
-  --fulcrum:#e6b400; --del:#2d6f5e; --negative:#a8331f;
-  --brand:var(--acq);
-  --serif:"Fraunces",serif; --sans:"Geist",-apple-system,sans-serif; --mono:"Geist Mono",ui-monospace,monospace;
-  --max:1180px; --pad:clamp(20px,4vw,56px);
-}
-*{box-sizing:border-box} html,body{margin:0;padding:0} html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(rgba(58,88,238,.18) 1px,transparent 1px);background-size:22px 22px;pointer-events:none;z-index:1;opacity:.6}
-::selection{background:var(--ink);color:var(--paper)}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-0.01em;margin:0;color:var(--ink)}
-h1{font-size:clamp(44px,6.6vw,92px);line-height:.98;letter-spacing:-0.025em}
-h2{font-size:clamp(28px,4vw,52px);line-height:1.06;letter-spacing:-0.018em}
-h3{font-size:clamp(20px,2.2vw,28px);line-height:1.2}
-h4{font-size:18px;line-height:1.3}
-em{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 80;color:var(--brand)}
-p{margin:0 0 1em} a{color:var(--brand);text-decoration:none;border-bottom:1px solid var(--hair-strong)}
-a:hover{border-bottom-color:var(--brand)}
-strong{font-weight:600}
-.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);display:inline-flex;align-items:center;gap:12px}
-.eyebrow::before{content:"";display:inline-block;width:24px;height:1px;background:var(--ink-soft)}
-.num{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);font-weight:500}
-.progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--acq),var(--acq-deep));z-index:50;transition:width .1s linear}
-.frame-top{position:sticky;top:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:14px var(--pad);font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;background:rgba(244,243,238,.78);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--hair);transition:background .35s,color .35s,border-color .35s;color:var(--ink-soft)}
-.frame-top.on-dark{background:rgba(10,21,66,.72);color:rgba(244,243,238,.92);border-bottom-color:rgba(125,146,255,.18)}
-.frame-top .logo{display:flex;align-items:center;gap:10px;font-weight:500;color:inherit;border:none}
-.frame-top .logo .mark{width:18px;height:18px;flex-shrink:0}
-.frame-top .meta{display:flex;gap:24px;opacity:.85}
-@media (max-width:720px){.frame-top .meta .hide-sm{display:none}}
-section{position:relative;z-index:2;padding:clamp(64px,9vw,120px) var(--pad)}
-.wrap{max-width:var(--max);margin:0 auto}
-.dark{background:var(--ink);color:var(--paper);position:relative}
-.dark::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:22px 22px;pointer-events:none;mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 70%);-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 70%)}
-.dark > *{position:relative;z-index:1}
-.dark h1,.dark h2,.dark h3,.dark h4{color:var(--paper)}
-.dark em{color:var(--acq-light)}
-.dark .eyebrow{color:rgba(244,243,238,.72)}
-.dark .eyebrow::before{background:rgba(244,243,238,.55)}
-.deep{background:var(--paper-deep)}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
-.reveal.is-visible{opacity:1;transform:none}
-.reveal-d1{transition-delay:.08s} .reveal-d2{transition-delay:.16s} .reveal-d3{transition-delay:.24s} .reveal-d4{transition-delay:.32s}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Components */
-.hero{min-height:84vh;display:flex;flex-direction:column;justify-content:space-between;padding-top:clamp(64px,10vw,120px);padding-bottom:48px;position:relative;overflow:hidden}
-.hero .curtain{position:absolute;inset:0;background-image:linear-gradient(90deg,transparent 0%,rgba(58,88,238,.05) 18%,rgba(58,88,238,.10) 22%,rgba(58,88,238,.04) 28%,transparent 36%,transparent 56%,rgba(58,88,238,.06) 64%,rgba(58,88,238,.12) 72%,rgba(58,88,238,.04) 78%,transparent 86%);pointer-events:none;z-index:1;mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.4) 70%,transparent);-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.4) 70%,transparent)}
-.hero .orb{position:absolute;width:520px;height:520px;right:-120px;top:6%;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(58,88,238,.32),rgba(58,88,238,0) 65%);filter:blur(8px);z-index:1;pointer-events:none}
-.hero h1{max-width:18ch;margin-top:32px;position:relative;z-index:2}
-.hero .lede{font-family:var(--serif);font-size:clamp(20px,2.2vw,26px);line-height:1.4;font-weight:300;max-width:54ch;color:var(--ink-soft);margin-top:28px;position:relative;z-index:2}
-.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--hair);padding-top:20px;margin-top:48px;position:relative;z-index:2}
-.hero-meta .cell .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.hero-meta .cell .v{font-family:var(--serif);font-size:18px;margin-top:6px;line-height:1.25}
+  :root {
+    /* Dark · Porto-style executive */
+    --bg: #1c1d2f;
+    --bg-soft: #23243a;
+    --bg-card: #252640;
+    --white: #ffffff;
+    --vibrant: #3a58ee;       /* Indicium electric blue */
+    --atlantic: #699bfb;       /* Lighter accent — most UI accents */
+    --lavender: #dedaf4;       /* Body text */
+    --teal: #aae2e5;
+    --muted: #8a8ba7;
+    --muted-2: #55566e;
+    --line: rgba(255,255,255,0.06);
+    --line-strong: rgba(255,255,255,0.12);
+    --green: #6ee7a0;
+    --green-deep: #2ecc71;
+    --amber: #f59e0b;
+    --red: #f87171;
 
-.toc ol{list-style:none;padding:0;margin:0;counter-reset:t;display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--hair)}
-.toc li{counter-increment:t;display:flex;align-items:baseline;gap:14px;padding:16px 0;border-bottom:1px solid var(--hair);font-family:var(--serif);font-size:18px}
-.toc li::before{content:"/" counter(t,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.12em;flex-shrink:0;width:32px}
-.toc li a{border:none;color:var(--ink)}.toc li a:hover{color:var(--brand)}
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'Roboto Mono', ui-monospace, monospace;
 
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--hair);border-left:1px solid var(--hair);margin-top:40px}
-.stats .cell{border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:24px 20px;background:var(--paper)}
-.stats .cell .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.stats .cell .v{font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);line-height:1.1;margin-top:12px}
-.stats .cell .d{margin-top:10px;font-size:13px;line-height:1.5;color:var(--ink-soft)}
+    --max: 1240px;
+    --gutter: 56px;
+  }
 
-.values{margin-top:40px;display:flex;gap:0;flex-wrap:wrap;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:18px 0}
-.values .v{flex:1;min-width:140px;padding:8px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);border-right:1px solid var(--hair)}
-.values .v:last-child{border-right:none}
-.values .v::before{content:"·";color:var(--brand);margin-right:8px;font-weight:700}
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-feature-settings: "ss01", "cv11";
+    overflow-x: hidden;
+  }
 
-.office-card{margin-top:40px;background:rgba(58,88,238,.04);border:1px solid var(--brand);border-radius:6px;padding:36px 32px;display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:start}
-.office-card .city{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.office-card h3{margin-top:8px;margin-bottom:14px}
+  /* Ambient bg blobs */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 15% 10%, rgba(58,88,238,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 35% at 90% 80%, rgba(105,155,251,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.practical-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:24px;margin-top:40px}
-.practical-card{background:var(--paper);border:1px solid var(--hair);padding:28px;border-radius:6px}
-.practical-card h4{font-family:var(--serif);font-size:22px;margin-bottom:12px}
-.practical-card ul{list-style:none;padding:0;margin:0}
-.practical-card ul li{font-size:14px;line-height:1.6;color:var(--ink-soft);margin-bottom:8px;padding-left:18px;position:relative}
-.practical-card ul li::before{content:"·";position:absolute;left:0;color:var(--brand);font-weight:700}
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    position: relative;
+    z-index: 1;
+  }
 
-.leadership-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:40px}
-.leadership-grid .person{background:var(--paper);padding:32px 24px;display:flex;flex-direction:column;gap:8px;min-height:280px}
-.leadership-grid .person .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
-.leadership-grid .person .name{font-family:var(--serif);font-size:28px;line-height:1.1}
+  /* ─── Sticky nav ─── */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(28,29,47,0.78);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px var(--gutter);
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+  .brand-mark { width: 26px; height: 26px; flex-shrink: 0; display: block; }
+  .brand-mark svg { width: 100%; height: 100%; display: block; }
+  .brand .ai-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--atlantic);
+    margin-left: 3px;
+    letter-spacing: 1.6px;
+    align-self: flex-start;
+    margin-top: -1px;
+    font-weight: 500;
+  }
+  .nav-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    display: flex;
+    gap: 22px;
+    align-items: center;
+  }
+  .nav-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted-2); }
 
-.timeline{position:relative;padding-left:40px;border-left:1px solid var(--hair-strong);margin-top:40px}
-.step{position:relative;padding:22px 0 24px;border-bottom:1px solid var(--hair)}
-.step::before{content:"";position:absolute;left:-46px;top:30px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2px solid var(--brand)}
-.step .who{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--brand);text-transform:uppercase;padding:4px 10px;background:rgba(58,88,238,.08);border-radius:3px}
+  /* ─── Hero ─── */
+  .hero { padding: 140px 0 120px; position: relative; }
+  .hero .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--atlantic);
+    margin-bottom: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero .eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--atlantic);
+  }
+  .hero h1 {
+    font-weight: 300;
+    font-size: clamp(56px, 7vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -2.6px;
+    margin-bottom: 36px;
+    max-width: 18ch;
+  }
+  .hero h1 b {
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--white) 0%, var(--atlantic) 60%, var(--vibrant) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero .deck {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--lavender);
+    max-width: 64ch;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+  .hero .meta-row {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 56px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--muted);
+  }
+  .hero .meta-row .v {
+    display: block;
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+    margin-top: 6px;
+    letter-spacing: -0.2px;
+    text-transform: none;
+  }
 
-.ws-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
-.ws{background:var(--paper);border:1px solid var(--hair);border-radius:6px;padding:28px 26px}
-.ws.ws1{border-top:3px solid var(--acq)}.ws.ws2{border-top:3px solid var(--del)}
+  /* ─── Section pattern ─── */
+  section.section { padding: 110px 0; border-top: 1px solid var(--line); }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--atlantic);
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--atlantic); }
+  h2.section-title {
+    font-size: clamp(40px, 4.6vw, 60px);
+    font-weight: 600;
+    letter-spacing: -1.6px;
+    line-height: 1.05;
+    margin-bottom: 18px;
+    max-width: 22ch;
+  }
+  h2.section-title em { font-style: normal; color: var(--atlantic); }
+  .section-deck {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--lavender);
+    max-width: 66ch;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-bottom: 56px;
+  }
+  .section-deck strong { color: var(--white); font-weight: 500; }
 
-.wow-group { margin-top:48px; border-top:1px solid var(--hair-strong); padding-top:24px; }
-.wow-group-title { font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:24px; }
-.wow-cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:24px; }
-.wow-card { background:var(--paper); border:1px solid var(--hair); padding:28px; border-radius:6px; position:relative; overflow:hidden; }
+  /* External link inline style */
+  .ext-link {
+    color: var(--atlantic);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(105,155,251,0.35);
+    padding-bottom: 1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ext-link:hover { color: var(--white); border-bottom-color: var(--atlantic); }
+  .ext-link .ext-arrow { font-size: 11px; opacity: 0.7; transition: transform 0.2s ease; }
+  .ext-link:hover .ext-arrow { transform: translate(2px, -2px); opacity: 1; }
 
-.tools{display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:24px;margin-top:40px}
-.tool{background:var(--paper);border:1px solid var(--hair);border-radius:6px;padding:28px 26px}
-.tool .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);background:rgba(58,88,238,.08);padding:4px 10px;border-radius:3px;display:inline-block}
+  /* ─── Footer ─── */
+  footer.footer { padding: 56px 0 40px; border-top: 1px solid var(--line); text-align: center; }
+  footer .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  footer .tagline { font-size: 18px; color: var(--white); font-weight: 400; margin-bottom: 6px; }
+  footer .copy {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    color: var(--muted-2);
+    margin-top: 18px;
+  }
 
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));gap:24px;margin-top:40px}
-.contact-card{background:rgba(58,88,238,.06);border:1px solid rgba(58,88,238,.18);border-radius:4px;padding:28px 24px;display:flex;flex-direction:column;gap:8px;min-height:240px}
-.contact-card .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--acq-light)}
-.contact-card .name{font-family:var(--serif);font-size:28px;color:var(--paper);margin-top:6px;line-height:1.1}
-.contact-card .ping{margin-top:auto;padding-top:14px;border-top:1px solid rgba(244,243,238,.12);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:rgba(244,243,238,.6);text-transform:uppercase}
+  /* ─── Responsive ─── */
+  @media (max-width: 980px) {
+    :root { --gutter: 32px; }
+    .nav-meta { display: none; }
+    .hero .meta-row { grid-template-columns: 1fr 1fr; gap: 24px; }
+  }
 
-.colophon{padding:64px var(--pad) 56px;border-top:1px solid rgba(58,88,238,.18);font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,238,.55);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+  /* ─── Scroll-triggered transitions ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-stagger.in > *               { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.in > *:nth-child(1)  { transition-delay: 0.05s; }
+  .reveal-stagger.in > *:nth-child(2)  { transition-delay: 0.15s; }
+  .reveal-stagger.in > *:nth-child(3)  { transition-delay: 0.25s; }
+  .reveal-stagger.in > *:nth-child(4)  { transition-delay: 0.35s; }
+  .reveal-stagger.in > *:nth-child(5)  { transition-delay: 0.45s; }
+  .reveal-stagger.in > *:nth-child(6)  { transition-delay: 0.55s; }
+  .reveal-stagger.in > *:nth-child(7)  { transition-delay: 0.65s; }
+  .reveal-stagger.in > *:nth-child(8)  { transition-delay: 0.75s; }
+  .reveal-stagger.in > *:nth-child(9)  { transition-delay: 0.85s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-stagger > * {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ===========================================================
+     COMPONENTS · pulled from examples/Porto_Briefing.html
+     =========================================================== */
+
+  /* B. Outline cards TOC */
+  .outline-section{background:radial-gradient(ellipse 50% 70% at 100% 0%,rgba(58,88,238,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 0% 100%,rgba(105,155,251,.04) 0%,transparent 60%)}
+  .outline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .outline-card{display:flex;flex-direction:column;gap:14px;padding:28px 26px 26px;border:1px solid var(--line-strong);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s,background .3s}
+  .outline-card::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--vibrant),var(--atlantic));transition:width .4s cubic-bezier(.22,1,.36,1)}
+  .outline-card:hover{transform:translateY(-3px);border-color:rgba(105,155,251,.32);background:linear-gradient(180deg,rgba(105,155,251,.04),rgba(255,255,255,0))}
+  .outline-card:hover::before{width:100%}
+  .outline-card:hover .outline-arrow{transform:translateX(4px);color:var(--atlantic)}
+  .outline-card .outline-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .outline-card .outline-tag{font-family:var(--mono);font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--atlantic)}
+  .outline-card .outline-arrow{width:22px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:transform .3s,color .3s;flex-shrink:0}
+  .outline-card .outline-arrow svg{width:14px;height:14px}
+  .outline-card h3{font-size:20px;font-weight:600;letter-spacing:-.4px;line-height:1.2;color:var(--white)}
+  .outline-card p{font-size:13.5px;line-height:1.6;color:var(--lavender);opacity:.82;font-weight:300}
+  .outline-meta{margin-top:36px;padding-top:22px;border-top:1px solid var(--line);display:flex;gap:36px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+  .outline-meta strong{color:var(--white);font-weight:500;letter-spacing:.4px;margin-left:8px}
+
+  /* D. Porto-grid (prose + facts) */
+  .porto-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start}
+  .porto-prose p{font-size:16px;line-height:1.65;color:var(--lavender);margin-bottom:18px;opacity:.92}
+  .porto-prose p strong{color:var(--white);font-weight:500}
+  .porto-facts{display:flex;flex-direction:column;gap:0;border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.015)}
+  .fact{padding:22px 26px;border-bottom:1px solid var(--line)}
+  .fact:last-child{border-bottom:none}
+  .fact .label{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .fact .value{font-size:16px;color:var(--white);font-weight:400}
+
+  /* C. KPI band */
+  .kpi-band{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);margin-top:48px}
+  .kpi{padding:36px 32px;border-right:1px solid var(--line)}
+  .kpi:last-child{border-right:none}
+  .kpi .label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin-bottom:16px}
+  .kpi .value{font-size:48px;font-weight:500;line-height:1;letter-spacing:-1.6px}
+  .kpi .value .unit{font-size:18px;color:var(--muted);font-weight:400;margin-left:4px;letter-spacing:0}
+  .kpi .sub{margin-top:10px;font-size:12px;color:var(--muted);line-height:1.4}
+  .kpi.highlight .value{color:var(--atlantic)}
+
+  /* G. Squad cards (people) */
+  .squad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .squad-card{border:1px solid var(--line-strong);border-radius:16px;padding:30px 26px;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));position:relative;overflow:hidden;transition:transform .3s,border-color .3s;min-height:240px}
+  .squad-card:hover{transform:translateY(-3px);border-color:rgba(105,155,251,.28)}
+  .squad-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .squad-card.welcome::before{background:linear-gradient(90deg,var(--vibrant),var(--atlantic))}
+  .squad-card.people::before{background:linear-gradient(90deg,var(--teal),var(--lavender))}
+  .squad-card.mgmt::before{background:linear-gradient(90deg,var(--green-deep),var(--green))}
+  .squad-card.project::before{background:linear-gradient(90deg,var(--amber),#f7c97a)}
+  .squad-card.career::before{background:linear-gradient(90deg,var(--lavender),#fff)}
+  .squad-card.tech::before{background:linear-gradient(90deg,var(--red),#fcb6b6)}
+  .squad-card .squad-tag{font-family:var(--mono);font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .squad-card h3{font-size:24px;font-weight:600;margin-bottom:6px;letter-spacing:-.5px}
+  .squad-card .role{font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .squad-card.welcome h3{color:var(--atlantic)}
+  .squad-card.people h3{color:var(--teal)}
+  .squad-card.mgmt h3{color:var(--green)}
+  .squad-card.project h3{color:var(--amber)}
+  .squad-card.career h3{color:var(--lavender)}
+  .squad-card.tech h3{color:var(--red)}
+  .squad-card p{font-size:13.5px;color:var(--lavender);line-height:1.55;opacity:.85;margin-bottom:18px}
+  .squad-card .squad-meta{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
+
+  /* J. Role grid (DM/DPM style → Tom/Engagement Lead) */
+  .role-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:48px}
+  .role-card{border:1px solid var(--line-strong);border-radius:16px;padding:36px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0))}
+  .role-card .role-tag{font-family:var(--mono);font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--atlantic);margin-bottom:12px}
+  .role-card h3{font-size:26px;font-weight:600;margin-bottom:8px;letter-spacing:-.5px}
+  .role-card .role-sub{font-size:13px;color:var(--muted);margin-bottom:26px}
+  .role-card ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .role-card li{position:relative;padding-left:20px;font-size:14px;line-height:1.6;color:var(--lavender)}
+  .role-card li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--atlantic)}
+  .role-card li strong{color:var(--white);font-weight:600;margin-right:4px}
+
+  /* K. Pipeline horizontal — Day 1 timeline */
+  .pipeline{margin-top:48px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,0))}
+  .pipe-step{padding:28px 22px;border-right:1px solid var(--line);position:relative}
+  .pipe-step:last-child{border-right:none}
+  .pipe-step .num{font-family:var(--mono);font-size:10px;color:var(--atlantic);letter-spacing:1.4px;margin-bottom:12px}
+  .pipe-step h4{font-size:16px;font-weight:600;margin-bottom:10px;letter-spacing:-.2px;color:var(--white)}
+  .pipe-step p{font-size:12.5px;color:var(--lavender);opacity:.78;line-height:1.55;font-weight:300}
+  .pipe-step .who{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:9px;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase;padding:3px 8px;background:rgba(105,155,251,.08);border:1px solid var(--line);border-radius:4px}
+
+  /* L. Demo CTA (badge animado pulse) — repurposed pra training-trail */
+  .demo-cta{margin-top:48px;padding:36px 40px;border:1px solid var(--line-strong);border-radius:16px;background:linear-gradient(135deg,rgba(245,158,11,.14),rgba(245,158,11,.04));display:flex;align-items:center;justify-content:space-between;gap:32px}
+  .demo-cta .text h4{font-size:20px;font-weight:600;margin-bottom:8px;letter-spacing:-.4px;color:var(--white)}
+  .demo-cta .text p{font-size:14px;color:var(--lavender);opacity:.85;line-height:1.5;max-width:60ch}
+  .demo-cta .badge{font-family:var(--mono);font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--bg);background:var(--amber);padding:14px 22px;border-radius:999px;flex-shrink:0;display:inline-flex;align-items:center;gap:10px;font-weight:600}
+  .demo-cta .badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--bg);box-shadow:0 0 8px rgba(28,29,47,.6);animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+
+  /* Ways of working — 4-card grid (light variant of KPI band) */
+  .wow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
+  .wow-card{border:1px solid var(--line);border-radius:14px;padding:28px 24px;background:rgba(255,255,255,.015);transition:border-color .25s,background .25s}
+  .wow-card:hover{border-color:var(--line-strong);background:rgba(255,255,255,.025)}
+  .wow-card .num{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;color:var(--atlantic);margin-bottom:14px}
+  .wow-card h4{font-size:18px;font-weight:600;margin-bottom:10px;letter-spacing:-.3px;color:var(--white)}
+  .wow-card p{font-size:13px;color:var(--lavender);opacity:.82;line-height:1.55;font-weight:300}
+
+  /* Wow group (with subtitle, e.g. Essential Protocols) */
+  .wow-group{margin-top:48px}
+  .wow-group + .wow-group{margin-top:32px}
+  .wow-group-title{font-family:var(--mono);font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--atlantic);padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+  .wow-group .wow-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+
+  /* Practical grid (lunch/coffee/amenities) */
+  .practical-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+  .practical-card{border:1px solid var(--line-strong);border-radius:14px;padding:28px 24px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));transition:transform .3s,border-color .3s}
+  .practical-card:hover{transform:translateY(-2px);border-color:rgba(105,155,251,.22)}
+  .practical-card .icon{font-family:var(--mono);font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--atlantic);margin-bottom:14px}
+  .practical-card h4{font-size:20px;font-weight:600;margin-bottom:14px;letter-spacing:-.3px;color:var(--white)}
+  .practical-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+  .practical-card li{position:relative;padding-left:18px;font-size:13.5px;line-height:1.55;color:var(--lavender);opacity:.88}
+  .practical-card li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--atlantic);opacity:.7}
+  .practical-card li strong{color:var(--white);font-weight:600;margin-right:2px}
+
+  /* Tools — 3-col card grid */
+  .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+  .tool-card{border:1px solid var(--line-strong);border-radius:14px;padding:30px 26px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0))}
+  .tool-card .pill{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--atlantic);background:rgba(58,88,238,.10);border:1px solid rgba(105,155,251,.18);padding:5px 11px;border-radius:999px;margin-bottom:16px}
+  .tool-card h4{font-size:22px;font-weight:600;margin-bottom:10px;letter-spacing:-.4px;color:var(--white)}
+  .tool-card h4 em{font-style:normal;color:var(--atlantic)}
+  .tool-card p{font-size:13.5px;color:var(--lavender);line-height:1.6;opacity:.85;margin-bottom:0}
+  .tool-card p strong{color:var(--white);font-weight:500}
+
+  /* Responsive overrides */
+  @media (max-width:980px){
+    .practical-grid,.tools-grid{grid-template-columns:repeat(2,1fr)}
+    .squad-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:880px){
+    .outline-grid,.kpi-band,.pipeline,.wow-grid{grid-template-columns:repeat(2,1fr)}
+    .wow-group .wow-cards{grid-template-columns:1fr}
+    .porto-grid,.role-grid{grid-template-columns:1fr;gap:32px}
+    .kpi{border-right:none;border-bottom:1px solid var(--line)}
+    .pipe-step{border-right:none;border-bottom:1px solid var(--line)}
+    .demo-cta{flex-direction:column;text-align:center}
+  }
+  @media (max-width:560px){
+    .outline-grid,.kpi-band,.pipeline,.wow-grid,.tools-grid,.practical-grid,.squad-grid{grid-template-columns:1fr}
+  }
+
 </style>
 </head>
 <body>
-<div class="progress" id="progress"></div>
-<header class="frame-top" id="frameTop">
-  <a href="#" class="logo">
-    <span class="mark">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 6 L12 2 L20 6 L20 14 L12 18 L4 14 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M4 6 L12 10 L20 6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M12 10 L12 18" stroke="currentColor" stroke-width="1.6"/>
+
+<!-- ─── Sticky nav ─── -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 217.02 219.67" xmlns="http://www.w3.org/2000/svg" aria-label="Indicium AI">
+        <defs>
+          <clipPath id="iaiClip">
+            <path d="M64.38,92.26l18.67,10.82c10.06,5.83,16.25,16.6,16.25,28.25v26.07l-30.14-20.11,17.94-10.92c2.72-1.65,3.51-5.27,1.66-7.93-1.69-2.42-5.04-2.99-7.55-1.46l-16.83,10.24v-34.96ZM101,47.89c-1.13,1.07-1.71,2.61-1.71,4.17v29.94c0,3.32,2.82,6.14,6.25,5.68,2.79-.37,4.8-2.88,4.8-5.69v-20.52l36.11,20.82-25.81,12.9c-9.76,4.88-21.31,4.52-30.75-.95l-28.28-16.39c-2.07-1.2-4.73-.95-6.55.76-1.15,1.07-1.74,2.62-1.74,4.2v54.44c0,1.81.93,3.49,2.47,4.45l45.97,30.68c.92.62,1.99.93,3.06.93,1.01,0,2.02-.28,2.91-.83,1.67-1.03,2.61-2.93,2.61-4.9v-34.62c0-12.38,6.98-23.69,18.02-29.21l24.26-12.12v40.63s-22.68-14.15-22.68-14.15c-2.62-1.64-6.08-.8-7.66,1.87-1.58,2.67-.6,6.03,1.98,7.65l30.97,19.32c.89.55,1.9.83,2.92.83,1.45,0,2.92-.58,4.02-1.74,1.01-1.07,1.5-2.53,1.5-4v-59.46c-.04-1.95-1.1-3.75-2.78-4.73l-53.33-30.75c-.85-.49-1.8-.74-2.76-.74-1.37,0-2.74.51-3.82,1.53"/>
+          </clipPath>
+          <linearGradient id="iaiGrad" x1="0" y1="50%" x2="100%" y2="50%">
+            <stop offset="0" stop-color="#4761f8"/>
+            <stop offset=".22" stop-color="#4a69f8"/>
+            <stop offset=".58" stop-color="#5480fb"/>
+            <stop offset="1" stop-color="#64a4ff"/>
+          </linearGradient>
+        </defs>
+        <g clip-path="url(#iaiClip)">
+          <rect x="29.69" y="27.7" width="157.64" height="164.28" transform="translate(-39.32 65.28) rotate(-28.57)" fill="url(#iaiGrad)"/>
+        </g>
       </svg>
-    </span>
-    Indicium AI · Europe
-  </a>
-  <div class="meta"><span>London Onboarding</span><span class="hide-sm">v1 · 2026</span></div>
+      <span>Indicium<span class="ai-tag">AI</span></span>
+    </div>
+    <div class="nav-meta">
+      <span>Indicium AI Europe</span>
+      <span class="dot"></span>
+      <span>London Onboarding</span>
+      <span class="dot"></span>
+      <span>2026</span>
+    </div>
+  </div>
 </header>
 
+<!-- ─── Hero ─── -->
 <section class="hero">
-  <div class="curtain"></div>
-  <div class="wrap">
-    <div class="orb"></div>
-    <span class="eyebrow reveal">/ New joiner guide · London</span>
-    <h1 class="reveal reveal-d1">Welcome to <em>Indicium AI</em> Europe.</h1>
-    <p class="lede reveal reveal-d2">A practical guide for your first day and week — who you'll meet, where things live, and how we work.</p>
-    <div class="hero-meta reveal reveal-d3">
-      <div class="cell"><div class="k">/01 · Office</div><div class="v">London<br/>100 Liverpool Street</div></div>
-      <div class="cell"><div class="k">/02 · In-office</div><div class="v">3 days · Tue + Thu busiest</div></div>
-      <div class="cell"><div class="k">/03 · Feedback</div><div class="v">Qulture Rocks</div></div>
-      <div class="cell"><div class="k">/04 · HR system</div><div class="v">HiBob Europe</div></div>
+  <div class="container">
+    <div class="eyebrow">New Joiner Guide · London Office</div>
+    <h1>Welcome to <b>Indicium AI Europe.</b></h1>
+    <p class="deck">
+      A practical guide for your first day and first week at our London office — who you'll meet,
+      where things live, how we work. Everything you need to land cleanly into the European arm of a
+      global, AI-native consultancy.
+    </p>
+    <div class="meta-row">
+      <div>Office<span class="v">London</span></div>
+      <div>In-office<span class="v">3 days · Tue + Thu</span></div>
+      <div>HR System<span class="v">HiBob Europe</span></div>
+      <div>Feedback<span class="v">Qulture Rocks</span></div>
     </div>
   </div>
 </section>
 
-<section class="toc">
-  <div class="wrap">
-    <span class="eyebrow reveal">/ Contents</span>
-    <ol class="reveal reveal-d2" style="margin-top:36px">
-      <li><a href="#about">Who is Indicium AI</a></li>
-      <li><a href="#office">Where we work — London</a></li>
-      <li><a href="#practicalities">Office Practicalities</a></li>
-      <li><a href="#people">Your first contacts</a></li>
-      <li><a href="#day1">Day 1 — the timeline</a></li>
-      <li><a href="#week1">Week 1 — what unfolds next</a></li>
-      <li><a href="#wow">Essential Protocols</a></li>
-      <li><a href="#tools">Tools &amp; systems</a></li>
-      <li><a href="#contacts">Who to call, when</a></li>
-    </ol>
+<!-- ─── 00 · Briefing outline ─── -->
+<section class="section outline-section">
+  <div class="container">
+    <div class="section-tag">00 · Onboarding Outline</div>
+    <h2 class="section-title">What's <em>inside</em>.</h2>
+    <p class="section-deck">
+      Nine sections, roughly twelve minutes. From who Indicium AI is to the office practicalities,
+      the six contacts who'll set you up, the Day 1 timeline, the cadence after, and the systems
+      you'll log into.
+    </p>
+
+    <div class="outline-grid">
+      <a class="outline-card" href="#section-01">
+        <div class="outline-head">
+          <span class="outline-tag">01 · Company Context</span>
+          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <h3>Who Indicium AI is.</h3>
+        <p>The merger that formed Indicium AI, our mission, and the values that shape how we deliver.</p>
+      </a>
+
+      <a class="outline-card" href="#section-02">
+        <div class="outline-head">
+          <span class="outline-tag">02 · Scale Snapshot</span>
+          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <h3>The numbers, at a glance.</h3>
+        <p>Specialists, presence, sectors, and the framework that runs every engagement.</p>
+      </a>
+
+      <a class="outline-card" href="#section-03">
+        <div class="outline-head">
+          <span class="outline-tag">03 · London Office</span>
+          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <h3>Where we work.</h3>
+        <p>Address, in-office cadence, and which days the office actually fills up.</p>
+      </a>
+
+      <a class="outline-card" href="#section-04">
+        <div class="outline-head">
+          <span class="outline-tag">04 · Office Practicalities</span>
+          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <h3>Life at 100 Liverpool St.</h3>
+        <p>Lunch spots, kitchen, and the building amenities that make it home base.</p>
+      </a>
+
+      <a class="outline-card" href="#section-05">
+        <div class="outline-head">
+          <span class="outline-tag">05 · Your First Contacts</span>
+          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <h3>Six people who set you up.</h3>
+        <p>Lou, Tom, your Line Manager, Declan, Claudia, and the Engagement Lead — who owns what.</p>
+      </a>
+
+      <a class="outline-card" href="#section-06">
+        <div class="outline-head">
+          <span class="outline-tag">06 · Day 1 Pipeline</span>
+          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <h3>Tour → cards → HiBob → briefing.</h3>
+        <p>The four-step sequence that lands you fully connected by end of Day 1.</p>
+      </a>
+
+      <a class="outline-card" href="#section-07">
+        <div class="outline-head">
+          <span class="outline-tag">07 · Week 1 Tracks</span>
+          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <h3>Operations &amp; Career, in parallel.</h3>
+        <p>Tom anchors operations; your Line Manager anchors career, performance, and feedback.</p>
+      </a>
+
+      <a class="outline-card" href="#section-08">
+        <div class="outline-head">
+          <span class="outline-tag">08 · Essential Protocols</span>
+          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <h3>How we work together.</h3>
+        <p>Presence and rhythm; admin and connection — the four protocols you'll internalise fast.</p>
+      </a>
+
+      <a class="outline-card" href="#section-09">
+        <div class="outline-head">
+          <span class="outline-tag">09 · Tools &amp; Systems</span>
+          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+        <h3>HiBob, Qulture Rocks, Salesforce.</h3>
+        <p>The three systems that hold your HR, feedback, and timesheet records.</p>
+      </a>
+    </div>
+
+    <div class="outline-meta">
+      <span>Sections<strong>09</strong></span>
+      <span>Read Time<strong>~12 min</strong></span>
+      <span>Audience<strong>New Joiners</strong></span>
+    </div>
   </div>
 </section>
 
-<section id="about">
-  <div class="wrap">
-    <span class="eyebrow reveal">/ 01 · Who is Indicium AI</span>
-    <h2 class="reveal reveal-d1" style="margin-top:18px;max-width:22ch">A global, AI-native consultancy <em>delivered end-to-end</em>.</h2>
-    <div style="max-width:64ch;margin-top:28px" class="reveal reveal-d2">
-      <p style="font-size:17px;line-height:1.65;color:var(--ink-soft)">Indicium AI was formed in 2026 from the union of <strong>Indicium</strong> — founded in Florianópolis (Brazil) in 2017 — and <strong>Mesh-AI</strong>. We bridge technology and business to turn strategy into measurable value.</p>
-    </div>
+<!-- ─── 01 · Company context ─── -->
+<section class="section" id="section-01">
+  <div class="container">
+    <div class="section-tag">01 · Company Context</div>
+    <h2 class="section-title">A global, AI-native consultancy <em>delivered end-to-end</em>.</h2>
+    <p class="section-deck">
+      Indicium AI was formed in 2026 from the union of <strong>Indicium</strong> — founded in
+      Florianópolis (Brazil) in 2017, headquartered in New York — and <strong>Mesh-AI</strong>,
+      headquartered in London. The combined organisation delivers end-to-end data and AI
+      transformation for the world's most complex enterprises.
+    </p>
 
-    <div class="stats reveal">
-      <div class="cell"><div class="k">/ scale</div><div class="v"><em>600+</em> specialists</div><div class="d">Data and AI experts across delivery and strategy.</div></div>
-      <div class="cell"><div class="k">/ presence</div><div class="v"><em>Global</em></div><div class="d">Americas · Europe · LATAM · HQ in New York.</div></div>
-      <div class="cell"><div class="k">/ industries</div><div class="v"><em>6+</em> sectors</div><div class="d">Financial Services, Pharma, Retail, Media &amp; more.</div></div>
-      <div class="cell"><div class="k">/ framework</div><div class="v"><em>IndiMesh</em></div><div class="d">Our AI-powered framework for proven expertise.</div></div>
-    </div>
+    <div class="porto-grid">
+      <div class="porto-prose">
+        <p>
+          Our <strong>mission</strong> is to help enterprises embrace the data and AI shift with
+          clarity, speed, and capability — bridging technology and business to turn strategy into
+          measurable value. We partner with Fortune 500 enterprises across financial services,
+          energy, pharma, retail, manufacturing, and media to drive growth, reduce risk, and achieve
+          cost efficiencies.
+        </p>
+        <p>
+          Every engagement runs through <strong>IndiMesh</strong> — our proprietary AI-powered
+          framework that combines collective intelligence, proven expertise, and rigorous quality
+          control to deliver faster, more scalable, and consistently high-quality data and AI
+          solutions.
+        </p>
+        <p>
+          And we lead with our values: <strong>quality, knowledge, collaboration, transparency,
+          and flexibility</strong>. They show up in how we run projects, how we hire, and how we
+          train the next generation of data and AI talent.
+        </p>
+      </div>
 
-    <div style="margin-top:48px" class="reveal">
-      <span class="eyebrow">/ Our values</span>
-      <div class="values" style="margin-top:14px">
-        <div class="v">Quality</div><div class="v">Knowledge</div><div class="v">Collaboration</div><div class="v">Transparency</div><div class="v">Flexibility</div>
+      <div class="porto-facts">
+        <div class="fact">
+          <div class="label">Headquarters</div>
+          <div class="value">New York · Global presence</div>
+        </div>
+        <div class="fact">
+          <div class="label">European Offices</div>
+          <div class="value">London · Lisbon</div>
+        </div>
+        <div class="fact">
+          <div class="label">Founded</div>
+          <div class="value">Indicium · 2017 — merged · 2026</div>
+        </div>
+        <div class="fact">
+          <div class="label">Trusted By</div>
+          <div class="value">National Grid · Experian · PepsiCo · Roche · LSEG · Bayer</div>
+        </div>
+        <div class="fact">
+          <div class="label">Framework</div>
+          <div class="value">IndiMesh — AI-powered delivery</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="office" class="deep">
-  <div class="wrap">
-    <span class="eyebrow reveal">/ 02 · Where we work — London</span>
-    <h2 class="reveal reveal-d1" style="margin-top:18px">The <em>London</em> office.</h2>
-    <div class="office-card reveal reveal-d2">
-      <div>
-        <div class="city">/ Office address</div>
-        <h3>100 Liverpool Street</h3>
-        <div class="addr">100 Liverpool Street<br/>London EC2M 2AT</div>
-        <p class="desc">Home of Indicium AI Europe — strategic leadership and consulting operations run from here.</p>
+<!-- ─── 02 · Scale snapshot ─── -->
+<section class="section" id="section-02">
+  <div class="container">
+    <div class="section-tag">02 · Scale Snapshot</div>
+    <h2 class="section-title">The numbers, <em>at a glance</em>.</h2>
+    <p class="section-deck">
+      Four orientation points. Where Indicium AI sits in scale, geography, sector breadth, and
+      operating method — the shape of the organisation you're joining.
+    </p>
+
+    <div class="kpi-band">
+      <div class="kpi highlight">
+        <div class="label">Specialists</div>
+        <div class="value">600<span class="unit">+</span></div>
+        <div class="sub">Data and AI experts across delivery and strategy.</div>
       </div>
-      <div class="right">
-        <div class="label">/ In-office cadence</div>
-        <div class="body"><strong>3 days a week</strong> is mandatory.<br/><br/>Tuesdays and Thursdays are busiest for in-person rituals.</div>
+      <div class="kpi">
+        <div class="label">Geographies</div>
+        <div class="value">3<span class="unit">regions</span></div>
+        <div class="sub">Americas · Europe · LATAM. HQ in New York.</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Industries</div>
+        <div class="value">6<span class="unit">+ sectors</span></div>
+        <div class="sub">Financial Services, Pharma, Retail, Media &amp; more.</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Framework</div>
+        <div class="value" style="font-size:32px;letter-spacing:-.8px">IndiMesh</div>
+        <div class="sub">Our AI-powered framework for proven expertise.</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="practicalities">
-  <div class="wrap">
-    <span class="eyebrow reveal">/ 03 · Office Practicalities</span>
-    <h2 class="reveal reveal-d1" style="margin-top:18px">Life at <em>100 Liverpool St</em>.</h2>
+<!-- ─── 03 · London office ─── -->
+<section class="section" id="section-03">
+  <div class="container">
+    <div class="section-tag">03 · London Office</div>
+    <h2 class="section-title">Where we work — <em>London</em>.</h2>
+    <p class="section-deck">
+      The London office is the home of Indicium AI Europe — strategic leadership, consulting
+      operations, and client engagements across the UK and Europe run from here.
+    </p>
+
+    <div class="porto-grid">
+      <div class="porto-prose">
+        <p>
+          <strong>3 days a week in-office</strong> is mandatory. Your fourth and fifth can flex —
+          most people work from home or stay close to a client site for those.
+        </p>
+        <p>
+          The office <strong>fills up on Tuesdays and Thursdays</strong>. These are the natural team
+          days for cross-pod collaboration, in-person rituals, and unplanned bump-into-leadership
+          conversations. If you want face-time with the broader team, anchor those two and pick a
+          third.
+        </p>
+        <p>
+          <strong>Lisbon</strong> is the other European office. The cadence and people are different,
+          and there's a separate guide for that — for now this document focuses on London only.
+        </p>
+      </div>
+
+      <div class="porto-facts">
+        <div class="fact">
+          <div class="label">Address</div>
+          <div class="value">100 Liverpool Street<br/>London EC2M 2AT</div>
+        </div>
+        <div class="fact">
+          <div class="label">In-office Days</div>
+          <div class="value">3 mandatory · 2 flex</div>
+        </div>
+        <div class="fact">
+          <div class="label">Busiest Days</div>
+          <div class="value">Tuesday + Thursday</div>
+        </div>
+        <div class="fact">
+          <div class="label">Office Owner</div>
+          <div class="value">Lou — building &amp; access</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 04 · Office Practicalities ─── -->
+<section class="section" id="section-04">
+  <div class="container">
+    <div class="section-tag">04 · Office Practicalities</div>
+    <h2 class="section-title">Life at <em>100 Liverpool St</em>.</h2>
+    <p class="section-deck">
+      The texture of working from London — where to grab lunch, what's already in the kitchen, and
+      the building amenities you'll use day-to-day. Small details, but they're what turn an office
+      into a base.
+    </p>
+
     <div class="practical-grid">
-      <div class="practical-card reveal">
-        <h4>Lunch Spots</h4>
+      <div class="practical-card">
+        <div class="icon">/ FOOD</div>
+        <h4>Lunch spots</h4>
         <ul>
-          <li><strong>Spitalfields Market:</strong> 5-min walk. Variety from dumplings to tacos.</li>
-          <li><strong>Broadgate Circle:</strong> Immediate options like Franco Manca and Beany Green.</li>
+          <li><strong>Spitalfields Market</strong> — 5-min walk. Variety from dumplings to tacos. The default for a quick fix.</li>
+          <li><strong>Broadgate Circle</strong> — immediate options like Franco Manca and Beany Green. Closer when you've got 30 minutes.</li>
         </ul>
       </div>
-      <div class="practical-card reveal reveal-d1">
-        <h4>Coffee &amp; Kitchen</h4>
+
+      <div class="practical-card">
+        <div class="icon">/ KITCHEN</div>
+        <h4>Coffee &amp; snacks</h4>
         <ul>
-          <li><strong>Courtesy:</strong> Free coffee in-office and common areas.</li>
-          <li><strong>Snacks:</strong> Dedicated area for quick bites in the office.</li>
+          <li><strong>Free coffee</strong> in-office and across the common areas — no card, no pod, just go.</li>
+          <li><strong>Snack area</strong> dedicated to quick bites between meetings. Restocked regularly.</li>
         </ul>
       </div>
-      <div class="practical-card reveal reveal-d2">
-        <h4>Building Amenities</h4>
+
+      <div class="practical-card">
+        <div class="icon">/ BUILDING</div>
+        <h4>Amenities</h4>
         <ul>
-          <li><strong>Facilities:</strong> Bike storage, lockers, showers, and fresh towels.</li>
-          <li><strong>Apps:</strong> Use <strong>BL:Connect</strong> or <strong>Storey</strong> for access.</li>
+          <li><strong>Facilities</strong> — bike storage, lockers, showers, and fresh towels. Cycling commute is genuinely supported.</li>
+          <li><strong>Apps</strong> — use <strong>BL:Connect</strong> or <strong>Storey</strong> for building access and amenity bookings.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="people" class="deep">
-  <div class="wrap">
-    <span class="eyebrow reveal">/ 04 · Your first contacts</span>
-    <h2 class="reveal reveal-d1" style="margin-top:18px">People who'll <em>set you up</em>.</h2>
-    <div class="leadership-grid">
-      <div class="person reveal">
-        <div class="role">/ Office Manager</div>
-        <div class="name">Lou</div>
-        <div class="bio">Physical space owner. Runs your tour, hands you access cards on Day 1, and shares the WiFi password.</div>
-        <div class="when">DAY 1 · ACCESS · WIFI</div>
+<!-- ─── 05 · First contacts ─── -->
+<section class="section" id="section-05">
+  <div class="container">
+    <div class="section-tag">05 · Your First Contacts</div>
+    <h2 class="section-title">Six people who'll <em>set you up</em>.</h2>
+    <p class="section-deck">
+      Six contacts split across <strong>operations</strong> (Lou, Tom), <strong>career</strong>
+      (your Line Manager, Claudia), <strong>delivery</strong> (Engagement Lead), and
+      <strong>tech</strong> (Declan). Knowing who-does-what saves you from pinging the wrong person.
+    </p>
+
+    <div class="squad-grid">
+      <div class="squad-card welcome">
+        <div class="squad-tag">CONTACT · 01</div>
+        <h3>Lou</h3>
+        <div class="role">Office Manager</div>
+        <p>
+          Physical space owner. Runs your tour, hands you the building and office access cards on
+          Day 1, and shares the WiFi password.
+        </p>
+        <div class="squad-meta">DAY 1 · ACCESS · WIFI</div>
       </div>
-      <div class="person reveal reveal-d1">
-        <div class="role">/ Operations Director</div>
-        <div class="name">Tom</div>
-        <div class="bio">Guides you on project allocation, timesheet logging in Salesforce, and handles day-off approvals.</div>
-        <div class="when">ALLOCATION · OPS · TIMESHEETS</div>
+
+      <div class="squad-card mgmt">
+        <div class="squad-tag">CONTACT · 02</div>
+        <h3>Tom</h3>
+        <div class="role">Operations Director</div>
+        <p>
+          Operational anchor. Guides project allocation, owns timesheet logging in Salesforce, and
+          handles day-off approvals.
+        </p>
+        <div class="squad-meta">ALLOCATION · OPS · TIMESHEETS</div>
       </div>
-      <div class="person reveal reveal-d2">
-        <div class="role">/ Line Manager</div>
-        <div class="name">Assigned to you</div>
-        <div class="bio">Career anchor. Handles your probation period, 1:1s, and feedback sessions via <strong>Qulture Rocks</strong>.</div>
-        <div class="when">CAREER · 1:1 · FEEDBACK</div>
+
+      <div class="squad-card career">
+        <div class="squad-tag">CONTACT · 03</div>
+        <h3>Line Manager</h3>
+        <div class="role">Assigned to you</div>
+        <p>
+          Your career anchor. Handles probation, regular 1:1s, and feedback sessions — all logged
+          in <strong>Qulture Rocks</strong>. Different person for everyone; you'll know on Day 1.
+        </p>
+        <div class="squad-meta">CAREER · 1:1 · FEEDBACK</div>
       </div>
-      <div class="person reveal reveal-d3">
-        <div class="role">/ Support &amp; IT</div>
-        <div class="name">Declan</div>
-        <div class="bio">Technical lifeline. Reach out for hardware troubleshooting, system access, or IT issues.</div>
-        <div class="when">TECH · HARDWARE · SUPPORT</div>
+
+      <div class="squad-card tech">
+        <div class="squad-tag">CONTACT · 04</div>
+        <h3>Declan</h3>
+        <div class="role">Support &amp; IT</div>
+        <p>
+          Technical lifeline. Reach out for hardware troubleshooting, system access, or any IT
+          issue that's blocking you.
+        </p>
+        <div class="squad-meta">TECH · HARDWARE · SUPPORT</div>
       </div>
-      <div class="person reveal reveal-d4">
-        <div class="role">/ People &amp; connection</div>
-        <div class="name">Claudia</div>
-        <div class="bio">Walks you through the leadership team and the office cadence — who's around and who you should meet.</div>
-        <div class="when">DAY 1 · LEADERSHIP · CADENCE</div>
+
+      <div class="squad-card people">
+        <div class="squad-tag">CONTACT · 05</div>
+        <h3>Claudia</h3>
+        <div class="role">People &amp; connection</div>
+        <p>
+          Walks you through the leadership team and the office cadence — who's around, which days
+          they're in, who you should meet first.
+        </p>
+        <div class="squad-meta">DAY 1 · LEADERSHIP · CADENCE</div>
       </div>
-      <div class="person reveal reveal-d5">
-        <div class="role">/ Engagement Lead</div>
-        <div class="name">Project-specific</div>
-        <div class="bio">Varies per project. They onboard you onto specific client engagements and pods.</div>
-        <div class="when">WEEK 1 · PROJECT ONBOARDING</div>
+
+      <div class="squad-card project">
+        <div class="squad-tag">CONTACT · 06</div>
+        <h3>Engagement Lead</h3>
+        <div class="role">Project-specific</div>
+        <p>
+          A named role, but the person varies depending on which project you've been allocated to.
+          They'll reach out to onboard you onto the engagement.
+        </p>
+        <div class="squad-meta">WEEK 1 · PROJECT</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="day1">
-  <div class="wrap">
-    <span class="eyebrow reveal">/ 05 · Day 1 — the timeline</span>
-    <h2 class="reveal reveal-d1" style="margin-top:18px">Step <em>by step</em>.</h2>
-    <div class="timeline">
-      <div class="step reveal"><h4>Office <em>tour</em></h4><p>Lou walks you through the space and fire exits.</p><span class="who">Owner · Lou</span></div>
-      <div class="step reveal"><h4><em>Access cards</em></h4><p>Building and office floor IDs.</p><span class="who">Owner · Lou</span></div>
-      <div class="step reveal"><h4><em>HiBob Europe</em></h4><p>Complete your HR profile in the system.</p><span class="who">System · HiBob</span></div>
-      <div class="step reveal"><h4><em>Claudia's</em> Briefing</h4><p>Introduction to leadership and office rituals.</p><span class="who">Owner · Claudia</span></div>
+<!-- ─── 06 · Day 1 pipeline ─── -->
+<section class="section" id="section-06">
+  <div class="container">
+    <div class="section-tag">06 · Day 1 Pipeline</div>
+    <h2 class="section-title">Your first day, <em>step by step</em>.</h2>
+    <p class="section-deck">
+      Four steps from arrival to end of Day 1. By the time the last one closes, you should have
+      keys, an HR account, and a face-to-face on who's who.
+    </p>
+
+    <div class="pipeline" style="grid-template-columns:repeat(4,1fr)">
+      <div class="pipe-step">
+        <div class="num">STEP · 01</div>
+        <h4>Office tour</h4>
+        <p>Lou walks you through the space, fire exits, kitchen, meeting rooms.</p>
+        <span class="who">Lou</span>
+      </div>
+      <div class="pipe-step">
+        <div class="num">STEP · 02</div>
+        <h4>Access cards</h4>
+        <p>Building entrance + office floor IDs. Keep them on you — needed daily.</p>
+        <span class="who">Lou</span>
+      </div>
+      <div class="pipe-step">
+        <div class="num">STEP · 03</div>
+        <h4>HiBob Europe</h4>
+        <p>Invite arrives Day 1. Complete your HR profile in the system.</p>
+        <span class="who">HiBob</span>
+      </div>
+      <div class="pipe-step">
+        <div class="num">STEP · 04</div>
+        <h4>Claudia's briefing</h4>
+        <p>Introduction to leadership and office rituals. Names attach to faces.</p>
+        <span class="who">Claudia</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="week1" class="deep">
-  <div class="wrap">
-    <span class="eyebrow reveal">/ 06 · Week 1 — what unfolds next</span>
-    <h2 class="reveal reveal-d1" style="margin-top:18px">Two <em>parallel</em> tracks.</h2>
-    <div class="ws-grid">
-      <div class="ws ws1 reveal">
-        <div class="label">/ Track 01 · Operations</div>
-        <h4>Tom guides the <em>process</em></h4>
-        <ul><li>Day-off approvals</li><li>Allocation decisions</li><li>Salesforce hour tracking</li></ul>
+<!-- ─── 07 · Week 1 tracks ─── -->
+<section class="section" id="section-07">
+  <div class="container">
+    <div class="section-tag">07 · Week 1 Tracks</div>
+    <h2 class="section-title">After Day 1, <em>two parallel tracks</em>.</h2>
+    <p class="section-deck">
+      Once you're set up physically, two streams pick you up: the <strong>operations</strong> side
+      (Tom) keeps the delivery hygiene tight, and the <strong>career</strong> side (your Line
+      Manager) anchors your performance and growth.
+    </p>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-tag">TRACK / 01 · OPERATIONS</div>
+        <h3>Tom guides the process</h3>
+        <div class="role-sub">Operations Director — operational anchor for everything that isn't your career trajectory.</div>
+        <ul>
+          <li><strong>Day-off approvals.</strong> Requests go through Tom — he balances coverage against your allocation and signs off.</li>
+          <li><strong>Allocation decisions.</strong> Where you're staffed, when you rotate, what's next on your delivery roadmap.</li>
+          <li><strong>Salesforce timesheet.</strong> Hour-tracking lives there. Tom walks you through how to log against your allocation.</li>
+        </ul>
       </div>
-      <div class="ws ws2 reveal reveal-d1">
-        <div class="label">/ Track 02 · Career</div>
-        <h4>Manager guides <em>performance</em></h4>
-        <ul><li>Probation milestones</li><li>Feedbacks in Qulture Rocks</li><li>Regular 1:1 rituals</li></ul>
+
+      <div class="role-card">
+        <div class="role-tag">TRACK / 02 · CAREER</div>
+        <h3>Manager guides performance</h3>
+        <div class="role-sub">Your Line Manager — career anchor through probation and beyond.</div>
+        <ul>
+          <li><strong>Probation milestones.</strong> The first 3-6 months have explicit checkpoints. Your Line Manager owns the conversation around each one.</li>
+          <li><strong>Continuous feedback in Qulture Rocks.</strong> Both directions — you receive and give. The official record lives there.</li>
+          <li><strong>Regular 1:1 rituals.</strong> Recurring rhythm to surface friction early, talk growth, and align on what's next.</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="wow">
-  <div class="wrap">
-    <span class="eyebrow reveal">/ 07 · Essential Protocols</span>
-    <h2 class="reveal reveal-d1" style="margin-top:18px">How we work <em>together</em>.</h2>
-    <div class="wow-group reveal reveal-d3">
+<!-- ─── 08 · Essential Protocols ─── -->
+<section class="section" id="section-08">
+  <div class="container">
+    <div class="section-tag">08 · Essential Protocols</div>
+    <h2 class="section-title">How we work <em>together</em>.</h2>
+    <p class="section-deck">
+      Two groups of two. <strong>Presence &amp; Rhythm</strong> shape the texture of your week;
+      <strong>Admin &amp; Connection</strong> shape how you stay plugged into the wider company.
+      None of these are negotiable, but together they're light.
+    </p>
+
+    <div class="wow-group">
       <div class="wow-group-title">/ Presence &amp; Rhythm</div>
       <div class="wow-cards">
-        <div class="wow-card"><h4>3-Day Pulse</h4><p>Mandatory in-office presence to drive collaboration.</p></div>
-        <div class="wow-card"><h4>Peak Office Days</h4><p>Tuesdays and Thursdays for maximum team face-time.</p></div>
+        <div class="wow-card">
+          <div class="num">/ 01</div>
+          <h4>3-Day pulse</h4>
+          <p>Mandatory in-office presence three days a week to drive collaboration. The other two flex — home, client site, wherever you deliver best.</p>
+        </div>
+        <div class="wow-card">
+          <div class="num">/ 02</div>
+          <h4>Peak office days</h4>
+          <p>Tuesdays and Thursdays anchor the week — maximum team face-time, leadership in, cross-pod conversations happen naturally.</p>
+        </div>
       </div>
     </div>
-    <div class="wow-group reveal reveal-d4">
+
+    <div class="wow-group">
       <div class="wow-group-title">/ Admin &amp; Connection</div>
       <div class="wow-cards">
-        <div class="wow-card"><h4>Salesforce</h4><p>Hours logged weekly. Managed end-to-end by Tom.</p></div>
-        <div class="wow-card"><h4>Townhalls</h4><p>Automatic invites to global meetings. Not mandatory, but participation is highly recommended.</p></div>
+        <div class="wow-card">
+          <div class="num">/ 03</div>
+          <h4>Salesforce timesheet</h4>
+          <p>Hours logged weekly in Salesforce. Managed end-to-end by Tom — he's your point of contact for any apportionment questions.</p>
+        </div>
+        <div class="wow-card">
+          <div class="num">/ 04</div>
+          <h4>Townhalls</h4>
+          <p>Automatic invites to global meetings. Not mandatory, but participation is highly recommended — that's where the wider context lands.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="tools" class="deep">
-  <div class="wrap">
-    <span class="eyebrow reveal">/ 08 · Tools &amp; systems</span>
-    <h2 class="reveal reveal-d1" style="margin-top:18px">Your <em>digital</em> toolkit.</h2>
-    <div class="tools">
-      <div class="tool reveal">
-        <span class="badge">HR · Day 1</span>
+<!-- ─── 09 · Tools & Systems ─── -->
+<section class="section" id="section-09">
+  <div class="container">
+    <div class="section-tag">09 · Tools &amp; Systems</div>
+    <h2 class="section-title">Your <em>digital</em> toolkit.</h2>
+    <p class="section-deck">
+      Three systems hold the records that matter: <strong>HR</strong> (HiBob), <strong>performance
+      &amp; feedback</strong> (Qulture Rocks), and <strong>operations &amp; hours</strong>
+      (Salesforce). Each has a clear owner and a clear arrival point.
+    </p>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="pill">HR · Day 1</span>
         <h4>HiBob <em>Europe</em></h4>
-        <p>Personal info, time-off records, and org charts.</p>
+        <p>
+          Our HR platform for Europe. Personal info, time-off records, and the org chart all live
+          here. Invite lands Day 1.
+        </p>
       </div>
-      <div class="tool reveal reveal-d1">
-        <span class="badge">Performance</span>
+
+      <div class="tool-card">
+        <span class="pill">Performance · Week 1</span>
         <h4>Qulture <em>Rocks</em></h4>
-        <p>Official place for <strong>1:1s</strong> and <strong>continuous feedback</strong>.</p>
+        <p>
+          The official place for <strong>1:1s</strong> and <strong>continuous feedback</strong>.
+          Owned by your Line Manager — you'll see invites for recurring 1:1s and feedback cycles.
+        </p>
       </div>
-      <div class="tool reveal reveal-d2">
-        <span class="badge">Operations</span>
+
+      <div class="tool-card">
+        <span class="pill">Operations · Week 1</span>
         <h4><em>Salesforce</em></h4>
-        <p>Hour-tracking and timesheet management.</p>
+        <p>
+          Hour-tracking and timesheet management. Tom sets you up and walks you through logging
+          against your allocation.
+        </p>
       </div>
+    </div>
+
+    <div class="demo-cta">
+      <div class="text">
+        <h4>Onboarding training trail</h4>
+        <p>
+          A structured training trail is on the roadmap but not yet live. Until it launches, your
+          structured learning happens through Claudia's leadership briefing, your Engagement Lead's
+          project induction, and on-the-job pairing within your pod.
+        </p>
+      </div>
+      <span class="badge">Coming Soon</span>
     </div>
   </div>
 </section>
 
-<section id="contacts" class="dark" data-dark>
-  <div class="wrap">
-    <span class="eyebrow reveal">/ 09 · Who to call, when</span>
-    <h2 class="reveal reveal-d1" style="margin-top:18px">Bookmark this <em>page</em>.</h2>
-    <div class="contact-grid">
-      <div class="contact-card reveal">
-        <div class="role">/ Office Manager</div>
-        <div class="name">Lou</div>
-        <div class="ping">ACCESS · WIFI · SPACE</div>
-      </div>
-      <div class="contact-card reveal reveal-d1">
-        <div class="role">/ Operations</div>
-        <div class="name">Tom</div>
-        <div class="ping">TIMESHEETS · ALLOCATION</div>
-      </div>
-      <div class="contact-card reveal reveal-d2">
-        <div class="role">/ Career</div>
-        <div class="name">Manager</div>
-        <div class="ping">FEEDBACK · GROWTH · 1:1</div>
-      </div>
-      <div class="contact-card reveal reveal-d3">
-        <div class="role">/ Tech Support</div>
-        <div class="name">Declan</div>
-        <div class="ping">HARDWARE · ACCESS · IT</div>
-      </div>
-    </div>
+<!-- ─── Footer ─── -->
+<footer class="footer">
+  <div class="container">
+    <div class="tag">Indicium AI · Enterprise AI, Delivered</div>
+    <div class="tagline">Indicium AI Europe · London Onboarding</div>
+    <div class="copy">New Joiner Guide · 2026 · Internal use only</div>
   </div>
-</section>
-
-<footer class="colophon dark" data-dark>
-  <div class="left">Indicium AI Europe · London Onboarding</div>
-  <div>v1 · 2026 · hello@indicium.ai</div>
 </footer>
 
 <script>
-const progress=document.getElementById('progress');
-const upd=()=>{const h=document.documentElement;progress.style.width=Math.min(100,Math.max(0,(h.scrollTop/(h.scrollHeight-h.clientHeight))*100))+'%'};
-document.addEventListener('scroll',upd,{passive:true});upd();
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -8% 0px"});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-const ft=document.getElementById('frameTop');const darks=document.querySelectorAll('section[data-dark]');
-const cf=()=>{const b=ft.getBoundingClientRect().bottom;let d=false;darks.forEach(s=>{const r=s.getBoundingClientRect();if(r.top<=b&&r.bottom>=b)d=true});ft.classList.toggle('on-dark',d)};
-document.addEventListener('scroll',cf,{passive:true});cf();
+  /* ───── Scroll-triggered reveal transitions ───── */
+  (function () {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const sectionTargets = document.querySelectorAll('section.section');
+    sectionTargets.forEach(s => {
+      s.classList.add('reveal');
+      const c = s.querySelector('.container');
+      if (c) c.classList.add('reveal-stagger');
+    });
+
+    const hero = document.querySelector('section.hero .container');
+    if (hero) {
+      hero.classList.add('reveal-stagger');
+      requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('in')));
+    }
+
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => el.classList.add('in'));
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          const inner = entry.target.querySelector('.reveal-stagger');
+          if (inner) inner.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    sectionTargets.forEach(s => io.observe(s));
+  })();
 </script>
+
 </body>
 </html>
