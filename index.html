@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Indicium AI Europe · London Onboarding</title>
+<title>Indicium AI · Onboarding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -274,7 +274,7 @@
       opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
       transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .reveal-stagger.in > *               { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.in > * { opacity: 1; transform: translateY(0); }
   .reveal-stagger.in > *:nth-child(1)  { transition-delay: 0.05s; }
   .reveal-stagger.in > *:nth-child(2)  { transition-delay: 0.15s; }
   .reveal-stagger.in > *:nth-child(3)  { transition-delay: 0.25s; }
@@ -294,8 +294,8 @@
   }
 
   /* ===========================================================
-     COMPONENTS · pulled from examples/Porto_Briefing.html
-     =========================================================== */
+      COMPONENTS · pulled from examples/Porto_Briefing.html
+      =========================================================== */
 
   /* B. Outline cards TOC */
   .outline-section{background:radial-gradient(ellipse 50% 70% at 100% 0%,rgba(58,88,238,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 0% 100%,rgba(105,155,251,.04) 0%,transparent 60%)}
@@ -437,8 +437,8 @@
   }
 
   /* ===========================================================
-     CITY SELECTOR + VIEW TOGGLE
-     =========================================================== */
+      CITY SELECTOR + VIEW TOGGLE
+      =========================================================== */
   .city-selector{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);overflow-y:auto}
   .city-selector::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 15% 10%,rgba(58,88,238,.10) 0%,transparent 60%),radial-gradient(ellipse 50% 35% at 90% 80%,rgba(105,155,251,.07) 0%,transparent 60%);pointer-events:none;z-index:0}
   .cs-inner{max-width:1100px;margin:0 auto;width:100%;padding:64px 0;position:relative;z-index:1}
@@ -470,9 +470,31 @@
   .city-view{display:block}
 
   /* Switch office button (in nav) */
-  .switch-office{font-family:var(--mono);font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:border-color .25s,color .25s;font-weight:500;margin-left:18px}
-  .switch-office:hover{border-color:var(--atlantic);color:var(--atlantic)}
+  /* Switch office button (in nav) — CTA style: white bg, dark blue text */
+  .switch-office{
+    font-family:var(--mono);
+    font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--bg);background:var(--white);
+    border:1px solid var(--white);
+    border-radius:999px;
+    padding:9px 16px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform .2s cubic-bezier(.22,1,.36,1),background .2s,color .2s,box-shadow .25s,border-color .2s;
+    font-weight:600;margin-left:18px;
+    box-shadow:0 2px 12px rgba(255,255,255,.08);
+  }
+  .switch-office:hover{
+    transform:translateY(-1px);
+    background:var(--atlantic);
+    color:var(--white);
+    border-color:var(--atlantic);
+    box-shadow:0 6px 20px rgba(105,155,251,.35);
+  }
   .switch-office svg{width:11px;height:11px}
+
+  /* Brand logo is clickable (returns to city selector) */
+  .brand{cursor:pointer;transition:opacity .2s}
+  .brand:hover{opacity:.78}
 
   /* Practical-grid 4-col variant (for Lisbon) */
   .practical-grid-4{grid-template-columns:repeat(4,1fr)}
@@ -486,8 +508,8 @@
   }
 
   /* ===========================================================
-     JOURNEY TIMELINE (Section 01) + OFFICES GRID (Section 02)
-     =========================================================== */
+      JOURNEY TIMELINE (Section 01) + OFFICES GRID (Section 02)
+      =========================================================== */
   .journey{margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,0))}
   .milestone{padding:26px 24px;border-right:1px solid var(--line);position:relative;display:flex;flex-direction:column;gap:6px;min-height:140px}
   .milestone:last-child{border-right:none}
@@ -530,9 +552,6 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     CITY SELECTOR (initial screen — hidden once a city is chosen)
-     ═══════════════════════════════════════════════════════════ -->
 <div class="city-selector" id="citySelector">
   <div class="cs-inner">
     <div class="cs-logo">
@@ -546,8 +565,8 @@
       <span>Indicium<span class="ai-tag">AI</span></span>
     </div>
 
-    <div class="cs-eyebrow">New Joiner Portal · Europe</div>
-    <h1 class="cs-title">Welcome to <b>Indicium AI Europe.</b></h1>
+    <div class="cs-eyebrow">New Joiner Portal</div>
+    <h1 class="cs-title">Welcome to <b>Indicium AI.</b></h1>
     <p class="cs-deck">A practical guide for your first day and week. Choose your office to begin — content adapts to your location, contacts, and the texture of working from there.</p>
 
     <div class="cs-cards">
@@ -572,19 +591,15 @@
       </button>
     </div>
 
-    <div class="cs-footer">Internal portal · Indicium AI Europe · 2026</div>
+    <div class="cs-footer">Internal portal · Indicium AI · 2026</div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     LONDON VIEW
-     ═══════════════════════════════════════════════════════════ -->
 <div class="city-view" id="londonView" hidden>
 
-<!-- ─── Sticky nav ─── -->
 <header class="nav">
   <div class="nav-inner">
-    <div class="brand">
+    <div class="brand" data-action="switch-city" role="button" tabindex="0" aria-label="Back to office selector">
       <svg class="brand-mark" viewBox="0 0 217.02 219.67" xmlns="http://www.w3.org/2000/svg" aria-label="Indicium AI">
         <defs>
           <clipPath id="iaiClip">
@@ -604,7 +619,7 @@
       <span>Indicium<span class="ai-tag">AI</span></span>
     </div>
     <div class="nav-meta">
-      <span>Indicium AI Europe</span>
+      <span>Indicium AI</span>
       <span class="dot"></span>
       <span>London Onboarding</span>
       <span class="dot"></span>
@@ -617,11 +632,10 @@
   </div>
 </header>
 
-<!-- ─── Hero ─── -->
 <section class="hero">
   <div class="container">
     <div class="eyebrow">New Joiner Guide · London Office</div>
-    <h1>Welcome to <b>Indicium AI Europe.</b></h1>
+    <h1>Welcome to <b>Indicium AI.</b></h1>
     <p class="deck">
       A practical guide for your first day and first week at our London office — who you'll meet,
       where things live, how we work. Everything you need to land cleanly into the European arm of a
@@ -636,660 +650,40 @@
   </div>
 </section>
 
-<!-- ─── 00 · Briefing outline ─── -->
-<section class="section outline-section">
-  <div class="container">
-    <div class="section-tag">00 · Onboarding Outline</div>
-    <h2 class="section-title">What's <em>inside</em>.</h2>
-    <p class="section-deck">
-      Nine sections, roughly twelve minutes. From who Indicium AI is to the office practicalities,
-      the six contacts who'll set you up, the Day 1 timeline, the cadence after, and the systems
-      you'll log into.
-    </p>
-
-    <div class="outline-grid">
-      <a class="outline-card" href="#l-section-01">
-        <div class="outline-head">
-          <span class="outline-tag">01 · Company Context</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Who Indicium AI is.</h3>
-        <p>The merger that formed Indicium AI, our mission, and the values that shape how we deliver.</p>
-      </a>
-
-      <a class="outline-card" href="#l-section-02">
-        <div class="outline-head">
-          <span class="outline-tag">02 · Scale Snapshot</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>The numbers, at a glance.</h3>
-        <p>Specialists, presence, sectors, and the framework that runs every engagement.</p>
-      </a>
-
-      <a class="outline-card" href="#l-section-03">
-        <div class="outline-head">
-          <span class="outline-tag">03 · London Office</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Where we work.</h3>
-        <p>Address, in-office cadence, and which days the office actually fills up.</p>
-      </a>
-
-      <a class="outline-card" href="#l-section-04">
-        <div class="outline-head">
-          <span class="outline-tag">04 · Office Practicalities</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Life at 100 Liverpool St.</h3>
-        <p>Lunch spots, kitchen, and the building amenities that make it home base.</p>
-      </a>
-
-      <a class="outline-card" href="#l-section-05">
-        <div class="outline-head">
-          <span class="outline-tag">05 · Your First Contacts</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Six people who set you up.</h3>
-        <p>Lou, Tom, your Line Manager, Declan, Claudia, and the Engagement Lead — who owns what.</p>
-      </a>
-
-      <a class="outline-card" href="#l-section-06">
-        <div class="outline-head">
-          <span class="outline-tag">06 · Day 1 Pipeline</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Tour → cards → HiBob → briefing.</h3>
-        <p>The four-step sequence that lands you fully connected by end of Day 1.</p>
-      </a>
-
-      <a class="outline-card" href="#l-section-07">
-        <div class="outline-head">
-          <span class="outline-tag">07 · Week 1 Tracks</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Operations &amp; Career, in parallel.</h3>
-        <p>Tom anchors operations; your Line Manager anchors career, performance, and feedback.</p>
-      </a>
-
-      <a class="outline-card" href="#l-section-08">
-        <div class="outline-head">
-          <span class="outline-tag">08 · Essential Protocols</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>How we work together.</h3>
-        <p>Presence and rhythm; admin and connection — the four protocols you'll internalise fast.</p>
-      </a>
-
-      <a class="outline-card" href="#l-section-09">
-        <div class="outline-head">
-          <span class="outline-tag">09 · Tools &amp; Systems</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>HiBob, Qulture Rocks, Salesforce.</h3>
-        <p>The three systems that hold your HR, feedback, and timesheet records.</p>
-      </a>
-    </div>
-
-    <div class="outline-meta">
-      <span>Sections<strong>09</strong></span>
-      <span>Read Time<strong>~12 min</strong></span>
-      <span>Audience<strong>New Joiners</strong></span>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 01 · Company context ─── -->
-<section class="section" id="l-section-01">
-  <div class="container">
-    <div class="section-tag">01 · Company Context</div>
-    <h2 class="section-title">A global Data &amp; AI <em>Powerhouse</em>.</h2>
-    <p class="section-deck">
-      Indicium AI was formed in 2025 from the union of <strong>Indicium</strong> — the data &amp;
-      analytics consultancy founded in Florianópolis (Brazil) in 2017 — and <strong>Mesh-AI</strong>,
-      the London-based AI specialist founded in 2021. The combined organisation is the AI-native
-      consultancy enterprises turn to when they need data and AI transformation delivered into
-      production at scale.
-    </p>
-
-    <div class="porto-grid">
-      <div class="porto-prose">
-        <p>
-          We are a <strong>global Data &amp; AI Powerhouse</strong> trusted by Fortune-class
-          enterprises to drive growth, reduce risk, and unlock cost efficiencies. Our mission: help
-          organisations embrace the shift to AI with <em>unmatched clarity, speed, and capability</em>
-          — bridging technology and business to turn strategy into measurable value.
-        </p>
-        <p>
-          Regional leadership runs out of two anchor offices: <strong>Matheus Dellagnelo</strong>
-          (CEO Americas, founder of Indicium, based in New York) and <strong>Jacob Parsons</strong>
-          (CEO Europe, founder of Mesh-AI, based in London). We're backed by
-          <strong>Columbia Capital</strong> and <strong>Databricks Ventures</strong>; partnered at the
-          platform layer with <strong>Anthropic, Databricks, AWS, OpenAI, and Microsoft</strong>.
-        </p>
-        <p>
-          Every engagement runs through <strong>IndiMesh</strong> — our proprietary AI-powered
-          framework combining collective intelligence, proven expertise, and rigorous quality control.
-          And we lead with our values: <strong>quality, knowledge, collaboration, transparency, and
-          flexibility</strong>.
-        </p>
-      </div>
-
-      <div class="porto-facts">
-        <div class="fact">
-          <div class="label">Global HQ</div>
-          <div class="value">New York · 119 W 24th Street</div>
-        </div>
-        <div class="fact">
-          <div class="label">European Offices</div>
-          <div class="value">London · Lisbon</div>
-        </div>
-        <div class="fact">
-          <div class="label">Founded</div>
-          <div class="value">Indicium · 2017 — Merged · 2025</div>
-        </div>
-        <div class="fact">
-          <div class="label">Trusted By</div>
-          <div class="value">National Grid · Experian · PepsiCo · Roche · Bayer · EDF</div>
-        </div>
-        <div class="fact">
-          <div class="label">Funding</div>
-          <div class="value">$40M · Columbia Capital · Databricks Ventures</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Journey timeline -->
-    <div class="journey">
-      <div class="milestone">
-        <div class="year">2017</div>
-        <h4>Indicium founded</h4>
-        <p>Florianópolis · modernising data platforms and analytics for enterprises.</p>
-      </div>
-      <div class="milestone">
-        <div class="year">2021</div>
-        <h4>Mesh-AI founded</h4>
-        <p>London · reimagining enterprises with Data &amp; AI.</p>
-      </div>
-      <div class="milestone">
-        <div class="year">2025</div>
-        <h4>The merger</h4>
-        <p>Indicium and Mesh-AI join forces to form Indicium AI.</p>
-      </div>
-      <div class="milestone now">
-        <div class="year">Today</div>
-        <h4>One global team</h4>
-        <p>Enterprise-scale Data &amp; AI Transformation, region by region.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 02 · Scale snapshot ─── -->
-<section class="section" id="l-section-02">
-  <div class="container">
-    <div class="section-tag">02 · Scale Snapshot</div>
-    <h2 class="section-title">Global scale, <em>proven delivery</em>.</h2>
-    <p class="section-deck">
-      Five offices across three regions, six hundred specialists, and a delivery record built over
-      eight years. The numbers below come straight from the latest Indicium AI scorecard — and
-      they're the reason Fortune-class enterprises trust us with their most complex data and AI
-      transformations.
-    </p>
-
-    <div class="kpi-band">
-      <div class="kpi highlight">
-        <div class="label">Specialists</div>
-        <div class="value">600<span class="unit">+</span></div>
-        <div class="sub">Data &amp; AI native experts — delivery, strategy, platform engineering.</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Engagements</div>
-        <div class="value">500<span class="unit">+</span></div>
-        <div class="sub">Enterprise-grade projects delivered end-to-end since 2017.</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Enterprise Clients</div>
-        <div class="value">50<span class="unit">+</span></div>
-        <div class="sub">Fortune-class — National Grid, PepsiCo, Roche, Bayer, Experian, EDF.</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Years</div>
-        <div class="value">8<span class="unit">+</span></div>
-        <div class="sub">100+ AI agents in production · hundreds of Databricks projects · 560+ certifications.</div>
-      </div>
-    </div>
-
-    <!-- Global presence -->
-    <div class="offices-band">
-      <div class="offices-tag">
-        <span>/ Global Presence · 5 Offices · 3 Regions</span>
-        <span class="sub">Americas · LATAM · Europe</span>
-      </div>
-      <div class="offices-grid">
-        <div class="office-card hq">
-          <span class="badge">HQ</span>
-          <div class="office-region">AMER · USA</div>
-          <h3>New York</h3>
-          <p>119 W 24th Street<br/>NY 10011</p>
-        </div>
-        <div class="office-card">
-          <div class="office-region">LATAM · Brazil</div>
-          <h3>Florianópolis</h3>
-          <p>Itacorubi · founding office<br/>since 2017</p>
-        </div>
-        <div class="office-card">
-          <div class="office-region">LATAM · Brazil</div>
-          <h3>São Paulo</h3>
-          <p>Avenida Paulista, 1374</p>
-        </div>
-        <div class="office-card you-here">
-          <span class="badge">YOU'RE HERE</span>
-          <div class="office-region">EUROPE · UK</div>
-          <h3>London</h3>
-          <p>100 Liverpool Street<br/>EC2M 2AT</p>
-        </div>
-        <div class="office-card">
-          
-          <div class="office-region">EUROPE · Portugal</div>
-          <h3>Lisbon</h3>
-          <p>Marquês de Pombal 2<br/>1250-162</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 03 · London office ─── -->
-<section class="section" id="l-section-03">
-  <div class="container">
-    <div class="section-tag">03 · London Office</div>
-    <h2 class="section-title">Where we work — <em>London</em>.</h2>
-    <p class="section-deck">
-      The London office is the home of Indicium AI Europe — strategic leadership, consulting
-      operations, and client engagements across the UK and Europe run from here.
-    </p>
-
-    <div class="porto-grid">
-      <div class="porto-prose">
-        <p>
-          <strong>3 days a week in-office</strong> is mandatory. Your fourth and fifth can flex —
-          most people work from home or stay close to a client site for those.
-        </p>
-        <p>
-          The office <strong>fills up on Tuesdays and Thursdays</strong>. These are the natural team
-          days for cross-pod collaboration, in-person rituals, and unplanned bump-into-leadership
-          conversations. If you want face-time with the broader team, anchor those two and pick a
-          third.
-        </p>
-        <p>
-          <strong>Lisbon</strong> is the other European office. The cadence and people are different,
-          and there's a separate guide for that — for now this document focuses on London only.
-        </p>
-      </div>
-
-      <div class="porto-facts">
-        <div class="fact">
-          <div class="label">Address</div>
-          <div class="value">100 Liverpool Street<br/>London EC2M 2AT</div>
-        </div>
-        <div class="fact">
-          <div class="label">In-office Days</div>
-          <div class="value">3 mandatory · 2 flex</div>
-        </div>
-        <div class="fact">
-          <div class="label">Busiest Days</div>
-          <div class="value">Tuesday + Thursday</div>
-        </div>
-        <div class="fact">
-          <div class="label">Office Owner</div>
-          <div class="value">Lou — building &amp; access</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 04 · Office Practicalities ─── -->
-<section class="section" id="l-section-04">
-  <div class="container">
-    <div class="section-tag">04 · Office Practicalities</div>
-    <h2 class="section-title">Life at <em>100 Liverpool St</em>.</h2>
-    <p class="section-deck">
-      The texture of working from London — where to grab lunch, what's already in the kitchen, and
-      the building amenities you'll use day-to-day. Small details, but they're what turn an office
-      into a base.
-    </p>
-
-    <div class="practical-grid">
-      <div class="practical-card">
-        <div class="icon">/ FOOD</div>
-        <h4>Lunch spots</h4>
-        <ul>
-          <li><strong>Spitalfields Market</strong> — 5-min walk. Variety from dumplings to tacos. The default for a quick fix.</li>
-          <li><strong>Broadgate Circle</strong> — immediate options like Franco Manca and Beany Green. Closer when you've got 30 minutes.</li>
-        </ul>
-      </div>
-
-      <div class="practical-card">
-        <div class="icon">/ KITCHEN</div>
-        <h4>Coffee &amp; snacks</h4>
-        <ul>
-          <li><strong>Free coffee</strong> in-office and across the common areas — no card, no pod, just go.</li>
-          <li><strong>Snack area</strong> dedicated to quick bites between meetings. Restocked regularly.</li>
-        </ul>
-      </div>
-
-      <div class="practical-card">
-        <div class="icon">/ BUILDING</div>
-        <h4>Amenities</h4>
-        <ul>
-          <li><strong>Facilities</strong> — bike storage, lockers, showers, and fresh towels. Cycling commute is genuinely supported.</li>
-          <li><strong>Apps</strong> — use <strong>BL:Connect</strong> or <strong>Storey</strong> for building access and amenity bookings.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 05 · First contacts ─── -->
-<section class="section" id="l-section-05">
-  <div class="container">
-    <div class="section-tag">05 · Your First Contacts</div>
-    <h2 class="section-title">Six people who'll <em>set you up</em>.</h2>
-    <p class="section-deck">
-      Six contacts split across <strong>operations</strong> (Lou, Tom), <strong>career</strong>
-      (your Line Manager, Claudia), <strong>delivery</strong> (Engagement Lead), and
-      <strong>tech</strong> (Declan). Knowing who-does-what saves you from pinging the wrong person.
-    </p>
-
-    <div class="squad-grid">
-      <div class="squad-card welcome">
-        <div class="squad-tag">CONTACT · 01</div>
-        <h3>Lou</h3>
-        <div class="role">Office Manager</div>
-        <p>
-          Physical space owner. Runs your tour, hands you the building and office access cards on
-          Day 1, and shares the WiFi password.
-        </p>
-        <div class="squad-meta">DAY 1 · ACCESS · WIFI</div>
-      </div>
-
-      <div class="squad-card mgmt">
-        <div class="squad-tag">CONTACT · 02</div>
-        <h3>Tom</h3>
-        <div class="role">Operations Director</div>
-        <p>
-          Operational anchor. Guides project allocation, owns timesheet logging in Salesforce, and
-          handles day-off approvals.
-        </p>
-        <div class="squad-meta">ALLOCATION · OPS · TIMESHEETS</div>
-      </div>
-
-      <div class="squad-card career">
-        <div class="squad-tag">CONTACT · 03</div>
-        <h3>Line Manager</h3>
-        <div class="role">Assigned to you</div>
-        <p>
-          Your career anchor. Handles probation, regular 1:1s, and feedback sessions — all logged
-          in <strong>Qulture Rocks</strong>. Different person for everyone; you'll know on Day 1.
-        </p>
-        <div class="squad-meta">CAREER · 1:1 · FEEDBACK</div>
-      </div>
-
-      <div class="squad-card tech">
-        <div class="squad-tag">CONTACT · 04</div>
-        <h3>Declan</h3>
-        <div class="role">Support &amp; IT</div>
-        <p>
-          Technical lifeline. Reach out for hardware troubleshooting, system access, or any IT
-          issue that's blocking you.
-        </p>
-        <div class="squad-meta">TECH · HARDWARE · SUPPORT</div>
-      </div>
-
-      <div class="squad-card people">
-        <div class="squad-tag">CONTACT · 05</div>
-        <h3>Claudia</h3>
-        <div class="role">People &amp; connection</div>
-        <p>
-          Walks you through the leadership team and the office cadence — who's around, which days
-          they're in, who you should meet first.
-        </p>
-        <div class="squad-meta">DAY 1 · LEADERSHIP · CADENCE</div>
-      </div>
-
-      <div class="squad-card project">
-        <div class="squad-tag">CONTACT · 06</div>
-        <h3>Engagement Lead</h3>
-        <div class="role">Project-specific</div>
-        <p>
-          A named role, but the person varies depending on which project you've been allocated to.
-          They'll reach out to onboard you onto the engagement.
-        </p>
-        <div class="squad-meta">WEEK 1 · PROJECT</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 06 · Day 1 pipeline ─── -->
-<section class="section" id="l-section-06">
-  <div class="container">
-    <div class="section-tag">06 · Day 1 Pipeline</div>
-    <h2 class="section-title">Your first day, <em>step by step</em>.</h2>
-    <p class="section-deck">
-      Four steps from arrival to end of Day 1. By the time the last one closes, you should have
-      keys, an HR account, and a face-to-face on who's who.
-    </p>
-
-    <div class="pipeline" style="grid-template-columns:repeat(4,1fr)">
-      <div class="pipe-step">
-        <div class="num">STEP · 01</div>
-        <h4>Office tour</h4>
-        <p>Lou walks you through the space, fire exits, kitchen, meeting rooms.</p>
-        <span class="who">Lou</span>
-      </div>
-      <div class="pipe-step">
-        <div class="num">STEP · 02</div>
-        <h4>Access cards</h4>
-        <p>Building entrance + office floor IDs. Keep them on you — needed daily.</p>
-        <span class="who">Lou</span>
-      </div>
-      <div class="pipe-step">
-        <div class="num">STEP · 03</div>
-        <h4>HiBob Europe</h4>
-        <p>Invite arrives Day 1. Complete your HR profile in the system.</p>
-        <span class="who">HiBob</span>
-      </div>
-      <div class="pipe-step">
-        <div class="num">STEP · 04</div>
-        <h4>Claudia's briefing</h4>
-        <p>Introduction to leadership and office rituals. Names attach to faces.</p>
-        <span class="who">Claudia</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 07 · Week 1 tracks ─── -->
-<section class="section" id="l-section-07">
-  <div class="container">
-    <div class="section-tag">07 · Week 1 Tracks</div>
-    <h2 class="section-title">After Day 1, <em>two parallel tracks</em>.</h2>
-    <p class="section-deck">
-      Once you're set up physically, two streams pick you up: the <strong>operations</strong> side
-      (Tom) keeps the delivery hygiene tight, and the <strong>career</strong> side (your Line
-      Manager) anchors your performance and growth.
-    </p>
-
-    <div class="role-grid">
-      <div class="role-card">
-        <div class="role-tag">TRACK / 01 · OPERATIONS</div>
-        <h3>Tom guides the process</h3>
-        <div class="role-sub">Operations Director — operational anchor for everything that isn't your career trajectory.</div>
-        <ul>
-          <li><strong>Day-off approvals.</strong> Requests go through Tom — he balances coverage against your allocation and signs off.</li>
-          <li><strong>Allocation decisions.</strong> Where you're staffed, when you rotate, what's next on your delivery roadmap.</li>
-          <li><strong>Salesforce timesheet.</strong> Hour-tracking lives there. Tom walks you through how to log against your allocation.</li>
-        </ul>
-      </div>
-
-      <div class="role-card">
-        <div class="role-tag">TRACK / 02 · CAREER</div>
-        <h3>Manager guides performance</h3>
-        <div class="role-sub">Your Line Manager — career anchor through probation and beyond.</div>
-        <ul>
-          <li><strong>Probation milestones.</strong> The first 3-6 months have explicit checkpoints. Your Line Manager owns the conversation around each one.</li>
-          <li><strong>Continuous feedback in Qulture Rocks.</strong> Both directions — you receive and give. The official record lives there.</li>
-          <li><strong>Regular 1:1 rituals.</strong> Recurring rhythm to surface friction early, talk growth, and align on what's next.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 08 · Essential Protocols ─── -->
-<section class="section" id="l-section-08">
-  <div class="container">
-    <div class="section-tag">08 · Essential Protocols</div>
-    <h2 class="section-title">How we work <em>together</em>.</h2>
-    <p class="section-deck">
-      Two groups of two. <strong>Presence &amp; Rhythm</strong> shape the texture of your week;
-      <strong>Admin &amp; Connection</strong> shape how you stay plugged into the wider company.
-      None of these are negotiable, but together they're light.
-    </p>
-
-    <div class="wow-group">
-      <div class="wow-group-title">/ Presence &amp; Rhythm</div>
-      <div class="wow-cards">
-        <div class="wow-card">
-          <div class="num">/ 01</div>
-          <h4>3-Day pulse</h4>
-          <p>Mandatory in-office presence three days a week to drive collaboration. The other two flex — home, client site, wherever you deliver best.</p>
-        </div>
-        <div class="wow-card">
-          <div class="num">/ 02</div>
-          <h4>Peak office days</h4>
-          <p>Tuesdays and Thursdays anchor the week — maximum team face-time, leadership in, cross-pod conversations happen naturally.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="wow-group">
-      <div class="wow-group-title">/ Admin &amp; Connection</div>
-      <div class="wow-cards">
-        <div class="wow-card">
-          <div class="num">/ 03</div>
-          <h4>Salesforce timesheet</h4>
-          <p>Hours logged weekly in Salesforce. Managed end-to-end by Tom — he's your point of contact for any apportionment questions.</p>
-        </div>
-        <div class="wow-card">
-          <div class="num">/ 04</div>
-          <h4>Townhalls</h4>
-          <p>Automatic invites to global meetings. Not mandatory, but participation is highly recommended — that's where the wider context lands.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 09 · Tools & Systems ─── -->
-<section class="section" id="l-section-09">
-  <div class="container">
-    <div class="section-tag">09 · Tools &amp; Systems</div>
-    <h2 class="section-title">Your <em>digital</em> toolkit.</h2>
-    <p class="section-deck">
-      Three systems hold the records that matter: <strong>HR</strong> (HiBob), <strong>performance
-      &amp; feedback</strong> (Qulture Rocks), and <strong>operations &amp; hours</strong>
-      (Salesforce). Each has a clear owner and a clear arrival point.
-    </p>
-
-    <div class="tools-grid">
-      <div class="tool-card">
-        <span class="pill">HR · Day 1</span>
-        <h4>HiBob <em>Europe</em></h4>
-        <p>
-          Our HR platform for Europe. Personal info, time-off records, and the org chart all live
-          here. Invite lands Day 1.
-        </p>
-      </div>
-
-      <div class="tool-card">
-        <span class="pill">Performance · Week 1</span>
-        <h4>Qulture <em>Rocks</em></h4>
-        <p>
-          The official place for <strong>1:1s</strong> and <strong>continuous feedback</strong>.
-          Owned by your Line Manager — you'll see invites for recurring 1:1s and feedback cycles.
-        </p>
-      </div>
-
-      <div class="tool-card">
-        <span class="pill">Operations · Week 1</span>
-        <h4><em>Salesforce</em></h4>
-        <p>
-          Hour-tracking and timesheet management. Tom sets you up and walks you through logging
-          against your allocation.
-        </p>
-      </div>
-    </div>
-
-    <div class="demo-cta">
-      <div class="text">
-        <h4>Onboarding training trail</h4>
-        <p>
-          A structured training trail is on the roadmap but not yet live. Until it launches, your
-          structured learning happens through Claudia's leadership briefing, your Engagement Lead's
-          project induction, and on-the-job pairing within your pod.
-        </p>
-      </div>
-      <span class="badge">Coming Soon</span>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Footer ─── -->
 <footer class="footer">
   <div class="container">
     <div class="tag">Indicium AI · Enterprise AI, Delivered</div>
-    <div class="tagline">Indicium AI Europe · London Onboarding</div>
+    <div class="tagline">Indicium AI · London Onboarding</div>
     <div class="copy">New Joiner Guide · 2026 · Internal use only</div>
   </div>
 </footer>
-
 </div>
-<!-- ═══════════════════════════════════════════════════════════
-     END · LONDON VIEW
-     ═══════════════════════════════════════════════════════════ -->
 
-<!-- ═══════════════════════════════════════════════════════════
-     LISBON VIEW
-     ═══════════════════════════════════════════════════════════ -->
 <div class="city-view" id="lisbonView" hidden>
 
-<!-- ─── Sticky nav ─── -->
 <header class="nav">
   <div class="nav-inner">
-    <div class="brand">
+    <div class="brand" data-action="switch-city" role="button" tabindex="0" aria-label="Back to office selector">
       <svg class="brand-mark" viewBox="0 0 217.02 219.67" xmlns="http://www.w3.org/2000/svg" aria-label="Indicium AI">
         <defs>
-          <clipPath id="iaiClip">
+          <clipPath id="iaiClip2">
             <path d="M64.38,92.26l18.67,10.82c10.06,5.83,16.25,16.6,16.25,28.25v26.07l-30.14-20.11,17.94-10.92c2.72-1.65,3.51-5.27,1.66-7.93-1.69-2.42-5.04-2.99-7.55-1.46l-16.83,10.24v-34.96ZM101,47.89c-1.13,1.07-1.71,2.61-1.71,4.17v29.94c0,3.32,2.82,6.14,6.25,5.68,2.79-.37,4.8-2.88,4.8-5.69v-20.52l36.11,20.82-25.81,12.9c-9.76,4.88-21.31,4.52-30.75-.95l-28.28-16.39c-2.07-1.2-4.73-.95-6.55.76-1.15,1.07-1.74,2.62-1.74,4.2v54.44c0,1.81.93,3.49,2.47,4.45l45.97,30.68c.92.62,1.99.93,3.06.93,1.01,0,2.02-.28,2.91-.83,1.67-1.03,2.61-2.93,2.61-4.9v-34.62c0-12.38,6.98-23.69,18.02-29.21l24.26-12.12v40.63s-22.68-14.15-22.68-14.15c-2.62-1.64-6.08-.8-7.66,1.87-1.58,2.67-.6,6.03,1.98,7.65l30.97,19.32c.89.55,1.9.83,2.92.83,1.45,0,2.92-.58,4.02-1.74,1.01-1.07,1.5-2.53,1.5-4v-59.46c-.04-1.95-1.1-3.75-2.78-4.73l-53.33-30.75c-.85-.49-1.8-.74-2.76-.74-1.37,0-2.74.51-3.82,1.53"/>
           </clipPath>
-          <linearGradient id="iaiGrad" x1="0" y1="50%" x2="100%" y2="50%">
+          <linearGradient id="iaiGrad2" x1="0" y1="50%" x2="100%" y2="50%">
             <stop offset="0" stop-color="#4761f8"/>
             <stop offset=".22" stop-color="#4a69f8"/>
             <stop offset=".58" stop-color="#5480fb"/>
             <stop offset="1" stop-color="#64a4ff"/>
           </linearGradient>
         </defs>
-        <g clip-path="url(#iaiClip)">
-          <rect x="29.69" y="27.7" width="157.64" height="164.28" transform="translate(-39.32 65.28) rotate(-28.57)" fill="url(#iaiGrad)"/>
+        <g clip-path="url(#iaiClip2)">
+          <rect x="29.69" y="27.7" width="157.64" height="164.28" transform="translate(-39.32 65.28) rotate(-28.57)" fill="url(#iaiGrad2)"/>
         </g>
       </svg>
       <span>Indicium<span class="ai-tag">AI</span></span>
     </div>
     <div class="nav-meta">
-      <span>Indicium AI Europe</span>
+      <span>Indicium AI</span>
       <span class="dot"></span>
       <span>Lisbon Onboarding</span>
       <span class="dot"></span>
@@ -1302,11 +696,10 @@
   </div>
 </header>
 
-<!-- ─── Hero ─── -->
 <section class="hero">
   <div class="container">
     <div class="eyebrow">New Joiner Guide · Lisbon Office</div>
-    <h1>Welcome to <b>Indicium AI Europe.</b></h1>
+    <h1>Welcome to <b>Indicium AI.</b></h1>
     <p class="deck">
       A practical guide for your first day and first week at our Lisbon office — who you'll meet,
       where things live, how we work. Everything you need to land cleanly into the European arm of a
@@ -1321,652 +714,18 @@
   </div>
 </section>
 
-<!-- ─── 00 · Briefing outline ─── -->
-<section class="section outline-section">
-  <div class="container">
-    <div class="section-tag">00 · Onboarding Outline</div>
-    <h2 class="section-title">What's <em>inside</em>.</h2>
-    <p class="section-deck">
-      Nine sections, roughly twelve minutes. From who Indicium AI is to the office practicalities,
-      the six contacts who'll set you up, the Day 1 timeline, the cadence after, and the systems
-      you'll log into.
-    </p>
-
-    <div class="outline-grid">
-      <a class="outline-card" href="#p-section-01">
-        <div class="outline-head">
-          <span class="outline-tag">01 · Company Context</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Who Indicium AI is.</h3>
-        <p>The merger that formed Indicium AI, our mission, and the values that shape how we deliver.</p>
-      </a>
-
-      <a class="outline-card" href="#p-section-02">
-        <div class="outline-head">
-          <span class="outline-tag">02 · Scale Snapshot</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>The numbers, at a glance.</h3>
-        <p>Specialists, presence, sectors, and the framework that runs every engagement.</p>
-      </a>
-
-      <a class="outline-card" href="#p-section-03">
-        <div class="outline-head">
-          <span class="outline-tag">03 · London Office</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Where we work.</h3>
-        <p>Address, in-office cadence, and which days the office actually fills up.</p>
-      </a>
-
-      <a class="outline-card" href="#p-section-04">
-        <div class="outline-head">
-          <span class="outline-tag">04 · Office Practicalities</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Life at Marquês de Pombal.</h3>
-        <p>Food nearby, in-office kitchen, the 24h building gym, and the community rituals.</p>
-      </a>
-
-      <a class="outline-card" href="#p-section-05">
-        <div class="outline-head">
-          <span class="outline-tag">05 · Your First Contacts</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Six people who set you up.</h3>
-        <p>Carla, Tom, your Line Manager, Declan, Claudia, and the Engagement Lead — who owns what.</p>
-      </a>
-
-      <a class="outline-card" href="#p-section-06">
-        <div class="outline-head">
-          <span class="outline-tag">06 · Day 1 Pipeline</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Tour → cards → HiBob → briefing.</h3>
-        <p>The four-step sequence that lands you fully connected by end of Day 1.</p>
-      </a>
-
-      <a class="outline-card" href="#p-section-07">
-        <div class="outline-head">
-          <span class="outline-tag">07 · Week 1 Tracks</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>Operations &amp; Career, in parallel.</h3>
-        <p>Tom anchors operations; your Line Manager anchors career, performance, and feedback.</p>
-      </a>
-
-      <a class="outline-card" href="#p-section-08">
-        <div class="outline-head">
-          <span class="outline-tag">08 · Essential Protocols</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>How we work together.</h3>
-        <p>Presence and rhythm; admin and connection — the four protocols you'll internalise fast.</p>
-      </a>
-
-      <a class="outline-card" href="#p-section-09">
-        <div class="outline-head">
-          <span class="outline-tag">09 · Tools &amp; Systems</span>
-          <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-        <h3>HiBob, Qulture Rocks, Salesforce.</h3>
-        <p>The three systems that hold your HR, feedback, and timesheet records.</p>
-      </a>
-    </div>
-
-    <div class="outline-meta">
-      <span>Sections<strong>09</strong></span>
-      <span>Read Time<strong>~12 min</strong></span>
-      <span>Audience<strong>New Joiners</strong></span>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 01 · Company context ─── -->
-<section class="section" id="p-section-01">
-  <div class="container">
-    <div class="section-tag">01 · Company Context</div>
-    <h2 class="section-title">A global Data &amp; AI <em>Powerhouse</em>.</h2>
-    <p class="section-deck">
-      Indicium AI was formed in 2025 from the union of <strong>Indicium</strong> — the data &amp;
-      analytics consultancy founded in Florianópolis (Brazil) in 2017 — and <strong>Mesh-AI</strong>,
-      the London-based AI specialist founded in 2021. The combined organisation is the AI-native
-      consultancy enterprises turn to when they need data and AI transformation delivered into
-      production at scale.
-    </p>
-
-    <div class="porto-grid">
-      <div class="porto-prose">
-        <p>
-          We are a <strong>global Data &amp; AI Powerhouse</strong> trusted by Fortune-class
-          enterprises to drive growth, reduce risk, and unlock cost efficiencies. Our mission: help
-          organisations embrace the shift to AI with <em>unmatched clarity, speed, and capability</em>
-          — bridging technology and business to turn strategy into measurable value.
-        </p>
-        <p>
-          Regional leadership runs out of two anchor offices: <strong>Matheus Dellagnelo</strong>
-          (CEO Americas, founder of Indicium, based in New York) and <strong>Jacob Parsons</strong>
-          (CEO Europe, founder of Mesh-AI, based in London). We're backed by
-          <strong>Columbia Capital</strong> and <strong>Databricks Ventures</strong>; partnered at the
-          platform layer with <strong>Anthropic, Databricks, AWS, OpenAI, and Microsoft</strong>.
-        </p>
-        <p>
-          Every engagement runs through <strong>IndiMesh</strong> — our proprietary AI-powered
-          framework combining collective intelligence, proven expertise, and rigorous quality control.
-          And we lead with our values: <strong>quality, knowledge, collaboration, transparency, and
-          flexibility</strong>.
-        </p>
-      </div>
-
-      <div class="porto-facts">
-        <div class="fact">
-          <div class="label">Global HQ</div>
-          <div class="value">New York · 119 W 24th Street</div>
-        </div>
-        <div class="fact">
-          <div class="label">European Offices</div>
-          <div class="value">London · Lisbon</div>
-        </div>
-        <div class="fact">
-          <div class="label">Founded</div>
-          <div class="value">Indicium · 2017 — Merged · 2025</div>
-        </div>
-        <div class="fact">
-          <div class="label">Trusted By</div>
-          <div class="value">National Grid · Experian · PepsiCo · Roche · Bayer · EDF</div>
-        </div>
-        <div class="fact">
-          <div class="label">Funding</div>
-          <div class="value">$40M · Columbia Capital · Databricks Ventures</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Journey timeline -->
-    <div class="journey">
-      <div class="milestone">
-        <div class="year">2017</div>
-        <h4>Indicium founded</h4>
-        <p>Florianópolis · modernising data platforms and analytics for enterprises.</p>
-      </div>
-      <div class="milestone">
-        <div class="year">2021</div>
-        <h4>Mesh-AI founded</h4>
-        <p>London · reimagining enterprises with Data &amp; AI.</p>
-      </div>
-      <div class="milestone">
-        <div class="year">2025</div>
-        <h4>The merger</h4>
-        <p>Indicium and Mesh-AI join forces to form Indicium AI.</p>
-      </div>
-      <div class="milestone now">
-        <div class="year">Today</div>
-        <h4>One global team</h4>
-        <p>Enterprise-scale Data &amp; AI Transformation, region by region.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 02 · Scale snapshot ─── -->
-<section class="section" id="p-section-02">
-  <div class="container">
-    <div class="section-tag">02 · Scale Snapshot</div>
-    <h2 class="section-title">Global scale, <em>proven delivery</em>.</h2>
-    <p class="section-deck">
-      Five offices across three regions, six hundred specialists, and a delivery record built over
-      eight years. The numbers below come straight from the latest Indicium AI scorecard — and
-      they're the reason Fortune-class enterprises trust us with their most complex data and AI
-      transformations.
-    </p>
-
-    <div class="kpi-band">
-      <div class="kpi highlight">
-        <div class="label">Specialists</div>
-        <div class="value">600<span class="unit">+</span></div>
-        <div class="sub">Data &amp; AI native experts — delivery, strategy, platform engineering.</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Engagements</div>
-        <div class="value">500<span class="unit">+</span></div>
-        <div class="sub">Enterprise-grade projects delivered end-to-end since 2017.</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Enterprise Clients</div>
-        <div class="value">50<span class="unit">+</span></div>
-        <div class="sub">Fortune-class — National Grid, PepsiCo, Roche, Bayer, Experian, EDF.</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Years</div>
-        <div class="value">8<span class="unit">+</span></div>
-        <div class="sub">100+ AI agents in production · hundreds of Databricks projects · 560+ certifications.</div>
-      </div>
-    </div>
-
-    <!-- Global presence -->
-    <div class="offices-band">
-      <div class="offices-tag">
-        <span>/ Global Presence · 5 Offices · 3 Regions</span>
-        <span class="sub">Americas · LATAM · Europe</span>
-      </div>
-      <div class="offices-grid">
-        <div class="office-card hq">
-          <span class="badge">HQ</span>
-          <div class="office-region">AMER · USA</div>
-          <h3>New York</h3>
-          <p>119 W 24th Street<br/>NY 10011</p>
-        </div>
-        <div class="office-card">
-          <div class="office-region">LATAM · Brazil</div>
-          <h3>Florianópolis</h3>
-          <p>Itacorubi · founding office<br/>since 2017</p>
-        </div>
-        <div class="office-card">
-          <div class="office-region">LATAM · Brazil</div>
-          <h3>São Paulo</h3>
-          <p>Avenida Paulista, 1374</p>
-        </div>
-        <div class="office-card">
-          
-          <div class="office-region">EUROPE · UK</div>
-          <h3>London</h3>
-          <p>100 Liverpool Street<br/>EC2M 2AT</p>
-        </div>
-        <div class="office-card you-here">
-          <span class="badge">YOU'RE HERE</span>
-          <div class="office-region">EUROPE · Portugal</div>
-          <h3>Lisbon</h3>
-          <p>Marquês de Pombal 2<br/>1250-162</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 03 · Lisbon office ─── -->
-<section class="section" id="p-section-03">
-  <div class="container">
-    <div class="section-tag">03 · Lisbon Office</div>
-    <h2 class="section-title">Where we work — <em>Lisbon</em>.</h2>
-    <p class="section-deck">
-      Our Lisbon office sits in the heart of the city at Praça Marquês de Pombal, hosted inside the
-      <strong>Monday coworking building</strong>. Iberian operations, European client work, and a
-      growing engineering team run from here.
-    </p>
-
-    <div class="porto-grid">
-      <div class="porto-prose">
-        <p>
-          <strong>3 days a week in-office</strong> is mandatory. Your fourth and fifth can flex —
-          most people work from home or stay close to a client site for those.
-        </p>
-        <p>
-          The office <strong>fills up Tuesday through Thursday</strong>, with the mid-week as the
-          peak for in-person rituals, cross-pod collaboration, and unplanned bump-into-leadership
-          conversations. <strong>Mondays and Fridays are noticeably quieter</strong> — perfect for
-          deep work if you do come in.
-        </p>
-        <p>
-          <strong>London</strong> is the other European office. The cadence and people are different,
-          and there's a separate guide for that — for now this document focuses on Lisbon only.
-        </p>
-      </div>
-
-      <div class="porto-facts">
-        <div class="fact">
-          <div class="label">Address</div>
-          <div class="value">Praça Marquês de Pombal 2<br/>Monday building · 1250-162 Lisboa</div>
-        </div>
-        <div class="fact">
-          <div class="label">In-office Days</div>
-          <div class="value">3 mandatory · 2 flex</div>
-        </div>
-        <div class="fact">
-          <div class="label">Busiest Days</div>
-          <div class="value">Tuesday · Wednesday · Thursday</div>
-        </div>
-        <div class="fact">
-          <div class="label">Office Owner</div>
-          <div class="value">Carla — building &amp; access</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 04 · Office Practicalities (Lisbon) ─── -->
-<section class="section" id="p-section-04">
-  <div class="container">
-    <div class="section-tag">04 · Office Practicalities</div>
-    <h2 class="section-title">Life at <em>Marquês de Pombal</em>.</h2>
-    <p class="section-deck">
-      The texture of working from the Monday building in Lisbon — food nearby, what's already inside
-      the office, the 24h gym, and the rituals that bring everyone together. Small details, but
-      they're what turn an office into a base.
-    </p>
-
-    <div class="practical-grid practical-grid-4">
-      <div class="practical-card">
-        <div class="icon">/ FOOD</div>
-        <h4>Lunch spots</h4>
-        <ul>
-          <li><strong>A Padaria Portuguesa</strong> — right on the square. Portuguese classics, breakfast deals, fast turnover.</li>
-          <li><strong>Cotidiano</strong> — 5-min walk on R. Mouzinho. Brunch and lunch, 4.9★ on the block.</li>
-          <li><strong>Tre Bambu</strong> — 8-min walk. Vietnamese, set lunches in 30 minutes flat.</li>
-        </ul>
-      </div>
-
-      <div class="practical-card">
-        <div class="icon">/ KITCHEN</div>
-        <h4>Coffee &amp; meals</h4>
-        <ul>
-          <li><strong>In-office coffee &amp; snacks</strong> — just help yourself, no card needed.</li>
-          <li><strong>2nd floor meal area</strong> — cutlery, plates, microwave, cups. Bring food or buy takeaway and eat there.</li>
-          <li><strong>Vending machine</strong> — drinks (soda, water) and snacks for when the kitchen runs dry.</li>
-        </ul>
-      </div>
-
-      <div class="practical-card">
-        <div class="icon">/ GYM</div>
-        <h4>24h building gym</h4>
-        <ul>
-          <li><strong>Open 24/7</strong> inside the Monday building. Accessible with your office card.</li>
-          <li><strong>Showers included</strong> — bring a towel, change after a session before getting back to the desk.</li>
-          <li><strong>No commute, no excuse</strong> — it's literally downstairs.</li>
-        </ul>
-      </div>
-
-      <div class="practical-card">
-        <div class="icon">/ COMMUNITY</div>
-        <h4>Lisbon rituals</h4>
-        <ul>
-          <li><strong>Board games night</strong> — one Thursday per month, in-office. Open to all, casual, builds the team across squads.</li>
-          <li><strong>Bring an idea</strong> — more rituals will appear as the office grows. If you have one, the office is yours to shape.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 05 · First contacts ─── -->
-<section class="section" id="p-section-05">
-  <div class="container">
-    <div class="section-tag">05 · Your First Contacts</div>
-    <h2 class="section-title">Six people who'll <em>set you up</em>.</h2>
-    <p class="section-deck">
-      Six contacts split across <strong>operations</strong> (Carla, Tom), <strong>career</strong>
-      (your Line Manager, Claudia), <strong>delivery</strong> (Engagement Lead), and
-      <strong>tech</strong> (Declan). Knowing who-does-what saves you from pinging the wrong person.
-    </p>
-
-    <div class="squad-grid">
-      <div class="squad-card welcome">
-        <div class="squad-tag">CONTACT · 01</div>
-        <h3>Carla</h3>
-        <div class="role">Office Manager · Lisbon</div>
-        <p>
-          Physical space owner for the Lisbon office. Runs your tour, hands you the building and
-          office access cards on Day 1, and shares the WiFi password.
-        </p>
-        <div class="squad-meta">DAY 1 · ACCESS · WIFI</div>
-      </div>
-
-      <div class="squad-card mgmt">
-        <div class="squad-tag">CONTACT · 02</div>
-        <h3>Tom</h3>
-        <div class="role">Operations Director</div>
-        <p>
-          Operational anchor. Guides project allocation, owns timesheet logging in Salesforce, and
-          handles day-off approvals.
-        </p>
-        <div class="squad-meta">ALLOCATION · OPS · TIMESHEETS</div>
-      </div>
-
-      <div class="squad-card career">
-        <div class="squad-tag">CONTACT · 03</div>
-        <h3>Line Manager</h3>
-        <div class="role">Assigned to you</div>
-        <p>
-          Your career anchor. Handles probation, regular 1:1s, and feedback sessions — all logged
-          in <strong>Qulture Rocks</strong>. Different person for everyone; you'll know on Day 1.
-        </p>
-        <div class="squad-meta">CAREER · 1:1 · FEEDBACK</div>
-      </div>
-
-      <div class="squad-card tech">
-        <div class="squad-tag">CONTACT · 04</div>
-        <h3>Declan</h3>
-        <div class="role">Support &amp; IT</div>
-        <p>
-          Technical lifeline. Reach out for hardware troubleshooting, system access, or any IT
-          issue that's blocking you.
-        </p>
-        <div class="squad-meta">TECH · HARDWARE · SUPPORT</div>
-      </div>
-
-      <div class="squad-card people">
-        <div class="squad-tag">CONTACT · 05</div>
-        <h3>Claudia</h3>
-        <div class="role">People &amp; connection</div>
-        <p>
-          Walks you through the leadership team and the office cadence — who's around, which days
-          they're in, who you should meet first.
-        </p>
-        <div class="squad-meta">DAY 1 · LEADERSHIP · CADENCE</div>
-      </div>
-
-      <div class="squad-card project">
-        <div class="squad-tag">CONTACT · 06</div>
-        <h3>Engagement Lead</h3>
-        <div class="role">Project-specific</div>
-        <p>
-          A named role, but the person varies depending on which project you've been allocated to.
-          They'll reach out to onboard you onto the engagement.
-        </p>
-        <div class="squad-meta">WEEK 1 · PROJECT</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 06 · Day 1 pipeline ─── -->
-<section class="section" id="p-section-06">
-  <div class="container">
-    <div class="section-tag">06 · Day 1 Pipeline</div>
-    <h2 class="section-title">Your first day, <em>step by step</em>.</h2>
-    <p class="section-deck">
-      Four steps from arrival to end of Day 1. By the time the last one closes, you should have
-      keys, an HR account, and a face-to-face on who's who.
-    </p>
-
-    <div class="pipeline" style="grid-template-columns:repeat(4,1fr)">
-      <div class="pipe-step">
-        <div class="num">STEP · 01</div>
-        <h4>Office tour</h4>
-        <p>Carla walks you through the space, kitchen, 2nd-floor meal area, gym, fire exits.</p>
-        <span class="who">Carla</span>
-      </div>
-      <div class="pipe-step">
-        <div class="num">STEP · 02</div>
-        <h4>Access cards</h4>
-        <p>Building entrance + office floor IDs. Keep them on you — needed daily.</p>
-        <span class="who">Carla</span>
-      </div>
-      <div class="pipe-step">
-        <div class="num">STEP · 03</div>
-        <h4>HiBob Europe</h4>
-        <p>Invite arrives Day 1. Complete your HR profile in the system.</p>
-        <span class="who">HiBob</span>
-      </div>
-      <div class="pipe-step">
-        <div class="num">STEP · 04</div>
-        <h4>Claudia's briefing</h4>
-        <p>Introduction to leadership and office rituals. Names attach to faces.</p>
-        <span class="who">Claudia</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 07 · Week 1 tracks ─── -->
-<section class="section" id="p-section-07">
-  <div class="container">
-    <div class="section-tag">07 · Week 1 Tracks</div>
-    <h2 class="section-title">After Day 1, <em>two parallel tracks</em>.</h2>
-    <p class="section-deck">
-      Once you're set up physically, two streams pick you up: the <strong>operations</strong> side
-      (Tom) keeps the delivery hygiene tight, and the <strong>career</strong> side (your Line
-      Manager) anchors your performance and growth.
-    </p>
-
-    <div class="role-grid">
-      <div class="role-card">
-        <div class="role-tag">TRACK / 01 · OPERATIONS</div>
-        <h3>Tom guides the process</h3>
-        <div class="role-sub">Operations Director — operational anchor for everything that isn't your career trajectory.</div>
-        <ul>
-          <li><strong>Day-off approvals.</strong> Requests go through Tom — he balances coverage against your allocation and signs off.</li>
-          <li><strong>Allocation decisions.</strong> Where you're staffed, when you rotate, what's next on your delivery roadmap.</li>
-          <li><strong>Salesforce timesheet.</strong> Hour-tracking lives there. Tom walks you through how to log against your allocation.</li>
-        </ul>
-      </div>
-
-      <div class="role-card">
-        <div class="role-tag">TRACK / 02 · CAREER</div>
-        <h3>Manager guides performance</h3>
-        <div class="role-sub">Your Line Manager — career anchor through probation and beyond.</div>
-        <ul>
-          <li><strong>Probation milestones.</strong> The first 3-6 months have explicit checkpoints. Your Line Manager owns the conversation around each one.</li>
-          <li><strong>Continuous feedback in Qulture Rocks.</strong> Both directions — you receive and give. The official record lives there.</li>
-          <li><strong>Regular 1:1 rituals.</strong> Recurring rhythm to surface friction early, talk growth, and align on what's next.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 08 · Essential Protocols ─── -->
-<section class="section" id="p-section-08">
-  <div class="container">
-    <div class="section-tag">08 · Essential Protocols</div>
-    <h2 class="section-title">How we work <em>together</em>.</h2>
-    <p class="section-deck">
-      Two groups of two. <strong>Presence &amp; Rhythm</strong> shape the texture of your week;
-      <strong>Admin &amp; Connection</strong> shape how you stay plugged into the wider company.
-      None of these are negotiable, but together they're light.
-    </p>
-
-    <div class="wow-group">
-      <div class="wow-group-title">/ Presence &amp; Rhythm</div>
-      <div class="wow-cards">
-        <div class="wow-card">
-          <div class="num">/ 01</div>
-          <h4>3-Day pulse</h4>
-          <p>Mandatory in-office presence three days a week to drive collaboration. The other two flex — home, client site, wherever you deliver best.</p>
-        </div>
-        <div class="wow-card">
-          <div class="num">/ 02</div>
-          <h4>Peak office days</h4>
-          <p>Tuesdays and Thursdays anchor the week — maximum team face-time, leadership in, cross-pod conversations happen naturally.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="wow-group">
-      <div class="wow-group-title">/ Admin &amp; Connection</div>
-      <div class="wow-cards">
-        <div class="wow-card">
-          <div class="num">/ 03</div>
-          <h4>Salesforce timesheet</h4>
-          <p>Hours logged weekly in Salesforce. Managed end-to-end by Tom — he's your point of contact for any apportionment questions.</p>
-        </div>
-        <div class="wow-card">
-          <div class="num">/ 04</div>
-          <h4>Townhalls</h4>
-          <p>Automatic invites to global meetings. Not mandatory, but participation is highly recommended — that's where the wider context lands.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 09 · Tools & Systems ─── -->
-<section class="section" id="p-section-09">
-  <div class="container">
-    <div class="section-tag">09 · Tools &amp; Systems</div>
-    <h2 class="section-title">Your <em>digital</em> toolkit.</h2>
-    <p class="section-deck">
-      Three systems hold the records that matter: <strong>HR</strong> (HiBob), <strong>performance
-      &amp; feedback</strong> (Qulture Rocks), and <strong>operations &amp; hours</strong>
-      (Salesforce). Each has a clear owner and a clear arrival point.
-    </p>
-
-    <div class="tools-grid">
-      <div class="tool-card">
-        <span class="pill">HR · Day 1</span>
-        <h4>HiBob <em>Europe</em></h4>
-        <p>
-          Our HR platform for Europe. Personal info, time-off records, and the org chart all live
-          here. Invite lands Day 1.
-        </p>
-      </div>
-
-      <div class="tool-card">
-        <span class="pill">Performance · Week 1</span>
-        <h4>Qulture <em>Rocks</em></h4>
-        <p>
-          The official place for <strong>1:1s</strong> and <strong>continuous feedback</strong>.
-          Owned by your Line Manager — you'll see invites for recurring 1:1s and feedback cycles.
-        </p>
-      </div>
-
-      <div class="tool-card">
-        <span class="pill">Operations · Week 1</span>
-        <h4><em>Salesforce</em></h4>
-        <p>
-          Hour-tracking and timesheet management. Tom sets you up and walks you through logging
-          against your allocation.
-        </p>
-      </div>
-    </div>
-
-    <div class="demo-cta">
-      <div class="text">
-        <h4>Onboarding training trail</h4>
-        <p>
-          A structured training trail is on the roadmap but not yet live. Until it launches, your
-          structured learning happens through Claudia's leadership briefing, your Engagement Lead's
-          project induction, and on-the-job pairing within your pod.
-        </p>
-      </div>
-      <span class="badge">Coming Soon</span>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Footer ─── -->
 <footer class="footer">
   <div class="container">
     <div class="tag">Indicium AI · Enterprise AI, Delivered</div>
-    <div class="tagline">Indicium AI Europe · Lisbon Onboarding</div>
+    <div class="tagline">Indicium AI · Lisbon Onboarding</div>
     <div class="copy">New Joiner Guide · 2026 · Internal use only</div>
   </div>
 </footer>
-
-
 </div>
-<!-- ═══════════════════════════════════════════════════════════
-     END · LISBON VIEW
-     ═══════════════════════════════════════════════════════════ -->
-
 
 <script>
   /* ═══════════════════════════════════════════════════════════
-     CITY ROUTING
-     - Detects URL hash (#london, #lisbon) for direct entry
-     - Persists choice in localStorage
-     - Handles selector card clicks + "Switch office" button
+     CITY ROUTING LOGIC (Remains the same)
      ═══════════════════════════════════════════════════════════ */
   (function () {
     const selector  = document.getElementById('citySelector');
@@ -1974,81 +733,102 @@
     const lisbonView = document.getElementById('lisbonView');
     const VALID = ['london', 'lisbon'];
 
+    function detectCity(hash) {
+      const h = (hash || '').replace('#','').toLowerCase();
+      if (VALID.includes(h)) return h;
+      if (h.startsWith('l-')) return 'london';
+      if (h.startsWith('p-')) return 'lisbon';
+      return null;
+    }
+
+    function isCityRoot(hash) {
+      return VALID.includes((hash || '').replace('#','').toLowerCase());
+    }
+
     function showSelector() {
       selector.hidden = false;
       selector.style.display = '';
       londonView.hidden = true;
       lisbonView.hidden = true;
       document.documentElement.scrollTop = 0;
-      // clean hash but keep history
       if (location.hash) history.replaceState(null, '', location.pathname);
     }
 
-    function showCity(city) {
+    function showCity(city, opts) {
+      opts = opts || {};
       if (!VALID.includes(city)) { showSelector(); return; }
       selector.hidden = true;
       selector.style.display = 'none';
       londonView.hidden = (city !== 'london');
       lisbonView.hidden = (city !== 'lisbon');
-      document.documentElement.scrollTop = 0;
       try { localStorage.setItem('indicium.city', city); } catch (e) {}
-      if (location.hash.replace('#','') !== city) {
-        history.replaceState(null, '', '#' + city);
+
+      if (opts.preserveHash) {
+        const targetId = (location.hash || '').replace('#','');
+        requestAnimationFrame(() => {
+          const target = document.getElementById(targetId);
+          if (target) target.scrollIntoView({block: 'start'});
+        });
+      } else {
+        if ((location.hash || '').replace('#','') !== city) {
+          history.replaceState(null, '', '#' + city);
+        }
+        document.documentElement.scrollTop = 0;
       }
     }
 
-    // Initial routing — priority: URL hash > localStorage > selector
-    const urlCity = (location.hash || '').replace('#','').toLowerCase();
-    let initial = null;
-    if (VALID.includes(urlCity)) initial = urlCity;
-    else {
+    const urlCity = detectCity(location.hash);
+    const isDeepLink = !!urlCity && !isCityRoot(location.hash);
+    let initial = urlCity;
+    if (!initial) {
       try {
         const stored = localStorage.getItem('indicium.city');
         if (VALID.includes(stored)) initial = stored;
       } catch (e) {}
     }
-    if (initial) showCity(initial);
+    if (initial) showCity(initial, {preserveHash: isDeepLink});
     else showSelector();
 
-    // City selector card clicks
     document.querySelectorAll('.cs-card[data-city]').forEach(btn => {
       btn.addEventListener('click', () => showCity(btn.dataset.city));
     });
 
-    // Switch office buttons (any view)
-    document.querySelectorAll('[data-action="switch-city"]').forEach(btn => {
-      btn.addEventListener('click', showSelector);
+    document.querySelectorAll('[data-action="switch-city"]').forEach(el => {
+      el.addEventListener('click', (e) => { e.preventDefault(); showSelector(); });
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showSelector(); }
+      });
     });
 
-    // Hash changes (back/forward navigation)
     window.addEventListener('hashchange', () => {
-      const c = (location.hash || '').replace('#','').toLowerCase();
-      if (VALID.includes(c)) showCity(c);
-      else showSelector();
+      const h = (location.hash || '').replace('#','').toLowerCase();
+      if (VALID.includes(h)) { showCity(h); return; }
+      if (h.startsWith('l-') || h.startsWith('p-')) {
+        const targetCity = detectCity(location.hash);
+        if (targetCity === 'london' && londonView.hidden) showCity('london', {preserveHash: true});
+        else if (targetCity === 'lisbon' && lisbonView.hidden) showCity('lisbon', {preserveHash: true});
+        return;
+      }
     });
   })();
 
-  /* ─────── Scroll-triggered reveal transitions ─────── */
+  /* Scroll reveal logic remains the same */
   (function () {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const sectionTargets = document.querySelectorAll('section.section');
     sectionTargets.forEach(s => {
       s.classList.add('reveal');
       const c = s.querySelector('.container');
       if (c) c.classList.add('reveal-stagger');
     });
-
     document.querySelectorAll('section.hero .container').forEach(hero => {
       hero.classList.add('reveal-stagger');
       requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('in')));
     });
-
     if (prefersReduced || !('IntersectionObserver' in window)) {
       document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => el.classList.add('in'));
       return;
     }
-
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -2059,7 +839,6 @@
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
     sectionTargets.forEach(s => io.observe(s));
   })();
 </script>
