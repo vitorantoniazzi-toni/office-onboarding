@@ -470,31 +470,9 @@
   .city-view{display:block}
 
   /* Switch office button (in nav) */
-  /* Switch office button (in nav) — CTA style: white bg, dark blue text */
-  .switch-office{
-    font-family:var(--mono);
-    font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;
-    color:var(--bg);background:var(--white);
-    border:1px solid var(--white);
-    border-radius:999px;
-    padding:9px 16px;cursor:pointer;
-    display:inline-flex;align-items:center;gap:8px;
-    transition:transform .2s cubic-bezier(.22,1,.36,1),background .2s,color .2s,box-shadow .25s,border-color .2s;
-    font-weight:600;margin-left:18px;
-    box-shadow:0 2px 12px rgba(255,255,255,.08);
-  }
-  .switch-office:hover{
-    transform:translateY(-1px);
-    background:var(--atlantic);
-    color:var(--white);
-    border-color:var(--atlantic);
-    box-shadow:0 6px 20px rgba(105,155,251,.35);
-  }
+  .switch-office{font-family:var(--mono);font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:border-color .25s,color .25s;font-weight:500;margin-left:18px}
+  .switch-office:hover{border-color:var(--atlantic);color:var(--atlantic)}
   .switch-office svg{width:11px;height:11px}
-
-  /* Brand logo is clickable (returns to city selector) */
-  .brand{cursor:pointer;transition:opacity .2s}
-  .brand:hover{opacity:.78}
 
   /* Practical-grid 4-col variant (for Lisbon) */
   .practical-grid-4{grid-template-columns:repeat(4,1fr)}
@@ -606,7 +584,7 @@
 <!-- ─── Sticky nav ─── -->
 <header class="nav">
   <div class="nav-inner">
-    <div class="brand" data-action="switch-city" role="button" tabindex="0" aria-label="Back to office selector">
+    <div class="brand">
       <svg class="brand-mark" viewBox="0 0 217.02 219.67" xmlns="http://www.w3.org/2000/svg" aria-label="Indicium AI">
         <defs>
           <clipPath id="iaiClip">
@@ -1291,7 +1269,7 @@
 <!-- ─── Sticky nav ─── -->
 <header class="nav">
   <div class="nav-inner">
-    <div class="brand" data-action="switch-city" role="button" tabindex="0" aria-label="Back to office selector">
+    <div class="brand">
       <svg class="brand-mark" viewBox="0 0 217.02 219.67" xmlns="http://www.w3.org/2000/svg" aria-label="Indicium AI">
         <defs>
           <clipPath id="iaiClip">
@@ -1986,12 +1964,9 @@
 <script>
   /* ═══════════════════════════════════════════════════════════
      CITY ROUTING
-     - URL hash navigation:
-         #london / #lisbon → show that view
-         #l-section-NN     → show London + scroll to that section
-         #p-section-NN     → show Lisbon + scroll to that section
-     - localStorage remembers last choice
-     - Brand logo + "Switch office" button → back to selector
+     - Detects URL hash (#london, #lisbon) for direct entry
+     - Persists choice in localStorage
+     - Handles selector card clicks + "Switch office" button
      ═══════════════════════════════════════════════════════════ */
   (function () {
     const selector  = document.getElementById('citySelector');
@@ -1999,102 +1974,57 @@
     const lisbonView = document.getElementById('lisbonView');
     const VALID = ['london', 'lisbon'];
 
-    function detectCity(hash) {
-      const h = (hash || '').replace('#','').toLowerCase();
-      if (VALID.includes(h)) return h;
-      if (h.startsWith('l-')) return 'london';
-      if (h.startsWith('p-')) return 'lisbon';
-      return null;
-    }
-
-    function isCityRoot(hash) {
-      return VALID.includes((hash || '').replace('#','').toLowerCase());
-    }
-
     function showSelector() {
       selector.hidden = false;
       selector.style.display = '';
       londonView.hidden = true;
       lisbonView.hidden = true;
       document.documentElement.scrollTop = 0;
+      // clean hash but keep history
       if (location.hash) history.replaceState(null, '', location.pathname);
     }
 
-    function showCity(city, opts) {
-      opts = opts || {};
+    function showCity(city) {
       if (!VALID.includes(city)) { showSelector(); return; }
       selector.hidden = true;
       selector.style.display = 'none';
       londonView.hidden = (city !== 'london');
       lisbonView.hidden = (city !== 'lisbon');
+      document.documentElement.scrollTop = 0;
       try { localStorage.setItem('indicium.city', city); } catch (e) {}
-
-      if (opts.preserveHash) {
-        // Deep-link to a section anchor — scroll after view is rendered
-        const targetId = (location.hash || '').replace('#','');
-        requestAnimationFrame(() => {
-          const target = document.getElementById(targetId);
-          if (target) target.scrollIntoView({block: 'start'});
-        });
-      } else {
-        if ((location.hash || '').replace('#','') !== city) {
-          history.replaceState(null, '', '#' + city);
-        }
-        document.documentElement.scrollTop = 0;
+      if (location.hash.replace('#','') !== city) {
+        history.replaceState(null, '', '#' + city);
       }
     }
 
-    // ─── Initial routing ───
-    const urlCity = detectCity(location.hash);
-    const isDeepLink = !!urlCity && !isCityRoot(location.hash);
-    let initial = urlCity;
-    if (!initial) {
+    // Initial routing — priority: URL hash > localStorage > selector
+    const urlCity = (location.hash || '').replace('#','').toLowerCase();
+    let initial = null;
+    if (VALID.includes(urlCity)) initial = urlCity;
+    else {
       try {
         const stored = localStorage.getItem('indicium.city');
         if (VALID.includes(stored)) initial = stored;
       } catch (e) {}
     }
-    if (initial) showCity(initial, {preserveHash: isDeepLink});
+    if (initial) showCity(initial);
     else showSelector();
 
-    // ─── City selector card clicks ───
+    // City selector card clicks
     document.querySelectorAll('.cs-card[data-city]').forEach(btn => {
       btn.addEventListener('click', () => showCity(btn.dataset.city));
     });
 
-    // ─── Switch office / brand logo clicks (+ keyboard) ───
-    document.querySelectorAll('[data-action="switch-city"]').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        showSelector();
-      });
-      el.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          showSelector();
-        }
-      });
+    // Switch office buttons (any view)
+    document.querySelectorAll('[data-action="switch-city"]').forEach(btn => {
+      btn.addEventListener('click', showSelector);
     });
 
-    // ─── Hash changes (back/forward, manual edit, anchor clicks) ───
+    // Hash changes (back/forward navigation)
     window.addEventListener('hashchange', () => {
-      const h = (location.hash || '').replace('#','').toLowerCase();
-      if (VALID.includes(h)) {
-        // City-root hash — show that view
-        showCity(h);
-        return;
-      }
-      if (h.startsWith('l-') || h.startsWith('p-')) {
-        // Section anchor — make sure correct view is visible; browser handles scroll
-        const targetCity = detectCity(location.hash);
-        const onLondon = !londonView.hidden;
-        const onLisbon = !lisbonView.hidden;
-        if (targetCity === 'london' && !onLondon) showCity('london', {preserveHash: true});
-        else if (targetCity === 'lisbon' && !onLisbon) showCity('lisbon', {preserveHash: true});
-        // else: already on correct view — browser native scroll handles it
-        return;
-      }
-      // Empty hash — no action (likely a programmatic clear via showSelector)
+      const c = (location.hash || '').replace('#','').toLowerCase();
+      if (VALID.includes(c)) showCity(c);
+      else showSelector();
     });
   })();
 
