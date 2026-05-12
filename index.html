@@ -548,6 +548,156 @@
     .milestone{border-right:none !important;border-bottom:1px solid var(--line) !important}
     .milestone:last-child{border-bottom:none !important}
   }
+
+  /* ===========================================================
+     SLACK / EMAIL CONTACT LINKS (in squad-card)
+     =========================================================== */
+  .squad-card .contact-links{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .contact-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--lavender);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:6px;padding:6px 10px;text-decoration:none;transition:all .2s;font-weight:500}
+  .contact-link:hover{background:rgba(105,155,251,.10);border-color:rgba(105,155,251,.32);color:var(--atlantic);transform:translateY(-1px)}
+  .contact-link svg{width:11px;height:11px;flex-shrink:0}
+  .contact-link.slack-link:hover{background:rgba(74,21,75,.18);border-color:rgba(236,178,46,.32);color:#ecb22e}
+  .contact-link.placeholder{opacity:.4;cursor:not-allowed}
+  .contact-link.placeholder:hover{transform:none;background:rgba(255,255,255,.04);border-color:var(--line);color:var(--lavender)}
+
+  /* ===========================================================
+     MARK-AS-READ + PROGRESS TRACKER
+     =========================================================== */
+  /* Progress bar at top of TOC */
+  .progress-summary{display:flex;align-items:center;justify-content:space-between;margin-top:48px;margin-bottom:24px;padding:16px 22px;border:1px solid var(--line-strong);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));gap:20px;flex-wrap:wrap}
+  .progress-summary .ps-label{display:flex;flex-direction:column;gap:4px}
+  .progress-summary .ps-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+  .progress-summary .ps-status{font-size:15px;font-weight:500;color:var(--white)}
+  .progress-summary .ps-status .count{color:var(--atlantic);font-weight:600}
+  .progress-bar{flex:1;min-width:160px;height:6px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;position:relative}
+  .progress-bar-fill{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,var(--vibrant),var(--atlantic),var(--green));border-radius:999px;width:0;transition:width .5s cubic-bezier(.22,1,.36,1);box-shadow:0 0 10px rgba(110,231,160,.25)}
+  .progress-reset{font-family:var(--mono);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;cursor:pointer;transition:color .2s,border-color .2s;font-weight:500}
+  .progress-reset:hover{color:var(--atlantic);border-color:var(--atlantic)}
+
+  /* Read checkmark on outline cards */
+  .outline-card .read-badge{position:absolute;top:14px;right:14px;width:18px;height:18px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.4);transition:opacity .3s,transform .3s;box-shadow:0 0 0 3px rgba(110,231,160,.15)}
+  .outline-card .read-badge svg{width:10px;height:10px;color:var(--bg)}
+  .outline-card.is-read .read-badge{opacity:1;transform:scale(1)}
+  .outline-card.is-read{border-color:rgba(110,231,160,.25)}
+  .outline-card.is-read .outline-arrow{color:rgba(110,231,160,.5)}
+
+  /* Read indicator on section heading */
+  .section-tag.is-read::after{content:' ✓';color:var(--green);font-family:var(--sans);margin-left:6px;letter-spacing:0;font-weight:600;font-size:12px;text-transform:none}
+
+  /* ===========================================================
+     COMMUTE GUIDE
+     =========================================================== */
+  .commute-block{margin-top:48px}
+  .commute-tag{font-family:var(--mono);font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--atlantic);padding-bottom:14px;margin-bottom:20px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .commute-tag .sub{color:var(--muted);font-size:10px;letter-spacing:1.2px;font-weight:400}
+  .commute-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+  .commute-map{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line-strong);background:rgba(255,255,255,.02);min-height:340px;height:100%;filter:contrast(1.05) saturate(.85)}
+  .commute-map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:invert(.92) hue-rotate(180deg)}
+  .commute-info{display:flex;flex-direction:column;gap:18px}
+  .transit-card{padding:18px 20px;border:1px solid var(--line-strong);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0))}
+  .transit-card .transit-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .transit-card .transit-name{font-size:16px;font-weight:600;color:var(--white);letter-spacing:-.3px}
+  .transit-card .transit-time{font-family:var(--mono);font-size:10.5px;letter-spacing:1.2px;color:var(--green);text-transform:uppercase;font-weight:600;background:rgba(110,231,160,.10);border:1px solid rgba(110,231,160,.22);padding:3px 8px;border-radius:4px;white-space:nowrap}
+  .transit-card .transit-lines{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+  .transit-line{font-family:var(--mono);font-size:9.5px;letter-spacing:1.1px;text-transform:uppercase;padding:3px 8px;border-radius:3px;font-weight:600;color:var(--bg)}
+  .transit-line.tube{background:#e32017;color:#fff}
+  .transit-line.overground{background:#ee7c0e;color:#fff}
+  .transit-line.elizabeth{background:#7156a5;color:#fff}
+  .transit-line.rail{background:#1d1d1b;color:#fff;border:1px solid rgba(255,255,255,.2)}
+  .transit-line.metro-blue{background:#0078c1;color:#fff}
+  .transit-line.metro-yellow{background:#f9bd00;color:#1d1d1b}
+  .transit-card p{font-size:13px;color:var(--lavender);line-height:1.55;opacity:.82;margin:6px 0 0;font-weight:300}
+
+  @media (max-width:880px){
+    .commute-grid{grid-template-columns:1fr}
+    .commute-map{min-height:280px}
+  }
+
+  /* ===========================================================
+     AI CHATBOT
+     =========================================================== */
+  .ai-launcher{position:fixed;bottom:24px;right:24px;z-index:80;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--vibrant),var(--atlantic));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(58,88,238,.4),0 0 0 0 rgba(105,155,251,.5);transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s;animation:ai-pulse 2.4s ease-in-out infinite}
+  .ai-launcher:hover{transform:translateY(-2px) scale(1.05);box-shadow:0 12px 32px rgba(58,88,238,.5)}
+  .ai-launcher svg{width:24px;height:24px;color:#fff}
+  .ai-launcher .ai-dot{position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(110,231,160,.7);animation:ai-blink 1.6s ease-in-out infinite}
+  @keyframes ai-pulse{0%,100%{box-shadow:0 8px 24px rgba(58,88,238,.4),0 0 0 0 rgba(105,155,251,.6)}50%{box-shadow:0 8px 24px rgba(58,88,238,.4),0 0 0 12px rgba(105,155,251,0)}}
+  @keyframes ai-blink{0%,100%{opacity:1}50%{opacity:.5}}
+
+  .ai-panel{position:fixed;bottom:24px;right:24px;z-index:90;width:380px;max-width:calc(100vw - 32px);height:540px;max-height:calc(100vh - 100px);background:var(--bg-soft);border:1px solid var(--line-strong);border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(58,88,238,.15);display:flex;flex-direction:column;overflow:hidden;transform:translateY(20px) scale(.96);opacity:0;pointer-events:none;transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .25s}
+  .ai-panel.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+  .ai-header{padding:18px 22px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(135deg,rgba(58,88,238,.10),rgba(105,155,251,.04))}
+  .ai-header-info{display:flex;align-items:center;gap:12px}
+  .ai-header-avatar{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--vibrant),var(--atlantic));display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
+  .ai-header-avatar svg{width:18px;height:18px}
+  .ai-header-text .ai-title{font-size:14px;font-weight:600;color:var(--white);letter-spacing:-.2px;line-height:1.2}
+  .ai-header-text .ai-subtitle{font-family:var(--mono);font-size:9.5px;letter-spacing:1.2px;color:var(--green);text-transform:uppercase;display:flex;align-items:center;gap:5px;margin-top:3px;font-weight:500}
+  .ai-header-text .ai-subtitle::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(110,231,160,.6)}
+  .ai-close{background:none;border:none;color:var(--muted);cursor:pointer;padding:6px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:color .2s,background .2s}
+  .ai-close:hover{color:var(--white);background:rgba(255,255,255,.08)}
+  .ai-close svg{width:18px;height:18px}
+
+  .ai-messages{flex:1;overflow-y:auto;padding:18px 18px 8px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+  .ai-messages::-webkit-scrollbar{width:6px}
+  .ai-messages::-webkit-scrollbar-track{background:transparent}
+  .ai-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
+  .ai-msg{max-width:85%;font-size:13.5px;line-height:1.55;padding:10px 14px;border-radius:14px;animation:ai-fadeIn .3s cubic-bezier(.22,1,.36,1)}
+  @keyframes ai-fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .ai-msg.bot{align-self:flex-start;background:rgba(255,255,255,.05);color:var(--lavender);border:1px solid var(--line);border-bottom-left-radius:4px}
+  .ai-msg.bot strong{color:var(--white);font-weight:600}
+  .ai-msg.user{align-self:flex-end;background:linear-gradient(135deg,var(--vibrant),var(--atlantic));color:#fff;border-bottom-right-radius:4px}
+  .ai-msg.typing{align-self:flex-start;display:flex;gap:4px;padding:14px 16px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;border-bottom-left-radius:4px}
+  .ai-typing-dot{width:6px;height:6px;border-radius:50%;background:var(--atlantic);animation:ai-bounce 1.4s ease-in-out infinite}
+  .ai-typing-dot:nth-child(2){animation-delay:.2s}
+  .ai-typing-dot:nth-child(3){animation-delay:.4s}
+  @keyframes ai-bounce{0%,80%,100%{transform:scale(.7);opacity:.4}40%{transform:scale(1);opacity:1}}
+
+  .ai-suggestions{padding:0 18px 12px;display:flex;flex-wrap:wrap;gap:6px}
+  .ai-suggestion{font-family:var(--mono);font-size:10px;letter-spacing:.6px;color:var(--lavender);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:6px 11px;cursor:pointer;transition:all .2s;font-weight:500;text-transform:none}
+  .ai-suggestion:hover{background:rgba(105,155,251,.10);border-color:rgba(105,155,251,.32);color:var(--atlantic)}
+
+  .ai-input-area{padding:14px 18px 18px;border-top:1px solid var(--line);background:rgba(28,29,47,.6)}
+  .ai-input-wrap{display:flex;gap:8px;align-items:flex-end;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:6px 6px 6px 14px;transition:border-color .2s}
+  .ai-input-wrap:focus-within{border-color:rgba(105,155,251,.4)}
+  .ai-input{flex:1;background:none;border:none;outline:none;color:var(--white);font-family:var(--sans);font-size:13.5px;padding:8px 0;resize:none;font-weight:400;max-height:80px;line-height:1.4}
+  .ai-input::placeholder{color:var(--muted)}
+  .ai-send{background:linear-gradient(135deg,var(--vibrant),var(--atlantic));border:none;width:32px;height:32px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;transition:transform .2s,opacity .2s;flex-shrink:0}
+  .ai-send:hover{transform:translateY(-1px)}
+  .ai-send:disabled{opacity:.3;cursor:not-allowed}
+  .ai-send svg{width:14px;height:14px}
+  .ai-disclaimer{font-family:var(--mono);font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted-2);text-align:center;margin-top:10px;font-weight:500}
+
+  @media (max-width:560px){
+    .ai-panel{bottom:0;right:0;left:0;width:100%;max-width:none;height:80vh;border-radius:20px 20px 0 0}
+    .ai-launcher{bottom:18px;right:18px}
+  }
+
+  /* ===========================================================
+     EN/PT LANGUAGE TOGGLE
+     =========================================================== */
+  .lang-toggle{display:none;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:5px 10px;margin-right:10px;font-weight:500}
+  .lang-toggle button{background:none;border:none;color:inherit;cursor:pointer;padding:2px 6px;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit;font-weight:inherit;border-radius:999px;transition:color .2s,background .2s}
+  .lang-toggle button.active{color:var(--bg);background:var(--white);font-weight:600}
+  .lang-toggle button:not(.active):hover{color:var(--atlantic)}
+  .lang-toggle .lang-divider{color:var(--muted-2)}
+  /* Only show toggle inside lisbonView */
+  #lisbonView .lang-toggle{display:inline-flex}
+  /* Content hiding based on body language class (scoped to Lisbon view only) */
+  [data-lang="pt"]{display:none}
+  body.lang-pt #lisbonView [data-lang="en"]{display:none}
+  body.lang-pt #lisbonView [data-lang="pt"]{display:revert}
+
+  /* ===========================================================
+     FAQ FOOTER LINK
+     =========================================================== */
+  .faq-link-block{margin-top:48px;padding:32px;border:1px dashed var(--line-strong);border-radius:14px;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,0));transition:border-color .25s,background .25s}
+  .faq-link-block:hover{border-color:rgba(105,155,251,.32);background:linear-gradient(180deg,rgba(105,155,251,.04),rgba(255,255,255,0))}
+  .faq-link-block .eyebrow-mono{font-family:var(--mono);font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--atlantic);margin-bottom:10px;display:inline-flex;align-items:center;gap:10px}
+  .faq-link-block .eyebrow-mono::before,.faq-link-block .eyebrow-mono::after{content:'';width:20px;height:1px;background:var(--atlantic)}
+  .faq-link-block h3{font-size:22px;font-weight:600;letter-spacing:-.4px;color:var(--white);margin-bottom:8px}
+  .faq-link-block p{font-size:14px;color:var(--lavender);opacity:.85;line-height:1.55;max-width:54ch;margin:0 auto 18px;font-weight:300}
+  .faq-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--bg);background:var(--white);border:none;padding:11px 20px;border-radius:999px;cursor:pointer;text-decoration:none;font-weight:600;transition:transform .2s,box-shadow .2s,background .2s,color .2s}
+  .faq-cta:hover{transform:translateY(-1px);background:var(--atlantic);color:var(--white);box-shadow:0 6px 18px rgba(105,155,251,.3)}
+  .faq-cta svg{width:12px;height:12px}
 </style>
 </head>
 <body>
@@ -669,8 +819,18 @@
       you'll log into.
     </p>
 
+    <div class="progress-summary">
+      <div class="ps-label">
+        <div class="ps-eyebrow">/ Your progress</div>
+        <div class="ps-status"><span class="count">0</span> of 9 sections read</div>
+      </div>
+      <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+      <button class="progress-reset" type="button" data-action="reset-progress">Reset</button>
+    </div>
+
     <div class="outline-grid">
       <a class="outline-card" href="#l-section-01">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">01 · Company Context</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -680,6 +840,7 @@
       </a>
 
       <a class="outline-card" href="#l-section-02">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">02 · Scale Snapshot</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -689,6 +850,7 @@
       </a>
 
       <a class="outline-card" href="#l-section-03">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">03 · London Office</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -698,6 +860,7 @@
       </a>
 
       <a class="outline-card" href="#l-section-04">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">04 · Office Practicalities</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -707,6 +870,7 @@
       </a>
 
       <a class="outline-card" href="#l-section-05">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">05 · Your First Contacts</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -716,6 +880,7 @@
       </a>
 
       <a class="outline-card" href="#l-section-06">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">06 · Day 1 Pipeline</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -725,6 +890,7 @@
       </a>
 
       <a class="outline-card" href="#l-section-07">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">07 · Week 1 Tracks</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -734,6 +900,7 @@
       </a>
 
       <a class="outline-card" href="#l-section-08">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">08 · Essential Protocols</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -743,6 +910,7 @@
       </a>
 
       <a class="outline-card" href="#l-section-09">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">09 · Tools &amp; Systems</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -968,6 +1136,51 @@
         </div>
       </div>
     </div>
+
+    <!-- Commute guide -->
+    <div class="commute-block">
+      <div class="commute-tag">
+        <span>/ How to get here · London</span>
+        <span class="sub">Liverpool Street area</span>
+      </div>
+      <div class="commute-grid">
+        <div class="commute-map">
+          <iframe src="https://www.google.com/maps?q=100+Liverpool+Street,+London+EC2M+2AT&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of 100 Liverpool Street"></iframe>
+        </div>
+        <div class="commute-info">
+          <div class="transit-card">
+            <div class="transit-head">
+              <span class="transit-name">Liverpool Street Station</span>
+              <span class="transit-time">30 sec walk</span>
+            </div>
+            <div class="transit-lines">
+              <span class="transit-line tube">Central</span>
+              <span class="transit-line tube">Circle</span>
+              <span class="transit-line tube">Hammersmith &amp; City</span>
+              <span class="transit-line tube">Metropolitan</span>
+              <span class="transit-line overground">Overground</span>
+              <span class="transit-line elizabeth">Elizabeth</span>
+              <span class="transit-line rail">National Rail</span>
+            </div>
+            <p>Direct entrance from the station concourse. The most convenient route from anywhere in London or the South-East.</p>
+          </div>
+          <div class="transit-card">
+            <div class="transit-head">
+              <span class="transit-name">Moorgate</span>
+              <span class="transit-time">7 min walk</span>
+            </div>
+            <p>Alternative for Northern, Metropolitan, and Northern City lines. Quieter at rush hour than Liverpool St.</p>
+          </div>
+          <div class="transit-card">
+            <div class="transit-head">
+              <span class="transit-name">Bike &amp; parking</span>
+              <span class="transit-time">In building</span>
+            </div>
+            <p>Bike storage and showers available inside (see Office Practicalities). Driving is discouraged — the office sits inside the Congestion Charge zone and ULEZ, plus parking around Liverpool Street is scarce and expensive.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1033,6 +1246,9 @@
           Physical space owner. Runs your tour, hands you the building and office access cards on
           Day 1, and shares the WiFi password.
         </p>
+        <div class="contact-links">
+          <a href="slack://user?id=U0ADEU7PV7A" class="contact-link slack-link" target="_blank" rel="noopener" title="Open DM with Lou in Slack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg> <span>Slack</span></a>
+        </div>
         <div class="squad-meta">DAY 1 · ACCESS · WIFI</div>
       </div>
 
@@ -1044,6 +1260,9 @@
           Operational anchor. Guides project allocation, owns timesheet logging in Salesforce, and
           handles day-off approvals.
         </p>
+        <div class="contact-links">
+          <a href="slack://user?id=U0A05110HQV" class="contact-link slack-link" target="_blank" rel="noopener" title="Open DM with Tom in Slack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg> <span>Slack</span></a>
+        </div>
         <div class="squad-meta">ALLOCATION · OPS · TIMESHEETS</div>
       </div>
 
@@ -1066,6 +1285,9 @@
           Technical lifeline. Reach out for hardware troubleshooting, system access, or any IT
           issue that's blocking you.
         </p>
+        <div class="contact-links">
+          <a href="slack://user?id=U09TJL68BDH" class="contact-link slack-link" target="_blank" rel="noopener" title="Open DM with Declan in Slack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg> <span>Slack</span></a>
+        </div>
         <div class="squad-meta">TECH · HARDWARE · SUPPORT</div>
       </div>
 
@@ -1077,6 +1299,9 @@
           Walks you through the leadership team and the office cadence — who's around, which days
           they're in, who you should meet first.
         </p>
+        <div class="contact-links">
+          <a href="slack://user?id=U0ACE7YDNQK" class="contact-link slack-link" target="_blank" rel="noopener" title="Open DM with Claudia in Slack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg> <span>Slack</span></a>
+        </div>
         <div class="squad-meta">DAY 1 · LEADERSHIP · CADENCE</div>
       </div>
 
@@ -1270,6 +1495,21 @@
 </section>
 
 <!-- ─── Footer ─── -->
+<!-- FAQ link block -->
+<section class="section" style="padding-top:0;padding-bottom:64px;border-top:none">
+  <div class="container">
+    <div class="faq-link-block">
+      <div class="eyebrow-mono">Still have questions?</div>
+      <h3>Open the FAQ.</h3>
+      <p>Ten common questions answered — dress code, late arrivals, lunch reimbursements, lost cards, cross-office visits. The things you might feel awkward asking on Day 1.</p>
+      <a class="faq-cta" href="faq.html" target="_blank" rel="noopener">
+        Read the FAQ
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container">
     <div class="tag">Indicium AI · Enterprise AI, Delivered</div>
@@ -1316,6 +1556,11 @@
       <span>Lisbon Onboarding</span>
       <span class="dot"></span>
       <span>2026</span>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang-set="en" class="active">EN</button>
+        <span class="lang-divider">·</span>
+        <button type="button" data-lang-set="pt">PT</button>
+      </div>
       <button class="switch-office" data-action="switch-city" type="button" aria-label="Switch to a different office">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
         <span class="label-sm">Switch office</span>
@@ -1327,18 +1572,21 @@
 <!-- ─── Hero ─── -->
 <section class="hero">
   <div class="container">
-    <div class="eyebrow">New Joiner Guide · Lisbon Office</div>
+    <div class="eyebrow"><span data-lang="en">New Joiner Guide · Lisbon Office</span><span data-lang="pt">Guia para Novos Integrantes · Escritório de Lisboa</span></div>
     <h1>Welcome to <b>Indicium AI Europe.</b></h1>
-    <p class="deck">
+    <p class="deck" data-lang="en">
       A practical guide for your first day and first week at our Lisbon office — who you'll meet,
       where things live, how we work. Everything you need to land cleanly into the European arm of a
       global, AI-native consultancy.
     </p>
+    <p class="deck" data-lang="pt">
+      Um guia prático para o teu primeiro dia e primeira semana no nosso escritório de Lisboa — quem vais conhecer, onde estão as coisas, e como trabalhamos. Tudo o que precisas para começar bem no braço europeu de uma consultoria AI-native global.
+    </p>
     <div class="meta-row">
-      <div>Office<span class="v">Lisbon</span></div>
-      <div>In-office<span class="v">3 days · Tue/Wed/Thu</span></div>
-      <div>HR System<span class="v">HiBob Europe</span></div>
-      <div>Feedback<span class="v">Qulture Rocks</span></div>
+      <div data-lang="en">Office<span class="v">Lisbon</span></div><div data-lang="pt">Escritório<span class="v">Lisboa</span></div>
+      <div data-lang="en">In-office<span class="v">3 days · Tue/Wed/Thu</span></div><div data-lang="pt">Presencial<span class="v">3 dias · Ter/Qua/Qui</span></div>
+      <div data-lang="en">HR System<span class="v">HiBob Europe</span></div><div data-lang="pt">Sistema HR<span class="v">HiBob Europe</span></div>
+      <div data-lang="en">Feedback<span class="v">Qulture Rocks</span></div><div data-lang="pt">Feedback<span class="v">Qulture Rocks</span></div>
     </div>
   </div>
 </section>
@@ -1354,8 +1602,18 @@
       you'll log into.
     </p>
 
+    <div class="progress-summary">
+      <div class="ps-label">
+        <div class="ps-eyebrow">/ Your progress</div>
+        <div class="ps-status"><span class="count">0</span> of 9 sections read</div>
+      </div>
+      <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+      <button class="progress-reset" type="button" data-action="reset-progress">Reset</button>
+    </div>
+
     <div class="outline-grid">
       <a class="outline-card" href="#p-section-01">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">01 · Company Context</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1365,6 +1623,7 @@
       </a>
 
       <a class="outline-card" href="#p-section-02">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">02 · Scale Snapshot</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1374,6 +1633,7 @@
       </a>
 
       <a class="outline-card" href="#p-section-03">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">03 · London Office</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1383,6 +1643,7 @@
       </a>
 
       <a class="outline-card" href="#p-section-04">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">04 · Office Practicalities</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1392,6 +1653,7 @@
       </a>
 
       <a class="outline-card" href="#p-section-05">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">05 · Your First Contacts</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1401,6 +1663,7 @@
       </a>
 
       <a class="outline-card" href="#p-section-06">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">06 · Day 1 Pipeline</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1410,6 +1673,7 @@
       </a>
 
       <a class="outline-card" href="#p-section-07">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">07 · Week 1 Tracks</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1419,6 +1683,7 @@
       </a>
 
       <a class="outline-card" href="#p-section-08">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">08 · Essential Protocols</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1428,6 +1693,7 @@
       </a>
 
       <a class="outline-card" href="#p-section-09">
+        <span class="read-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <div class="outline-head">
           <span class="outline-tag">09 · Tools &amp; Systems</span>
           <span class="outline-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1609,12 +1875,16 @@
 <!-- ─── 03 · Lisbon office ─── -->
 <section class="section" id="p-section-03">
   <div class="container">
-    <div class="section-tag">03 · Lisbon Office</div>
-    <h2 class="section-title">Where we work — <em>Lisbon</em>.</h2>
-    <p class="section-deck">
+    <div class="section-tag"><span data-lang="en">03 · Lisbon Office</span><span data-lang="pt">03 · Escritório de Lisboa</span></div>
+    <h2 class="section-title" data-lang="en">Where we work — <em>Lisbon</em>.</h2><h2 class="section-title" data-lang="pt">Onde trabalhamos — <em>Lisboa</em>.</h2>
+    <p class="section-deck" data-lang="en">
       Our Lisbon office sits in the heart of the city at Praça Marquês de Pombal, hosted inside the
       <strong>Monday coworking building</strong>. Iberian operations, European client work, and a
       growing engineering team run from here.
+    </p>
+    <p class="section-deck" data-lang="pt">
+      O nosso escritório de Lisboa fica no coração da cidade, na Praça Marquês de Pombal, dentro do
+      <strong>prédio Monday Coworking</strong>. As operações ibéricas, projetos para clientes europeus, e uma equipa de engenharia em crescimento operam daqui.
     </p>
 
     <div class="porto-grid">
@@ -1623,15 +1893,21 @@
           <strong>3 days a week in-office</strong> is mandatory. Your fourth and fifth can flex —
           most people work from home or stay close to a client site for those.
         </p>
-        <p>
+        <p data-lang="en">
           The office <strong>fills up Tuesday through Thursday</strong>, with the mid-week as the
           peak for in-person rituals, cross-pod collaboration, and unplanned bump-into-leadership
           conversations. <strong>Mondays and Fridays are noticeably quieter</strong> — perfect for
           deep work if you do come in.
         </p>
-        <p>
+        <p data-lang="pt">
+          O escritório <strong>enche de terça a quinta-feira</strong>, sendo o meio da semana o pico para rituais presenciais, colaboração entre squads, e conversas espontâneas com lideranças. <strong>Segundas e sextas são bem mais calmas</strong> — perfeitas para deep work se decidires vir.
+        </p>
+        <p data-lang="en">
           <strong>London</strong> is the other European office. The cadence and people are different,
           and there's a separate guide for that — for now this document focuses on Lisbon only.
+        </p>
+        <p data-lang="pt">
+          <strong>Londres</strong> é o outro escritório europeu. O ritmo e as pessoas são diferentes, e há um guia separado para isso — por agora este documento foca apenas em Lisboa.
         </p>
       </div>
 
@@ -1654,57 +1930,103 @@
         </div>
       </div>
     </div>
+
+    <!-- Commute guide -->
+    <div class="commute-block">
+      <div class="commute-tag">
+        <span>/ How to get here · Lisbon</span>
+        <span class="sub">Marquês de Pombal area</span>
+      </div>
+      <div class="commute-grid">
+        <div class="commute-map">
+          <iframe src="https://www.google.com/maps?q=Pra%C3%A7a+do+Marqu%C3%AAs+de+Pombal+2,+1250-162+Lisboa,+Portugal&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map of Praça Marquês de Pombal 2"></iframe>
+        </div>
+        <div class="commute-info">
+          <div class="transit-card">
+            <div class="transit-head">
+              <span class="transit-name">Marquês de Pombal Metro</span>
+              <span class="transit-time">1 min walk</span>
+            </div>
+            <div class="transit-lines">
+              <span class="transit-line metro-blue">Blue Line</span>
+              <span class="transit-line metro-yellow">Yellow Line</span>
+            </div>
+            <p>Two-line interchange directly at the roundabout. The fastest route from almost anywhere in Lisbon — most of the city is one or two changes away.</p>
+          </div>
+          <div class="transit-card">
+            <div class="transit-head">
+              <span class="transit-name">Avenida &amp; Parque</span>
+              <span class="transit-time">5 min walk</span>
+            </div>
+            <div class="transit-lines">
+              <span class="transit-line metro-blue">Blue Line</span>
+            </div>
+            <p>One stop away in either direction on the Blue Line. Useful alternative if Marquês de Pombal is busy at rush hour.</p>
+          </div>
+          <div class="transit-card">
+            <div class="transit-head">
+              <span class="transit-name">Bike, scooter &amp; parking</span>
+              <span class="transit-time">Bike room in building</span>
+            </div>
+            <p>The Monday building has secure bike storage and 24h showers (see Office Practicalities). GIRA city bike stations sit right on the roundabout. Driving works but street parking is paid and limited — most colleagues use Metro or shared mobility.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ─── 04 · Office Practicalities (Lisbon) ─── -->
 <section class="section" id="p-section-04">
   <div class="container">
-    <div class="section-tag">04 · Office Practicalities</div>
-    <h2 class="section-title">Life at <em>Marquês de Pombal</em>.</h2>
-    <p class="section-deck">
+    <div class="section-tag"><span data-lang="en">04 · Office Practicalities</span><span data-lang="pt">04 · Práticas do Escritório</span></div>
+    <h2 class="section-title" data-lang="en">Life at <em>Marquês de Pombal</em>.</h2><h2 class="section-title" data-lang="pt">A vida no <em>Marquês de Pombal</em>.</h2>
+    <p class="section-deck" data-lang="en">
       The texture of working from the Monday building in Lisbon — food nearby, what's already inside
       the office, the 24h gym, and the rituals that bring everyone together. Small details, but
       they're what turn an office into a base.
     </p>
+    <p class="section-deck" data-lang="pt">
+      A textura de trabalhar no prédio Monday em Lisboa — comida ali à volta, o que já está dentro do escritório, o ginásio 24h, e os rituais que juntam toda a gente. Pequenos detalhes, mas são o que transforma um escritório numa base.
+    </p>
 
     <div class="practical-grid practical-grid-4">
       <div class="practical-card">
-        <div class="icon">/ FOOD</div>
-        <h4>Lunch spots</h4>
+        <div class="icon"><span data-lang="en">/ FOOD</span><span data-lang="pt">/ COMIDA</span></div>
+        <h4 data-lang="en">Lunch spots</h4><h4 data-lang="pt">Onde almoçar</h4>
         <ul>
-          <li><strong>A Padaria Portuguesa</strong> — right on the square. Portuguese classics, breakfast deals, fast turnover.</li>
-          <li><strong>Cotidiano</strong> — 5-min walk on R. Mouzinho. Brunch and lunch, 4.9★ on the block.</li>
-          <li><strong>Tre Bambu</strong> — 8-min walk. Vietnamese, set lunches in 30 minutes flat.</li>
+          <li data-lang="en"><strong>A Padaria Portuguesa</strong> — right on the square. Portuguese classics, breakfast deals, fast turnover.</li><li data-lang="pt"><strong>A Padaria Portuguesa</strong> — mesmo na praça. Clássicos portugueses, ofertas de pequeno-almoço, fila rápida.</li>
+          <li data-lang="en"><strong>Cotidiano</strong> — 5-min walk on R. Mouzinho. Brunch and lunch, 4.9★ on the block.</li><li data-lang="pt"><strong>Cotidiano</strong> — 5 min a pé na R. Mouzinho da Silveira. Brunch e almoço, 4.9★ na zona.</li>
+          <li data-lang="en"><strong>Tre Bambu</strong> — 8-min walk. Vietnamese, set lunches in 30 minutes flat.</li><li data-lang="pt"><strong>Tre Bambu</strong> — 8 min a pé. Vietnamita, menus de almoço em 30 minutos.</li>
         </ul>
       </div>
 
       <div class="practical-card">
-        <div class="icon">/ KITCHEN</div>
-        <h4>Coffee &amp; meals</h4>
+        <div class="icon"><span data-lang="en">/ KITCHEN</span><span data-lang="pt">/ COZINHA</span></div>
+        <h4 data-lang="en">Coffee &amp; meals</h4><h4 data-lang="pt">Café e refeições</h4>
         <ul>
-          <li><strong>In-office coffee &amp; snacks</strong> — just help yourself, no card needed.</li>
-          <li><strong>2nd floor meal area</strong> — cutlery, plates, microwave, cups. Bring food or buy takeaway and eat there.</li>
-          <li><strong>Vending machine</strong> — drinks (soda, water) and snacks for when the kitchen runs dry.</li>
+          <li data-lang="en"><strong>In-office coffee &amp; snacks</strong> — just help yourself, no card needed.</li><li data-lang="pt"><strong>Café e snacks no escritório</strong> — serve-te à vontade, sem cartão.</li>
+          <li data-lang="en"><strong>2nd floor meal area</strong> — cutlery, plates, microwave, cups. Bring food or buy takeaway and eat there.</li><li data-lang="pt"><strong>Sala de refeições no 2º andar</strong> — talheres, pratos, microondas, copos. Traz comida ou compra takeaway e come lá.</li>
+          <li data-lang="en"><strong>Vending machine</strong> — drinks (soda, water) and snacks for when the kitchen runs dry.</li><li data-lang="pt"><strong>Máquina de vending</strong> — bebidas (refrigerantes, água) e snacks para quando a cozinha esvaziar.</li>
         </ul>
       </div>
 
       <div class="practical-card">
-        <div class="icon">/ GYM</div>
-        <h4>24h building gym</h4>
+        <div class="icon"><span data-lang="en">/ GYM</span><span data-lang="pt">/ GINÁSIO</span></div>
+        <h4 data-lang="en">24h building gym</h4><h4 data-lang="pt">Ginásio 24h do prédio</h4>
         <ul>
-          <li><strong>Open 24/7</strong> inside the Monday building. Accessible with your office card.</li>
-          <li><strong>Showers included</strong> — bring a towel, change after a session before getting back to the desk.</li>
-          <li><strong>No commute, no excuse</strong> — it's literally downstairs.</li>
+          <li data-lang="en"><strong>Open 24/7</strong> inside the Monday building. Accessible with your office card.</li><li data-lang="pt"><strong>Aberto 24/7</strong> dentro do prédio Monday. Acessível com o teu cartão de escritório.</li>
+          <li data-lang="en"><strong>Showers included</strong> — bring a towel, change after a session before getting back to the desk.</li><li data-lang="pt"><strong>Inclui chuveiros</strong> — traz toalha, muda-te depois do treino antes de voltar à secretária.</li>
+          <li data-lang="en"><strong>No commute, no excuse</strong> — it's literally downstairs.</li><li data-lang="pt"><strong>Sem deslocação, sem desculpas</strong> — fica literalmente no andar de baixo.</li>
         </ul>
       </div>
 
       <div class="practical-card">
-        <div class="icon">/ COMMUNITY</div>
-        <h4>Lisbon rituals</h4>
+        <div class="icon"><span data-lang="en">/ COMMUNITY</span><span data-lang="pt">/ COMUNIDADE</span></div>
+        <h4 data-lang="en">Lisbon rituals</h4><h4 data-lang="pt">Rituais de Lisboa</h4>
         <ul>
-          <li><strong>Board games night</strong> — one Thursday per month, in-office. Open to all, casual, builds the team across squads.</li>
-          <li><strong>Bring an idea</strong> — more rituals will appear as the office grows. If you have one, the office is yours to shape.</li>
+          <li data-lang="en"><strong>Board games night</strong> — one Thursday per month, in-office. Open to all, casual, builds the team across squads.</li><li data-lang="pt"><strong>Noite de jogos de tabuleiro</strong> — uma quinta-feira por mês, no escritório. Aberta a todos, descontraída, une a equipa entre squads.</li>
+          <li data-lang="en"><strong>Bring an idea</strong> — more rituals will appear as the office grows. If you have one, the office is yours to shape.</li><li data-lang="pt"><strong>Traz uma ideia</strong> — mais rituais vão surgir à medida que o escritório cresce. Se tens uma, o escritório é teu para moldares.</li>
         </ul>
       </div>
     </div>
@@ -1714,79 +2036,109 @@
 <!-- ─── 05 · First contacts ─── -->
 <section class="section" id="p-section-05">
   <div class="container">
-    <div class="section-tag">05 · Your First Contacts</div>
-    <h2 class="section-title">Six people who'll <em>set you up</em>.</h2>
-    <p class="section-deck">
+    <div class="section-tag"><span data-lang="en">05 · Your First Contacts</span><span data-lang="pt">05 · Os teus primeiros contactos</span></div>
+    <h2 class="section-title" data-lang="en">Six people who'll <em>set you up</em>.</h2><h2 class="section-title" data-lang="pt">Seis pessoas que te vão <em>pôr a andar</em>.</h2>
+    <p class="section-deck" data-lang="en">
       Six contacts split across <strong>operations</strong> (Carla, Tom), <strong>career</strong>
       (your Line Manager, Claudia), <strong>delivery</strong> (Engagement Lead), and
       <strong>tech</strong> (Declan). Knowing who-does-what saves you from pinging the wrong person.
+    </p>
+    <p class="section-deck" data-lang="pt">
+      Seis contactos divididos entre <strong>operações</strong> (Carla, Tom), <strong>carreira</strong> (o teu Line Manager, Claudia), <strong>entrega</strong> (Engagement Lead), e <strong>tech</strong> (Declan). Saber quem-faz-o-quê evita pingar a pessoa errada.
     </p>
 
     <div class="squad-grid">
       <div class="squad-card welcome">
         <div class="squad-tag">CONTACT · 01</div>
         <h3>Carla</h3>
-        <div class="role">Office Manager · Lisbon</div>
-        <p>
+        <div class="role"><span data-lang="en">Office Manager · Lisbon</span><span data-lang="pt">Office Manager · Lisboa</span></div>
+        <p data-lang="en">
           Physical space owner for the Lisbon office. Runs your tour, hands you the building and
           office access cards on Day 1, and shares the WiFi password.
         </p>
-        <div class="squad-meta">DAY 1 · ACCESS · WIFI</div>
+        <p data-lang="pt">
+          Responsável pelo espaço físico do escritório de Lisboa. Faz o teu tour, entrega-te os cartões de acesso ao prédio e ao escritório no Dia 1, e partilha a password do WiFi.
+        </p>
+        <div class="squad-meta"><span data-lang="en">DAY 1 · ACCESS · WIFI</span><span data-lang="pt">DIA 1 · ACESSO · WIFI</span></div>
       </div>
 
       <div class="squad-card mgmt">
         <div class="squad-tag">CONTACT · 02</div>
         <h3>Tom</h3>
-        <div class="role">Operations Director</div>
-        <p>
+        <div class="role"><span data-lang="en">Operations Director</span><span data-lang="pt">Diretor de Operações</span></div>
+        <p data-lang="en">
           Operational anchor. Guides project allocation, owns timesheet logging in Salesforce, and
           handles day-off approvals.
         </p>
-        <div class="squad-meta">ALLOCATION · OPS · TIMESHEETS</div>
+        <p data-lang="pt">
+          Âncora operacional. Orienta a alocação a projetos, gere o registo de horas no Salesforce, e aprova pedidos de dia de folga.
+        </p>
+        <div class="contact-links">
+          <a href="slack://user?id=U0A05110HQV" class="contact-link slack-link" target="_blank" rel="noopener" title="Open DM with Tom in Slack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg> <span>Slack</span></a>
+        </div>
+        <div class="squad-meta"><span data-lang="en">ALLOCATION · OPS · TIMESHEETS</span><span data-lang="pt">ALOCAÇÃO · OPS · HORAS</span></div>
       </div>
 
       <div class="squad-card career">
         <div class="squad-tag">CONTACT · 03</div>
-        <h3>Line Manager</h3>
-        <div class="role">Assigned to you</div>
-        <p>
+        <h3><span data-lang="en">Line Manager</span><span data-lang="pt">Line Manager</span></h3>
+        <div class="role"><span data-lang="en">Assigned to you</span><span data-lang="pt">Atribuído a ti</span></div>
+        <p data-lang="en">
           Your career anchor. Handles probation, regular 1:1s, and feedback sessions — all logged
           in <strong>Qulture Rocks</strong>. Different person for everyone; you'll know on Day 1.
         </p>
-        <div class="squad-meta">CAREER · 1:1 · FEEDBACK</div>
+        <p data-lang="pt">
+          A âncora da tua carreira. Gere o período experimental, 1:1s regulares, e sessões de feedback — tudo registado em <strong>Qulture Rocks</strong>. Pessoa diferente para cada um; vais saber no Dia 1.
+        </p>
+        <div class="squad-meta"><span data-lang="en">CAREER · 1:1 · FEEDBACK</span><span data-lang="pt">CARREIRA · 1:1 · FEEDBACK</span></div>
       </div>
 
       <div class="squad-card tech">
         <div class="squad-tag">CONTACT · 04</div>
         <h3>Declan</h3>
-        <div class="role">Support &amp; IT</div>
-        <p>
+        <div class="role"><span data-lang="en">Support &amp; IT</span><span data-lang="pt">Suporte &amp; TI</span></div>
+        <p data-lang="en">
           Technical lifeline. Reach out for hardware troubleshooting, system access, or any IT
           issue that's blocking you.
         </p>
-        <div class="squad-meta">TECH · HARDWARE · SUPPORT</div>
+        <p data-lang="pt">
+          Salva-vidas técnico. Recorre a ele para problemas de hardware, acessos a sistemas, ou qualquer questão de TI que te esteja a bloquear.
+        </p>
+        <div class="contact-links">
+          <a href="slack://user?id=U09TJL68BDH" class="contact-link slack-link" target="_blank" rel="noopener" title="Open DM with Declan in Slack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg> <span>Slack</span></a>
+        </div>
+        <div class="squad-meta"><span data-lang="en">TECH · HARDWARE · SUPPORT</span><span data-lang="pt">TI · HARDWARE · SUPORTE</span></div>
       </div>
 
       <div class="squad-card people">
         <div class="squad-tag">CONTACT · 05</div>
         <h3>Claudia</h3>
-        <div class="role">People &amp; connection</div>
-        <p>
+        <div class="role"><span data-lang="en">People &amp; connection</span><span data-lang="pt">Pessoas &amp; ligações</span></div>
+        <p data-lang="en">
           Walks you through the leadership team and the office cadence — who's around, which days
           they're in, who you should meet first.
         </p>
-        <div class="squad-meta">DAY 1 · LEADERSHIP · CADENCE</div>
+        <p data-lang="pt">
+          Apresenta-te a equipa de liderança e o ritmo do escritório — quem anda por aí, em que dias estão, e quem deves conhecer primeiro.
+        </p>
+        <div class="contact-links">
+          <a href="slack://user?id=U0ACE7YDNQK" class="contact-link slack-link" target="_blank" rel="noopener" title="Open DM with Claudia in Slack"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg> <span>Slack</span></a>
+        </div>
+        <div class="squad-meta"><span data-lang="en">DAY 1 · LEADERSHIP · CADENCE</span><span data-lang="pt">DIA 1 · LIDERANÇA · RITMO</span></div>
       </div>
 
       <div class="squad-card project">
         <div class="squad-tag">CONTACT · 06</div>
-        <h3>Engagement Lead</h3>
-        <div class="role">Project-specific</div>
-        <p>
+        <h3><span data-lang="en">Engagement Lead</span><span data-lang="pt">Engagement Lead</span></h3>
+        <div class="role"><span data-lang="en">Project-specific</span><span data-lang="pt">Específico do projeto</span></div>
+        <p data-lang="en">
           A named role, but the person varies depending on which project you've been allocated to.
           They'll reach out to onboard you onto the engagement.
         </p>
-        <div class="squad-meta">WEEK 1 · PROJECT</div>
+        <p data-lang="pt">
+          Um papel definido, mas a pessoa varia conforme o projeto a que foste alocado. Vai entrar em contacto para te onboardar no projeto.
+        </p>
+        <div class="squad-meta"><span data-lang="en">WEEK 1 · PROJECT</span><span data-lang="pt">SEMANA 1 · PROJETO</span></div>
       </div>
     </div>
   </div>
@@ -1795,36 +2147,39 @@
 <!-- ─── 06 · Day 1 pipeline ─── -->
 <section class="section" id="p-section-06">
   <div class="container">
-    <div class="section-tag">06 · Day 1 Pipeline</div>
-    <h2 class="section-title">Your first day, <em>step by step</em>.</h2>
-    <p class="section-deck">
+    <div class="section-tag"><span data-lang="en">06 · Day 1 Pipeline</span><span data-lang="pt">06 · Pipeline do Dia 1</span></div>
+    <h2 class="section-title" data-lang="en">Your first day, <em>step by step</em>.</h2><h2 class="section-title" data-lang="pt">O teu primeiro dia, <em>passo a passo</em>.</h2>
+    <p class="section-deck" data-lang="en">
       Four steps from arrival to end of Day 1. By the time the last one closes, you should have
       keys, an HR account, and a face-to-face on who's who.
+    </p>
+    <p class="section-deck" data-lang="pt">
+      Quatro passos da chegada ao fim do Dia 1. Quando o último estiver fechado, deves ter cartões, conta de HR, e ter visto quem é quem cara-a-cara.
     </p>
 
     <div class="pipeline" style="grid-template-columns:repeat(4,1fr)">
       <div class="pipe-step">
         <div class="num">STEP · 01</div>
-        <h4>Office tour</h4>
-        <p>Carla walks you through the space, kitchen, 2nd-floor meal area, gym, fire exits.</p>
+        <h4><span data-lang="en">Office tour</span><span data-lang="pt">Tour do escritório</span></h4>
+        <p data-lang="en">Carla walks you through the space, kitchen, 2nd-floor meal area, gym, fire exits.</p><p data-lang="pt">A Carla mostra-te o espaço, cozinha, sala de refeições no 2º andar, ginásio, saídas de emergência.</p>
         <span class="who">Carla</span>
       </div>
       <div class="pipe-step">
         <div class="num">STEP · 02</div>
-        <h4>Access cards</h4>
-        <p>Building entrance + office floor IDs. Keep them on you — needed daily.</p>
+        <h4><span data-lang="en">Access cards</span><span data-lang="pt">Cartões de acesso</span></h4>
+        <p data-lang="en">Building entrance + office floor IDs. Keep them on you — needed daily.</p><p data-lang="pt">Acessos à entrada do prédio + andar do escritório. Mantém-nos contigo — precisas todos os dias.</p>
         <span class="who">Carla</span>
       </div>
       <div class="pipe-step">
         <div class="num">STEP · 03</div>
-        <h4>HiBob Europe</h4>
-        <p>Invite arrives Day 1. Complete your HR profile in the system.</p>
+        <h4><span data-lang="en">HiBob Europe</span><span data-lang="pt">HiBob Europe</span></h4>
+        <p data-lang="en">Invite arrives Day 1. Complete your HR profile in the system.</p><p data-lang="pt">Convite chega no Dia 1. Completa o teu perfil de HR no sistema.</p>
         <span class="who">HiBob</span>
       </div>
       <div class="pipe-step">
         <div class="num">STEP · 04</div>
-        <h4>Claudia's briefing</h4>
-        <p>Introduction to leadership and office rituals. Names attach to faces.</p>
+        <h4><span data-lang="en">Claudia's briefing</span><span data-lang="pt">Briefing da Claudia</span></h4>
+        <p data-lang="en">Introduction to leadership and office rituals. Names attach to faces.</p><p data-lang="pt">Apresentação à liderança e rituais do escritório. Os nomes ganham caras.</p>
         <span class="who">Claudia</span>
       </div>
     </div>
@@ -1968,6 +2323,21 @@
 </section>
 
 <!-- ─── Footer ─── -->
+<!-- FAQ link block -->
+<section class="section" style="padding-top:0;padding-bottom:64px;border-top:none">
+  <div class="container">
+    <div class="faq-link-block">
+      <div class="eyebrow-mono">Still have questions?</div>
+      <h3>Open the FAQ.</h3>
+      <p>Ten common questions answered — dress code, late arrivals, lunch reimbursements, lost cards, cross-office visits. The things you might feel awkward asking on Day 1.</p>
+      <a class="faq-cta" href="faq.html" target="_blank" rel="noopener">
+        Read the FAQ
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container">
     <div class="tag">Indicium AI · Enterprise AI, Delivered</div>
@@ -2111,11 +2481,119 @@
         const onLisbon = !lisbonView.hidden;
         if (targetCity === 'london' && !onLondon) showCity('london', {preserveHash: true});
         else if (targetCity === 'lisbon' && !onLisbon) showCity('lisbon', {preserveHash: true});
-        // else: already on correct view — browser native scroll handles it
         return;
       }
-      // Empty hash — no action (likely a programmatic clear via showSelector)
     });
+  })();
+
+  /* ═══════════════════════════════════════════════════════════
+     MARK-AS-READ + PROGRESS TRACKER
+     Tracks which sections each city's view has seen.
+     Stored separately per city in localStorage.
+     ═══════════════════════════════════════════════════════════ */
+  (function () {
+    const STORAGE_PREFIX = 'indicium.read.';
+
+    function getRead(prefix) {
+      try {
+        const raw = localStorage.getItem(STORAGE_PREFIX + prefix);
+        return raw ? new Set(JSON.parse(raw)) : new Set();
+      } catch (e) { return new Set(); }
+    }
+
+    function saveRead(prefix, set) {
+      try { localStorage.setItem(STORAGE_PREFIX + prefix, JSON.stringify([...set])); } catch (e) {}
+    }
+
+    function refreshView(prefix) {
+      const read = getRead(prefix);
+      // Update outline cards
+      document.querySelectorAll(`.outline-card[href^="#${prefix}-section-"]`).forEach(card => {
+        const targetId = (card.getAttribute('href') || '').replace('#','');
+        card.classList.toggle('is-read', read.has(targetId));
+      });
+      // Update section tags
+      document.querySelectorAll(`section[id^="${prefix}-section-"] .section-tag`).forEach(tag => {
+        const section = tag.closest('section');
+        if (!section) return;
+        tag.classList.toggle('is-read', read.has(section.id));
+      });
+      // Update progress UI inside the view
+      const viewEl = prefix === 'l' ? document.getElementById('londonView') : document.getElementById('lisbonView');
+      if (!viewEl) return;
+      const totalSections = viewEl.querySelectorAll('section[id^="' + prefix + '-section-"]').length;
+      const readCount = read.size;
+      const countEl = viewEl.querySelector('.progress-summary .count');
+      const statusEl = viewEl.querySelector('.progress-summary .ps-status');
+      const fillEl = viewEl.querySelector('.progress-bar-fill');
+      if (countEl) countEl.textContent = readCount;
+      if (statusEl) {
+        if (readCount === totalSections && totalSections > 0) {
+          statusEl.innerHTML = '<span class="count" style="color:var(--green)">All ' + totalSections + '</span> sections read · you\'re set';
+        } else {
+          statusEl.innerHTML = '<span class="count">' + readCount + '</span> of ' + totalSections + ' sections read';
+        }
+      }
+      if (fillEl) {
+        const pct = totalSections > 0 ? (readCount / totalSections) * 100 : 0;
+        fillEl.style.width = pct + '%';
+      }
+    }
+
+    function markRead(sectionId) {
+      const prefix = sectionId.startsWith('l-') ? 'l' : (sectionId.startsWith('p-') ? 'p' : null);
+      if (!prefix) return;
+      const read = getRead(prefix);
+      if (!read.has(sectionId)) {
+        read.add(sectionId);
+        saveRead(prefix, read);
+        refreshView(prefix);
+      }
+    }
+
+    // Initial render of progress
+    refreshView('l');
+    refreshView('p');
+
+    // Reset buttons
+    document.querySelectorAll('[data-action="reset-progress"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const viewEl = btn.closest('.city-view');
+        if (!viewEl) return;
+        const prefix = viewEl.id === 'londonView' ? 'l' : 'p';
+        try { localStorage.removeItem(STORAGE_PREFIX + prefix); } catch (e) {}
+        refreshView(prefix);
+      });
+    });
+
+    // Auto-mark on scroll — section enters viewport AND stays for 1.2s
+    if (!('IntersectionObserver' in window)) return;
+
+    const visibilityTimers = new WeakMap();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const sec = entry.target;
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+          // Section is meaningfully visible — start timer to mark read
+          if (!visibilityTimers.has(sec)) {
+            const t = setTimeout(() => {
+              markRead(sec.id);
+              visibilityTimers.delete(sec);
+            }, 1200);
+            visibilityTimers.set(sec, t);
+          }
+        } else {
+          // Cancel pending mark
+          const t = visibilityTimers.get(sec);
+          if (t) {
+            clearTimeout(t);
+            visibilityTimers.delete(sec);
+          }
+        }
+      });
+    }, { threshold: [0, 0.35, 0.6, 1] });
+
+    document.querySelectorAll('section[id^="l-section-"], section[id^="p-section-"]').forEach(sec => io.observe(sec));
   })();
 
   /* ─────── Scroll-triggered reveal transitions ─────── */
@@ -2152,7 +2630,282 @@
 
     sectionTargets.forEach(s => io.observe(s));
   })();
+
+  
+  /* ═══════════════════════════════════════════════════════════
+     EN/PT LANGUAGE TOGGLE — Lisbon view only
+     Hides/shows elements marked with data-lang="en" or "pt"
+     ═══════════════════════════════════════════════════════════ */
+  (function () {
+    const STORAGE_KEY = 'indicium.lang';
+
+    function applyLang(lang) {
+      if (lang === 'pt') document.body.classList.add('lang-pt');
+      else document.body.classList.remove('lang-pt');
+      document.querySelectorAll('[data-lang-set]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.langSet === lang);
+      });
+    }
+
+    // Restore saved preference
+    let saved = 'en';
+    try { saved = localStorage.getItem(STORAGE_KEY) || 'en'; } catch (e) {}
+    applyLang(saved);
+
+    document.querySelectorAll('[data-lang-set]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.langSet;
+        applyLang(lang);
+        try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+      });
+    });
+  })();
+
+  /* ═══════════════════════════════════════════════════════════
+     AI ASSISTANT — mock backend (swap with Anthropic API later)
+     The answer engine is a keyword-based matcher against a Q&A KB.
+     Replace `mockAnswer()` with a fetch() to your Claude proxy.
+     ═══════════════════════════════════════════════════════════ */
+  (function () {
+    const launcher = document.getElementById('aiLauncher');
+    const panel    = document.getElementById('aiPanel');
+    const closeBtn = document.getElementById('aiClose');
+    const messages = document.getElementById('aiMessages');
+    const input    = document.getElementById('aiInput');
+    const sendBtn  = document.getElementById('aiSend');
+    const suggestionsBox = document.getElementById('aiSuggestions');
+
+    if (!launcher || !panel) return;
+
+    // ─── Knowledge base for mock answers ───
+    // Each entry: keywords (any match = trigger) + answer (HTML)
+    const KB = [
+      {
+        keys: ['wifi', 'wi-fi', 'internet', 'password'],
+        answer: 'The WiFi password is shared in person on Day 1 — <strong>Lou</strong> handles it for London and <strong>Carla</strong> for Lisbon. They\'ll give it to you during the office tour. We don\'t share it in writing.'
+      },
+      {
+        keys: ['timesheet', 'hour', 'log hours', 'salesforce'],
+        answer: 'Hours are logged in <strong>Salesforce</strong>. <strong>Tom</strong> sets you up Week 1 and walks you through logging hours against your allocation. Any apportionment questions go to him directly.'
+      },
+      {
+        keys: ['day off', 'time off', 'leave', 'pto', 'holiday', 'vacation'],
+        answer: 'Day-off requests go through <strong>Tom</strong> for approval. He balances coverage against your allocation. Plan ahead for anything longer than a single day. UK and Portugal have different bank holiday calendars.'
+      },
+      {
+        keys: ['feedback', 'qulture', '1:1', 'one on one', '1 on 1'],
+        answer: 'Continuous feedback and 1:1 cycles live in <strong>Qulture Rocks</strong>. Your <strong>Line Manager</strong> owns the cadence — recurring 1:1s, feedback exchanges, and probation milestones all flow through there.'
+      },
+      {
+        keys: ['hibob', 'hr', 'personal info', 'org chart'],
+        answer: '<strong>HiBob Europe</strong> is our HR platform. You\'ll get an email invite on Day 1 — accept it, complete your profile, and use it for personal info, time-off records, and the org chart.'
+      },
+      {
+        keys: ['office days', 'in office', 'remote', 'cadence', 'busy days'],
+        answer: 'Three days a week in-office is mandatory across both offices. <strong>London</strong>: Tuesdays and Thursdays are busiest. <strong>Lisbon</strong>: Tuesday, Wednesday, and Thursday are peak; Mondays and Fridays are quieter.'
+      },
+      {
+        keys: ['lunch', 'food', 'eat', 'restaurant'],
+        answer: 'See Section 04 (Office Practicalities) for nearby food. London has Spitalfields and Broadgate Circle within 5 minutes. Lisbon has A Padaria Portuguesa on the square, Cotidiano for brunch, and Tre Bambu for Vietnamese.'
+      },
+      {
+        keys: ['gym', 'shower', 'fitness'],
+        answer: 'Lisbon\'s Monday building has a <strong>24h gym with showers</strong> — accessible via your office card. London has bike storage, lockers, and showers, plus the building amenities listed in Section 04.'
+      },
+      {
+        keys: ['access card', 'lost card', 'lost my card', 'forgot card', 'lost access'],
+        answer: 'For London, ping <strong>Lou</strong> on Slack and she\'ll arrange a replacement. For Lisbon, ping <strong>Carla</strong>. The front desk of the building can also issue a temporary day-pass while you wait.'
+      },
+      {
+        keys: ['who is', 'contact', 'first day', 'day 1', 'day one'],
+        answer: 'On Day 1 you\'ll meet four people: the Office Manager (Lou in London / Carla in Lisbon) for tour and access, <strong>Claudia</strong> for the leadership briefing, plus you\'ll get the HiBob invite. Week 1, <strong>Tom</strong> takes over operations and your Engagement Lead onboards you on your project.'
+      },
+      {
+        keys: ['indicium', 'company', 'who are we', 'about'],
+        answer: '<strong>Indicium AI</strong> was formed in 2025 from the merger of Indicium (Brazil, 2017) and Mesh-AI (London, 2021). 600+ specialists, 5 offices across Americas, LATAM, and Europe. HQ in New York. We deliver end-to-end data and AI transformation for Fortune-class enterprises.'
+      },
+      {
+        keys: ['training', 'learn', 'certification', 'cert'],
+        answer: 'A structured training trail is on the roadmap but not yet live. Until it launches, structured learning happens through Claudia\'s leadership briefing, your Engagement Lead\'s project induction, and on-the-job pairing within your pod. We have 560+ certifications across the org — Databricks, AWS, Anthropic are common priorities.'
+      },
+      {
+        keys: ['indimesh', 'framework'],
+        answer: '<strong>IndiMesh</strong> is our proprietary AI-powered delivery framework. It combines collective intelligence, proven expertise, and rigorous quality control to deliver faster, more scalable, and consistently high-quality outcomes. Your Engagement Lead will walk you through how it applies to your project.'
+      },
+      {
+        keys: ['visit', 'other office', 'london from lisbon', 'lisbon from london'],
+        answer: 'Cross-office visits are common and encouraged. Check with Tom on coverage and any expense policy, and message the destination Office Manager (Lou or Carla) ahead so they can set up a hot desk for you.'
+      }
+    ];
+
+    function mockAnswer(question) {
+      const q = question.toLowerCase();
+      // Find best match by counting keyword hits
+      let best = null;
+      let bestScore = 0;
+      for (const entry of KB) {
+        let score = 0;
+        for (const k of entry.keys) {
+          if (q.includes(k.toLowerCase())) score++;
+        }
+        if (score > bestScore) {
+          bestScore = score;
+          best = entry;
+        }
+      }
+      if (best && bestScore > 0) return best.answer;
+      // Fallback
+      return 'I don\'t have a confident answer for that one. Try asking one of your six contacts directly — <strong>Lou/Carla</strong> for anything physical-space, <strong>Tom</strong> for operations, your <strong>Line Manager</strong> for career, <strong>Declan</strong> for IT, <strong>Claudia</strong> for people, and your <strong>Engagement Lead</strong> for project context.';
+    }
+
+    function addMessage(role, html) {
+      const msg = document.createElement('div');
+      msg.className = 'ai-msg ' + role;
+      msg.innerHTML = html;
+      messages.appendChild(msg);
+      messages.scrollTop = messages.scrollHeight;
+      return msg;
+    }
+
+    function showTyping() {
+      const t = document.createElement('div');
+      t.className = 'ai-msg typing';
+      t.innerHTML = '<span class="ai-typing-dot"></span><span class="ai-typing-dot"></span><span class="ai-typing-dot"></span>';
+      t.id = 'aiTypingIndicator';
+      messages.appendChild(t);
+      messages.scrollTop = messages.scrollHeight;
+    }
+    function hideTyping() {
+      const t = document.getElementById('aiTypingIndicator');
+      if (t) t.remove();
+    }
+
+    function ask(question) {
+      addMessage('user', escapeHtml(question));
+      input.value = '';
+      sendBtn.disabled = true;
+      // Hide suggestions after first ask
+      if (suggestionsBox) suggestionsBox.style.display = 'none';
+      showTyping();
+      // Simulated latency
+      const delay = 600 + Math.random() * 700;
+      setTimeout(() => {
+        hideTyping();
+        addMessage('bot', mockAnswer(question));
+        sendBtn.disabled = false;
+      }, delay);
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+      }[c]));
+    }
+
+    // ─── Panel open/close ───
+    function openPanel() {
+      panel.classList.add('open');
+      panel.setAttribute('aria-hidden', 'false');
+      launcher.setAttribute('aria-expanded', 'true');
+      // Focus input after animation
+      setTimeout(() => { if (input) input.focus(); }, 300);
+    }
+    function closePanel() {
+      panel.classList.remove('open');
+      panel.setAttribute('aria-hidden', 'true');
+      launcher.setAttribute('aria-expanded', 'false');
+    }
+    launcher.addEventListener('click', openPanel);
+    closeBtn.addEventListener('click', closePanel);
+    // ESC to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+    });
+
+    // ─── Input handling ───
+    function trySend() {
+      const text = input.value.trim();
+      if (!text) return;
+      ask(text);
+    }
+    sendBtn.addEventListener('click', trySend);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        trySend();
+      }
+    });
+    input.addEventListener('input', () => {
+      sendBtn.disabled = !input.value.trim();
+    });
+
+    // ─── Suggestion clicks ───
+    document.querySelectorAll('.ai-suggestion').forEach(btn => {
+      btn.addEventListener('click', () => ask(btn.textContent.trim()));
+    });
+  })();
 </script>
+
+<!-- ═══════════════════════════════════════════════════════════
+     AI ASSISTANT — floating chatbot
+     ═══════════════════════════════════════════════════════════ -->
+<button id="aiLauncher" class="ai-launcher" aria-label="Open AI assistant" aria-expanded="false" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+  </svg>
+  <span class="ai-dot" aria-hidden="true"></span>
+</button>
+
+<aside id="aiPanel" class="ai-panel" role="dialog" aria-label="Onboarding assistant" aria-hidden="true">
+  <header class="ai-header">
+    <div class="ai-header-info">
+      <div class="ai-header-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2a8 8 0 0 0-8 8v6a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-6a8 8 0 0 0-8-8z"/>
+          <circle cx="9" cy="11" r="1"/>
+          <circle cx="15" cy="11" r="1"/>
+          <path d="M9 16h6"/>
+        </svg>
+      </div>
+      <div class="ai-header-text">
+        <div class="ai-title">Onboarding Assistant</div>
+        <div class="ai-subtitle">Powered by Indicium AI</div>
+      </div>
+    </div>
+    <button id="aiClose" class="ai-close" aria-label="Close assistant" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </header>
+
+  <div id="aiMessages" class="ai-messages">
+    <div class="ai-msg bot">
+      Hi 👋 I'm your onboarding assistant. Ask me anything about the portal — Day 1 logistics, who to contact, ways of working, tools, the offices. I'll do my best to answer; for anything I miss, your six contacts in Section 05 are the human source of truth.
+    </div>
+  </div>
+
+  <div id="aiSuggestions" class="ai-suggestions">
+    <button class="ai-suggestion" type="button">What's the WiFi password?</button>
+    <button class="ai-suggestion" type="button">How do I log my hours?</button>
+    <button class="ai-suggestion" type="button">Where do I eat lunch?</button>
+    <button class="ai-suggestion" type="button">Which days should I come to the office?</button>
+    <button class="ai-suggestion" type="button">What is IndiMesh?</button>
+  </div>
+
+  <div class="ai-input-area">
+    <div class="ai-input-wrap">
+      <textarea id="aiInput" class="ai-input" rows="1" placeholder="Ask anything about onboarding…" aria-label="Type your question"></textarea>
+      <button id="aiSend" class="ai-send" aria-label="Send" type="button" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="ai-disclaimer">Demo mode · Mock answers · Swap for Anthropic API in production</div>
+  </div>
+</aside>
 
 </body>
 </html>
