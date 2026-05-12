@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ · Indicium AI Europe Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1c1d2f;
+    --bg-soft:#23243a;
+    --white:#ffffff;
+    --lavender:#c1c5e0;
+    --atlantic:#699bfb;
+    --vibrant:#3a58ee;
+    --green:#6ee7a0;
+    --muted:#7c7f9c;
+    --muted-2:#5a5c75;
+    --line:rgba(255,255,255,.08);
+    --line-strong:rgba(255,255,255,.14);
+    --sans:'Inter',system-ui,sans-serif;
+    --mono:'Roboto Mono',ui-monospace,monospace;
+    --gutter:clamp(20px,5vw,60px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:80px;background:var(--bg)}
+  body{
+    font-family:var(--sans);background:var(--bg);color:var(--lavender);
+    line-height:1.55;font-weight:300;min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(ellipse 60% 40% at 15% 10%,rgba(58,88,238,.10) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 35% at 90% 80%,rgba(105,155,251,.07) 0%,transparent 60%);
+  }
+  .container{max-width:920px;margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+
+  /* ─── Nav ─── */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(28,29,47,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1280px;margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:flex;align-items:center;gap:10px;color:var(--white);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.5px;text-transform:uppercase}
+  .brand .brand-mark{width:22px;height:22px;flex-shrink:0}
+  .brand .ai-tag{font-family:var(--mono);font-size:8.5px;color:var(--atlantic);margin-left:2px;letter-spacing:1.6px;font-weight:500;align-self:flex-start;margin-top:-1px}
+  .back-link{font-family:var(--mono);font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--bg);background:var(--white);border:1px solid var(--white);border-radius:999px;padding:9px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;transition:transform .2s,background .2s,color .2s,box-shadow .25s;box-shadow:0 2px 12px rgba(255,255,255,.08)}
+  .back-link:hover{transform:translateY(-1px);background:var(--atlantic);color:var(--white);border-color:var(--atlantic);box-shadow:0 6px 20px rgba(105,155,251,.35)}
+  .back-link svg{width:11px;height:11px}
+
+  /* ─── Hero ─── */
+  .hero{padding:80px 0 50px;position:relative}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--atlantic);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px;font-weight:500}
+  .eyebrow::before{content:'';width:24px;height:1px;background:var(--atlantic)}
+  h1{font-weight:300;font-size:clamp(40px,5.6vw,68px);line-height:1;letter-spacing:-2px;color:var(--white);margin-bottom:22px;max-width:18ch}
+  h1 b{font-weight:700;background:linear-gradient(135deg,var(--white) 0%,var(--atlantic) 60%,var(--vibrant) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .deck{font-size:17px;line-height:1.6;color:var(--lavender);max-width:60ch;font-weight:300;opacity:.88}
+
+  /* ─── FAQ items ─── */
+  .faq-wrap{padding:30px 0 80px}
+  .faq-meta{display:flex;align-items:baseline;gap:14px;padding:14px 0;margin-bottom:30px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:1.4px;text-transform:uppercase}
+  .faq-meta .label{color:var(--muted)}
+  .faq-meta .value{color:var(--white);font-weight:600}
+  .faq-meta .dot{color:var(--muted-2)}
+
+  details.faq-item{border:1px solid var(--line-strong);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));margin-bottom:12px;overflow:hidden;transition:border-color .25s,background .25s}
+  details.faq-item[open]{border-color:rgba(105,155,251,.32);background:linear-gradient(180deg,rgba(105,155,251,.04),rgba(255,255,255,0))}
+  details.faq-item:hover{border-color:rgba(105,155,251,.2)}
+  details.faq-item summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+  details.faq-item summary::-webkit-details-marker{display:none}
+  .q-num{font-family:var(--mono);font-size:10px;letter-spacing:1.6px;color:var(--atlantic);font-weight:600;flex-shrink:0;width:34px}
+  .q-text{flex:1;font-size:17px;font-weight:500;color:var(--white);letter-spacing:-.2px;line-height:1.4}
+  .q-toggle{width:28px;height:28px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--lavender);transition:transform .25s,background .25s,color .25s;flex-shrink:0}
+  details.faq-item[open] .q-toggle{transform:rotate(45deg);background:var(--atlantic);color:var(--white);border-color:var(--atlantic)}
+  .q-toggle svg{width:14px;height:14px}
+  .a-body{padding:0 26px 26px 70px;color:var(--lavender);font-size:14.5px;line-height:1.65;font-weight:300}
+  .a-body p{margin-bottom:12px}
+  .a-body p:last-child{margin-bottom:0}
+  .a-body strong{color:var(--white);font-weight:600}
+  .a-body em{font-style:normal;color:var(--atlantic);font-weight:500}
+  .city-pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-right:6px;font-weight:600;vertical-align:middle;line-height:1}
+  .city-pill.london{background:rgba(105,155,251,.14);color:var(--atlantic);border:1px solid rgba(105,155,251,.28)}
+  .city-pill.lisbon{background:rgba(110,231,160,.12);color:var(--green);border:1px solid rgba(110,231,160,.26)}
+  .city-pill.both{background:rgba(255,255,255,.06);color:var(--lavender);border:1px solid var(--line-strong)}
+
+  /* ─── Footer ─── */
+  .footer{border-top:1px solid var(--line);padding:36px 0 64px;text-align:center}
+  .footer .tag{font-family:var(--mono);font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--atlantic);margin-bottom:8px;font-weight:500}
+  .footer .tagline{font-size:14px;color:var(--white);font-weight:500;margin-bottom:4px}
+  .footer .copy{font-family:var(--mono);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted-2);font-weight:500}
+
+  @media (max-width:560px){
+    .nav-inner{padding:14px 20px}
+    .back-link span{display:none}
+    .a-body{padding:0 22px 22px 22px}
+    .q-num{display:none}
+    details.faq-item summary{padding:18px 22px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 217.02 219.67" xmlns="http://www.w3.org/2000/svg" aria-label="Indicium AI">
+        <defs>
+          <clipPath id="faqClip"><path d="M64.38,92.26l18.67,10.82c10.06,5.83,16.25,16.6,16.25,28.25v26.07l-30.14-20.11,17.94-10.92c2.72-1.65,3.51-5.27,1.66-7.93-1.69-2.42-5.04-2.99-7.55-1.46l-16.83,10.24v-34.96ZM101,47.89c-1.13,1.07-1.71,2.61-1.71,4.17v29.94c0,3.32,2.82,6.14,6.25,5.68,2.79-.37,4.8-2.88,4.8-5.69v-20.52l36.11,20.82-25.81,12.9c-9.76,4.88-21.31,4.52-30.75-.95l-28.28-16.39c-2.07-1.2-4.73-.95-6.55.76-1.15,1.07-1.74,2.62-1.74,4.2v54.44c0,1.81.93,3.49,2.47,4.45l45.97,30.68c.92.62,1.99.93,3.06.93,1.01,0,2.02-.28,2.91-.83,1.67-1.03,2.61-2.93,2.61-4.9v-34.62c0-12.38,6.98-23.69,18.02-29.21l24.26-12.12v40.63s-22.68-14.15-22.68-14.15c-2.62-1.64-6.08-.8-7.66,1.87-1.58,2.67-.6,6.03,1.98,7.65l30.97,19.32c.89.55,1.9.83,2.92.83,1.45,0,2.92-.58,4.02-1.74,1.01-1.07,1.5-2.53,1.5-4v-59.46c-.04-1.95-1.1-3.75-2.78-4.73l-53.33-30.75c-.85-.49-1.8-.74-2.76-.74-1.37,0-2.74.51-3.82,1.53"/></clipPath>
+          <linearGradient id="faqGrad" x1="0" y1="50%" x2="100%" y2="50%"><stop offset="0" stop-color="#4761f8"/><stop offset=".22" stop-color="#4a69f8"/><stop offset=".58" stop-color="#5480fb"/><stop offset="1" stop-color="#64a4ff"/></linearGradient>
+        </defs>
+        <g clip-path="url(#faqClip)"><rect x="29.69" y="27.7" width="157.64" height="164.28" transform="translate(-39.32 65.28) rotate(-28.57)" fill="url(#faqGrad)"/></g>
+      </svg>
+      <span>Indicium<span class="ai-tag">AI</span></span>
+    </a>
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span>Back to portal</span>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">FAQ · Frequently Asked Questions</div>
+    <h1>The questions you'd feel <b>awkward asking.</b></h1>
+    <p class="deck">Ten common things new joiners want to know but rarely raise out loud — dress codes, late arrivals, lunch reimbursements, lost cards, cross-office visits. Answers below; if anything's unclear, your six contacts in Section 05 of the main portal are the human source of truth.</p>
+  </div>
+</section>
+
+<section class="faq-wrap">
+  <div class="container">
+
+    <div class="faq-meta">
+      <span class="label">Questions</span>
+      <span class="value">10</span>
+      <span class="dot">·</span>
+      <span class="label">Read time</span>
+      <span class="value">~6 min</span>
+      <span class="dot">·</span>
+      <span class="label">Last updated</span>
+      <span class="value">May 2026</span>
+    </div>
+
+    <!-- Q1 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">01</span>
+        <span class="q-text">What should I wear on Day 1?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p><span class="city-pill both">Both</span> Indicium AI is <strong>smart casual</strong> as the default. Jeans + a clean top + comfortable shoes work for almost any day in the office. No formal dress code, no suit, no tie required.</p>
+        <p>The exception is client-facing days — see Q9 below for that. On your very first day, you'll spend most of your time inside our office with internal colleagues, so erring on the casual end is perfectly fine. If you feel awkward, leaning slightly smart on Day 1 never hurts — you'll quickly calibrate by what your team wears.</p>
+      </div>
+    </details>
+
+    <!-- Q2 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">02</span>
+        <span class="q-text">What if I'm late on Day 1?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p>Don't panic — public transport delays happen. <strong>Send a quick Slack or email</strong> to your Office Manager as soon as you know:</p>
+        <p><span class="city-pill london">London</span> ping <strong>Lou</strong> on Slack.<br/>
+        <span class="city-pill lisbon">Lisbon</span> ping <strong>Carla</strong> on Slack.</p>
+        <p>If you don't have Slack set up yet (which is likely on Day 1), email works. We'll reschedule your tour and onboarding sequence — nothing's lost. A late start by 15–30 minutes is genuinely no big deal here. Just communicate.</p>
+      </div>
+    </details>
+
+    <!-- Q3 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">03</span>
+        <span class="q-text">Can I park nearby?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p><span class="city-pill london">London</span> <strong>Driving is strongly discouraged.</strong> The office sits inside the Congestion Charge zone and the Ultra Low Emission Zone (ULEZ), so daily driving adds up fast. Parking around Liverpool Street is scarce and expensive (£40+ per day in nearby NCP car parks). Take the Tube, Overground, Elizabeth Line, or National Rail — Liverpool Street station is literally a 30-second walk from the office.</p>
+        <p><span class="city-pill lisbon">Lisbon</span> <strong>Limited and paid.</strong> Street parking around Marquês de Pombal is paid (EMEL meters) and tends to fill up quickly. There are several paid garages in the area (around €15–25/day). The Metro at Marquês de Pombal is the fastest route — one minute walk and connects two lines (Blue + Yellow). Most colleagues use Metro, GIRA bikes, or scooters.</p>
+      </div>
+    </details>
+
+    <!-- Q4 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">04</span>
+        <span class="q-text">How do I expense lunch with a client?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p><span class="city-pill both">Both</span> <strong>Client-facing lunches</strong> are typically expensable — keep the receipt and submit it through the standard expense process. The exact tool and limit depend on your engagement; <strong>Tom</strong> (Operations) is the right person to confirm both.</p>
+        <p>Solo / internal-only lunches are normally <strong>not</strong> reimbursed. The grey area is team lunches with internal colleagues — for those, check with your Engagement Lead or Tom before assuming. Better to ask once than to submit a receipt that gets rejected.</p>
+      </div>
+    </details>
+
+    <!-- Q5 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">05</span>
+        <span class="q-text">Can I visit the other office?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p><span class="city-pill both">Both</span> <strong>Yes — cross-office visits are encouraged.</strong> London ↔ Lisbon swaps happen regularly, and it's a great way to meet people from the other half of Europe.</p>
+        <p><strong>How to set it up:</strong></p>
+        <p>1. Check with <strong>Tom</strong> on project coverage and any expense policy for the trip.<br/>
+        2. Message the destination Office Manager (<strong>Lou</strong> for London, <strong>Carla</strong> for Lisbon) at least a few days ahead so they can set up a hot desk and access for you.<br/>
+        3. Book your own travel through the usual expense process — flights, train, accommodation. Confirm what's covered with Tom first.</p>
+        <p>Visits typically run 2–5 working days. Longer stays are possible for specific projects.</p>
+      </div>
+    </details>
+
+    <!-- Q6 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">06</span>
+        <span class="q-text">Are there vegetarian, halal, or gluten-free options nearby?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p><span class="city-pill london">London</span> Excellent variety. <strong>Spitalfields Market</strong> (5-min walk) has dedicated vegan stalls, halal kebabs, gluten-free wraps. <strong>Broadgate Circle</strong> has Beany Green (lots of vegetarian options), Franco Manca (gluten-free pizza on request), and Crussh (juices, salads, GF wraps). Most chains around Liverpool Street label allergens clearly.</p>
+        <p><span class="city-pill lisbon">Lisbon</span> Solid options. <strong>Cotidiano</strong> (5-min) has vegetarian and gluten-free menus marked. <strong>A Padaria Portuguesa</strong> on the square has clearly-labelled allergens and several vegetarian sandwiches. For Asian / Vietnamese vegetarian, <strong>Tre Bambu</strong> has plenty of options. Halal is rarer in the immediate area — central Lisbon has more options if you walk slightly further.</p>
+        <p>If you have a strict dietary requirement (severe allergy, kosher, etc.), let <strong>Lou/Carla</strong> know — they can help plan office events around it.</p>
+      </div>
+    </details>
+
+    <!-- Q7 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">07</span>
+        <span class="q-text">What if I lose my access card?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p><span class="city-pill both">Both</span> <strong>Don't panic.</strong> Ping your Office Manager on Slack as soon as you realise:</p>
+        <p><span class="city-pill london">London</span> <strong>Lou</strong> arranges a replacement and a temporary day-pass while you wait. The building reception can also issue a same-day visitor pass if she's not around.</p>
+        <p><span class="city-pill lisbon">Lisbon</span> <strong>Carla</strong> handles the replacement. The Monday building's front desk can also issue a temporary card while she sorts the new one.</p>
+        <p>Replacements typically take 1–2 working days. There's no charge for the first replacement; multiple losses in a short period may have a small fee depending on the building's policy.</p>
+      </div>
+    </details>
+
+    <!-- Q8 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">08</span>
+        <span class="q-text">WiFi isn't working — who do I call?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p><span class="city-pill both">Both</span> <strong>Declan</strong> is your first call — he's IT support and handles network, hardware, and access issues. Ping him on Slack (see Section 05 of the main portal for his Slack link).</p>
+        <p>While you wait, two quick self-checks that often solve it:</p>
+        <p>1. <strong>Forget the network and rejoin</strong> using the password you got from Lou/Carla on Day 1. If you don't remember it, ask them to share it again.<br/>
+        2. <strong>Try the guest network</strong> for a short-term fix — it's slower but unblocks you for emails and Slack. Lou/Carla can share the guest credentials.</p>
+        <p>If the WiFi is down for the whole office (not just your laptop), <strong>Lou/Carla</strong> will already know and will be coordinating with the building. No need to also ping them.</p>
+      </div>
+    </details>
+
+    <!-- Q9 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">09</span>
+        <span class="q-text">What's the dress code for client meetings?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p><span class="city-pill both">Both</span> <strong>Smart casual to business casual</strong>, calibrated to the client. Default: smart trousers/dark jeans, a clean shirt or polo, closed shoes. No tie, no suit needed for most engagements.</p>
+        <p>The exception is <strong>banking, insurance, and energy</strong> clients — they tend to dress more formally. For those, add a blazer or jacket and skip the jeans. Your Engagement Lead will flag if the client expects something more formal; if you're not sure, ask them before the meeting.</p>
+        <p>Rule of thumb: <em>match the client one notch up.</em> If they wear business casual, you wear business casual. Avoid hoodies, branded t-shirts, and trainers for client-facing days. When in doubt, dress slightly smarter than your average office day.</p>
+      </div>
+    </details>
+
+    <!-- Q10 -->
+    <details class="faq-item">
+      <summary>
+        <span class="q-num">10</span>
+        <span class="q-text">Is there a shower at the office?</span>
+        <span class="q-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </summary>
+      <div class="a-body">
+        <p><span class="city-pill lisbon">Lisbon</span> <strong>Yes.</strong> The Monday building has a <strong>24h gym with showers</strong>, accessible with your office card. Bring your own towel. This is also great for cycling commuters or post-lunch runs in Eduardo VII park.</p>
+        <p><span class="city-pill london">London</span> <strong>Yes</strong> — the building has showers and lockers as part of its end-of-trip facilities, designed for cycling and running commuters. Bike storage is on-site, and fresh towels are usually provided (check with Lou for towel availability that day).</p>
+        <p>Both offices genuinely support active commuting and lunch-break workouts. Use it.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="tag">Indicium AI · Enterprise AI, Delivered</div>
+    <div class="tagline">Indicium AI Europe · Onboarding FAQ</div>
+    <div class="copy">New Joiner Guide · 2026 · Internal use only</div>
+  </div>
+</footer>
+
+</body>
+</html>
